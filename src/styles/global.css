@@ -1,2 +1,100 @@
-@import './tokens.css'; /* Importacion de los estilos globales que estan en tokens.css
+/* Importamos los tokens de diseño de Sintonía */
+@import './tokens.css';
 
+/* 1. Restablecimiento básico*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Configuración general del documento*/
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background-color: var(--fondo-base);
+  color: var(--texto-principal);
+  font-family: var(--fuente-inter);
+  font-size: 16px;
+  line-height: 1.5;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3. Contenedor principal de React*/
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. Elementos básicos */
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 5. Accesibilidad: foco del teclado */
+
+:focus-visible {
+  outline: 2px solid var(--marca-primario);
+  outline-offset: 3px;
+}
+
+/* 6. Preferencias de movimiento*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
