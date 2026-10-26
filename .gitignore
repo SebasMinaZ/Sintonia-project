@@ -1,0 +1,32 @@
+# Dependencias de npm
+node_modules/
+
+#Build de produccion
+dist/
+
+#Variables de entorno locales
+.env
+.env.*
+!.env.example
+
+# Archios de registro
+
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Archivos del sistema Operativo
+
+.DS_Store
+Thumbs.db
+
+# Archivos de editores
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Archivos temporales
+
+*.local
