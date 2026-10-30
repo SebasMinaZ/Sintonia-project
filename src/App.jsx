@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div>App</div>
+    <StrictMode>
+      <Navbar />
+    </StrictMode>
   )
 }
 

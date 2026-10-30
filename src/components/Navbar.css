@@ -1,0 +1,126 @@
+.navbar {
+  box-sizing: border-box;
+  width: 100%;
+  height: 72px;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  background-color: var(--fondo-base);
+  border-bottom: 1px solid var(--borde-sutil);
+}
+
+.navbar-interior {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+/* Grupo Izquierdo */
+.navbar-grupo-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 40px; /
+}
+
+/* Grupo Derecho */
+.navbar-grupo-derecha {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-marca {
+  height: 32px;
+  width: auto;
+}
+
+/* Enlaces de navegación */
+.navbar-enlaces {
+  display: flex;
+  list-style: none;
+  gap: var(--espacio-6); /* 24px */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-enlaces a {
+  font-family: var(--fuente-inter);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--texto-secundario);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-enlaces a:hover {
+  color: var(--texto-principal);
+}
+
+/* Selector de idioma (estilo pastilla) */
+.navbar-idioma {
+  display: flex;
+  background-color: var(--fondo-sutil);
+  border-radius: var(--radio-completo);
+  padding: var(--espacio-1);
+  gap: var(--espacio-1);
+}
+
+.navbar-idioma button {
+  background: transparent;
+  border: none;
+  color: var(--texto-secundario);
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: var(--radio-lg);
+  cursor: pointer;
+  font-family: var(--fuente-inter);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.navbar-idioma button:first-child {
+  background-color: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+}
+
+/* Zona de Autenticación */
+.navbar-autenticacion {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-4); /* 16px */
+}
+
+.navbar-ingresar {
+  color: var(--texto-principal);
+  text-decoration: none;
+  font-family: var(--fuente-inter);
+  font-weight: 500;
+  font-size: 16px;
+  padding: var(--espacio-2) var(--espacio-4);
+}
+
+.navbar-registro {
+  background-color: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+  text-decoration: none;
+  font-family: var(--fuente-inter);
+  font-weight: 600;
+  font-size: 16px;
+  padding: var(--espacio-3) var(--espacio-6);
+  border-radius: var(--radio-completo);
+  transition: background-color 0.2s ease;
+}
+
+.navbar-registro:hover {
+  background-color: var(--marca-primario-hover);
+}
