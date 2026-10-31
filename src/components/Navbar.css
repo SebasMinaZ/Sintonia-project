@@ -1,8 +1,8 @@
 .navbar {
   box-sizing: border-box;
   width: 100%;
-  height: 72px;
-  padding: 0 80px;
+  height: 72px; /* Directo de Figma */
+  padding: 0 80px; /* Corregido a los 80px exactos de Figma */
   display: flex;
   align-items: center;
   background-color: var(--fondo-base);
@@ -13,9 +13,9 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between; /* Maneja el espacio dinámico en lugar del "Espacio" de 503px */
   width: 100%;
-  max-width: 1280px;
+  max-width: 1440px; /* Límite máximo basado en el ancho del diseño */
   height: 100%;
   margin: 0 auto;
 }
@@ -24,7 +24,7 @@
 .navbar-grupo-izquierda {
   display: flex;
   align-items: center;
-  gap: 40px; /
+  gap: 40px;
 }
 
 /* Grupo Derecho */
@@ -41,7 +41,7 @@
 }
 
 .navbar-marca {
-  height: 32px;
+  height: 32px; /* Directo de Figma */
   width: auto;
 }
 
@@ -49,7 +49,7 @@
 .navbar-enlaces {
   display: flex;
   list-style: none;
-  gap: var(--espacio-6); /* 24px */
+  gap: 28px; /* Corregido al gap exacto de 28px que indica Figma */
   margin: 0;
   padding: 0;
 }
@@ -67,20 +67,24 @@
   color: var(--texto-principal);
 }
 
-/* Selector de idioma (estilo pastilla) */
+/* Selector de idioma */
 .navbar-idioma {
   display: flex;
+  align-items: center;
   background-color: var(--fondo-sutil);
-  border-radius: var(--radio-completo);
-  padding: var(--espacio-1);
-  gap: var(--espacio-1);
+  border-radius: var(--radio-completo); /* 999px */
+  height: 40px; /* Directo de Figma */
+  padding: 3px; /* Directo de Figma */
+  gap: 2px; /* Directo de Figma */
+  box-sizing: border-box;
 }
 
 .navbar-idioma button {
   background: transparent;
   border: none;
   color: var(--texto-secundario);
-  padding: var(--espacio-2) var(--espacio-3);
+  padding: 0 12px;
+  height: 100%;
   border-radius: var(--radio-lg);
   cursor: pointer;
   font-family: var(--fuente-inter);
@@ -106,7 +110,11 @@
   font-family: var(--fuente-inter);
   font-weight: 500;
   font-size: 16px;
-  padding: var(--espacio-2) var(--espacio-4);
+  height: 40px; /* Directo de Figma */
+  padding: 10px 20px; /* Directo de Figma (maniobra el ancho de forma fluida) */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .navbar-registro {
@@ -116,8 +124,12 @@
   font-family: var(--fuente-inter);
   font-weight: 600;
   font-size: 16px;
-  padding: var(--espacio-3) var(--espacio-6);
-  border-radius: var(--radio-completo);
+  height: 40px; /* Directo de Figma */
+  padding: 10px 20px; /* Directo de Figma */
+  border-radius: var(--radio-completo); /* 999px */
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   transition: background-color 0.2s ease;
 }
 

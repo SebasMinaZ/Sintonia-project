@@ -4,11 +4,14 @@ export default function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar-interior">
-        
         {/* GRUPO IZQUIERDO: Logo y Enlaces */}
         <div className="navbar-grupo-izquierda">
           <a href="/" className="navbar-logo">
-            <img src="/logos/logo.svg" alt="Sintonía" className="navbar-marca" />
+            <img
+              src="/logos/logo.svg"
+              alt="Sintonía"
+              className="navbar-marca"
+            />
           </a>
 
           <ul className="navbar-enlaces">
@@ -37,7 +40,6 @@ export default function Navbar() {
             </a>
           </div>
         </div>
-
       </nav>
     </header>
   );
