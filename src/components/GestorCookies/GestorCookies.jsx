@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usePreferencias } from "../../context/PreferenciasContext.jsx";
+import { usePreferencias } from "../../hooks/usePreferencias.js";
 import { interfaz } from "../../data/interfaz.js";
 import BannerCookies from "../BannerCookies/BannerCookies.jsx";
 import "./GestorCookies.css";

@@ -1,12 +1,11 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { PreferenciasContext } from "../hooks/usePreferencias.js";
 import {
   leerCookie,
   guardarCookie,
   borrarCookie,
 } from "../services/cookies.js";
 import { proyecto } from "../config/proyecto.js";
-
-const PreferenciasContext = createContext(null);
 
 export function PreferenciasProvider({ children }) {
   const [consentimiento, setConsentimiento] = useState(() => {
@@ -59,10 +58,4 @@ export function PreferenciasProvider({ children }) {
       {children}
     </PreferenciasContext.Provider>
   );
-}
-
-export function usePreferencias() {
-  const valor = useContext(PreferenciasContext);
-  if (!valor) throw new Error("PreferenciasProvider requerido");
-  return valor;
 }
