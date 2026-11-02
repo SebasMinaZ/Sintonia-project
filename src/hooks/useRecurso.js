@@ -2,34 +2,37 @@ import { useEffect, useState } from "react";
 import { consultar } from "../services/api.js";
 
 export function useRecurso(ruta) {
-  const [estado, setEstado] = useState({
-    ruta: null,
+  const [intento, setIntento] = useState(0);
+  const [resultado, setResultado] = useState({
+    clave: null,
     datos: null,
     error: null,
-    cargando: true,
   });
-  const [intento, setIntento] = useState(0);
+  const clave = ruta ? `${ruta}#${intento}` : null;
+
   useEffect(() => {
     if (!ruta) return;
     const controlador = new AbortController();
     let vigente = true;
-    setEstado({ ruta, datos: null, error: null, cargando: true });
     consultar(ruta, { signal: controlador.signal })
       .then((datos) => {
-        if (vigente) setEstado({ ruta, datos, error: null, cargando: false });
+        if (vigente) setResultado({ clave, datos, error: null });
       })
       .catch((error) => {
         if (vigente && error.name !== "AbortError")
-          setEstado({ ruta, datos: null, error, cargando: false });
+          setResultado({ clave, datos: null, error });
       });
     return () => {
       vigente = false;
       controlador.abort();
     };
-  }, [ruta, intento]);
-  const actual =
-    estado.ruta === ruta
-      ? estado
-      : { datos: null, error: null, cargando: Boolean(ruta) };
-  return { ...actual, recargar: () => setIntento((valor) => valor + 1) };
+  }, [ruta, clave]);
+
+  const listo = clave !== null && resultado.clave === clave;
+  return {
+    datos: listo ? resultado.datos : null,
+    error: listo ? resultado.error : null,
+    cargando: Boolean(ruta) && !listo,
+    recargar: () => setIntento((valor) => valor + 1),
+  };
 }
