@@ -1,3 +1,4 @@
+@import "./tokens.css";
 * {
   box-sizing: border-box;
 }
@@ -180,8 +181,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
-.sintonia {
-}
+
 .sintonia h1,
 .sintonia h2,
 .sintonia h3 {
