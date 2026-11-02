@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap");
-
 :root {
   --fondo: #0c0b12;
   --superficie: #17161e;
@@ -8,7 +6,7 @@
   --acento: #c8f34c;
   --sobre-acento: #0c0b12;
   --borde: #3d3948;
-  --fuente-texto: "DM Sans", sans-serif;
+  --fuente-texto: "Inter", sans-serif;
   --fuente-titulos: "Syne", sans-serif;
   --color-foco: #c8f34c;
   --espacio-1: 0.5rem;

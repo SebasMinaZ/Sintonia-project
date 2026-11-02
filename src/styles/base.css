@@ -35,7 +35,7 @@ select {
   background: var(--fondo);
   color: var(--tinta);
   min-height: 100dvh;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .landing h1,
