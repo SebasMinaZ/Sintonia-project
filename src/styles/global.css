@@ -1,3 +1,4 @@
+@import "./tokens.css";
 * {
   box-sizing: border-box;
 }
@@ -35,7 +36,7 @@ select {
   background: var(--fondo);
   color: var(--tinta);
   min-height: 100dvh;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .landing h1,
@@ -180,8 +181,7 @@ select {
     scroll-behavior: auto !important;
   }
 }
-.sintonia {
-}
+
 .sintonia h1,
 .sintonia h2,
 .sintonia h3 {
