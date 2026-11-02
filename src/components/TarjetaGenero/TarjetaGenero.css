@@ -1,0 +1,70 @@
+.tarjeta-genero {
+  position: relative;
+  min-height: 132px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  color: #0c0b12;
+  text-align: left;
+  padding: 16px;
+  background: #24beb4;
+}
+.tarjeta-genero span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  align-self: start;
+  font:
+    700 20px "Syne",
+    sans-serif;
+}
+.tarjeta-genero .portada-album {
+  position: absolute;
+  width: 92px;
+  height: 92px;
+  right: -8px;
+  bottom: -26px;
+  transform: rotate(22deg);
+  transition: transform 180ms ease;
+}
+.tarjeta-genero:hover .portada-album {
+  transform: rotate(12deg) translateY(-8px);
+}
+.tarjeta-genero[aria-pressed="true"] {
+  outline: 3px solid var(--tinta);
+  outline-offset: 3px;
+}
+.genero-1 {
+  background: #ff655c;
+}
+.genero-2,
+.genero-6 {
+  background: #9176fa;
+}
+.genero-3 {
+  background: #4b86fa;
+}
+.genero-4 {
+  background: #fa55a3;
+}
+.genero-5 {
+  background: #f8b946;
+}
+@media (max-width: 640px) {
+  .tarjeta-genero {
+    min-height: 104px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .tarjeta-genero span {
+    font-size: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .tarjeta-genero .portada-album {
+    width: 68px;
+    height: 68px;
+  }
+}
