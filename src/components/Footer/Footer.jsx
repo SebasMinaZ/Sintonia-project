@@ -9,7 +9,6 @@ export default function Footer({
   etiqueta,
   onCuenta,
   idioma,
-  onAbrirCookies,
 }) {
   const t = interfaz[idioma];
   return (
@@ -34,10 +33,7 @@ export default function Footer({
         <div className="pie-creditos">
           <span>
             © 2026 {nombre} · {t.academico}
-          </span>
-          <button className="enlace-home" onClick={onAbrirCookies}>
-            {t.cookies}
-          </button>
+          </span> 
         </div>
       </div>
     </footer>

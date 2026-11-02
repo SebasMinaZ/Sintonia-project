@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import { proyecto } from "../../config/proyecto.js";
 import { usePreferencias } from "../../context/PreferenciasContext.jsx";
 import { interfaz } from "../../data/interfaz.js";
@@ -15,16 +14,6 @@ export default function LayoutPublico({
   children,
 }) {
   const { idioma, cambiarIdioma } = usePreferencias();
-  const [cookiesAbiertas, setCookiesAbiertas] = useState(false);
-  const disparador = useRef(null);
-  function abrirCookies() {
-    disparador.current = document.activeElement;
-    setCookiesAbiertas(true);
-  }
-  function cerrarCookies() {
-    setCookiesAbiertas(false);
-    disparador.current?.focus();
-  }
   return (
     <div className={`landing ${proyecto.id}`}>
       <SaltarContenido texto={interfaz[idioma].saltar} />
@@ -48,13 +37,8 @@ export default function LayoutPublico({
         destino={destino}
         etiqueta={etiqueta}
         onCuenta={onCuenta}
-        onAbrirCookies={abrirCookies}
       />
-      <GestorCookies
-        abierto={cookiesAbiertas}
-        onAbrir={abrirCookies}
-        onCerrar={cerrarCookies}
-      />
+      <GestorCookies />
     </div>
   );
 }
