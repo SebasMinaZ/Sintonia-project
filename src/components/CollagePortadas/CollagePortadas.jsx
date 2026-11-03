@@ -1,6 +1,6 @@
 import PortadaAlbum from "../PortadaAlbum/PortadaAlbum.jsx";
 import "./CollagePortadas.css";
-export default function CollagePortadas({}) {
+export default function CollagePortadas() {
   return (
     <div className="collage-sintonia" aria-hidden="true">
       <PortadaAlbum className="album-principal" />

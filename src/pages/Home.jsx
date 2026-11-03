@@ -5,7 +5,7 @@ import SeccionGeneros from "../components/SeccionGeneros/SeccionGeneros.jsx";
 import InvitacionRegistro from "../components/InvitacionRegistro/InvitacionRegistro.jsx";
 import PortadaAlbum from "../components/PortadaAlbum/PortadaAlbum.jsx";
 import DialogoDetalle from "../components/DialogoDetalle/DialogoDetalle.jsx";
-import { usePreferencias } from "../context/PreferenciasContext.jsx";
+import { usePreferencias } from "../hooks/usePreferencias.js";
 import { useDetalle } from "../hooks/useDetalle.js";
 import { useCatalogo } from "../hooks/useCatalogo.js";
 import { albumes, generos } from "../data/catalogo.js";

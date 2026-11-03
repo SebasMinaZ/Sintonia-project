@@ -48,13 +48,6 @@
   color: var(--suave);
   font-size: 12px;
 }
-.pie-creditos .cookies > .cookies-boton {
-  background: transparent;
-  color: var(--suave);
-  border: 0;
-  font-size: 12px;
-  padding: 8px 0;
-}
 
 @media (max-width: 900px) {
   .columnas-pie {
@@ -112,8 +105,4 @@
   .landing .columnas-pie {
     grid-template-columns: 1fr 1fr;
   }
-}
-
-.pie-creditos .enlace-home {
-  color: var(--suave) !important;
 }
