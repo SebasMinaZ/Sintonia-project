@@ -33,7 +33,7 @@ export default function Footer({
         <div className="pie-creditos">
           <span>
             © 2026 {nombre} · {t.academico}
-          </span> 
+          </span>
         </div>
       </div>
     </footer>
