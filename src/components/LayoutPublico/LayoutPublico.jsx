@@ -35,7 +35,6 @@ export default function LayoutPublico({
         idioma={idioma}
         descripcion={descripcion}
         destino={destino}
-        etiqueta={etiqueta}
         onCuenta={onCuenta}
       />
       <GestorCookies />
