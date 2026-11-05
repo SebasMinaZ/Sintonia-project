@@ -36,7 +36,7 @@ select {
   background: var(--fondo-base);
   color: var(--texto-principal);
   min-height: 100dvh;
-  font-family: "Inter", sans-serif;
+  font-family: var(--fuente-inter);
 }
 
 .landing h1,
@@ -53,11 +53,7 @@ select {
 .landing p {
   text-wrap: pretty;
 }
-.landing button,
-.landing input,
-.landing select {
-  font: inherit;
-}
+
 .landing button,
 .landing a {
   -webkit-tap-highlight-color: transparent;
@@ -98,7 +94,7 @@ select {
   gap: 10px;
   border: 1px solid var(--borde-fuerte);
   border-radius: 99px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
@@ -185,5 +181,5 @@ select {
 .sintonia h1,
 .sintonia h2,
 .sintonia h3 {
-  font-family: "Syne", sans-serif;
+  font-family: var(--fuente-syne);
 }

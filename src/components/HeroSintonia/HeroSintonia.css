@@ -38,10 +38,7 @@
   margin: 32px 0 0;
 }
 .cifras-sintonia dt {
-  font:
-    700 30px "Syne",
-    sans-serif;
-  color: var(--marca-primario);
+  font: 700 30px var(--fuente-syne);
 }
 .cifras-sintonia dd {
   margin: 4px 0 0;

@@ -37,7 +37,7 @@
   transform: rotate(4deg);
 }
 .nota-sintonia b {
-  font-family: "Syne", sans-serif;
+  font-family: var(--fuente-syne);
 }
 @media (max-width: 1000px) {
   .nota-sintonia {
