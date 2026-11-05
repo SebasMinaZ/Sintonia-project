@@ -20,6 +20,8 @@ export const interfaz = {
     academico: "Proyecto académico",
     cookies: "Preferencias de cookies",
     saltar: "Saltar al contenido",
+    catalogo: "Catálogo",
+    lema: "Álbumes y artistas de todos los géneros, en un solo lugar.",
     banner: "Usamos cookies",
     descripcion:
       "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
@@ -56,6 +58,8 @@ export const interfaz = {
     academico: "Academic project",
     cookies: "Cookie preferences",
     saltar: "Skip to content",
+    catalogo: "Catalog",
+    lema: "Albums and artists from every genre, in one place.",
     banner: "Browser preferences",
     descripcion:
       "You can allow this project to remember your language. We do not use analytics or advertising cookies.",

@@ -1,3 +1,4 @@
+import { Outlet, useNavigate } from "react-router";
 import { proyecto } from "../../config/proyecto.js";
 import { usePreferencias } from "../../hooks/usePreferencias.js";
 import { interfaz } from "../../data/interfaz.js";
@@ -6,36 +7,35 @@ import Footer from "../Footer/Footer.jsx";
 import SaltarContenido from "../SaltarContenido/SaltarContenido.jsx";
 import GestorCookies from "../GestorCookies/GestorCookies.jsx";
 import "./LayoutPublico.css";
-export default function LayoutPublico({
-  destino,
-  etiqueta,
-  descripcion,
-  onCuenta,
-  children,
-}) {
+export default function LayoutPublico() {
   const { idioma, cambiarIdioma } = usePreferencias();
+  const navegar = useNavigate();
+  const t = interfaz[idioma];
+  function irACuenta(tipo) {
+    navegar(tipo === "registro" ? "/registro" : "/ingresar");
+  }
   return (
     <div className={`landing ${proyecto.id}`}>
-      <SaltarContenido texto={interfaz[idioma].saltar} />
+      <SaltarContenido texto={t.saltar} />
       <Navbar
         nombre={proyecto.nombre}
         tipo={proyecto.id}
         idioma={idioma}
         onCambiarIdioma={cambiarIdioma}
-        destino={destino}
-        etiqueta={etiqueta}
-        onCuenta={onCuenta}
+        destino="/catalogo"
+        etiqueta={t.catalogo}
+        onCuenta={irACuenta}
       />
       <main id="contenido" tabIndex={-1}>
-        {children}
+        <Outlet />
       </main>
       <Footer
         nombre={proyecto.nombre}
         tipo={proyecto.id}
         idioma={idioma}
-        descripcion={descripcion}
-        destino={destino}
-        onCuenta={onCuenta}
+        descripcion={t.lema}
+        destino="/catalogo"
+        onCuenta={irACuenta}
       />
       <GestorCookies />
     </div>

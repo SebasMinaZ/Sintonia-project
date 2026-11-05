@@ -1,4 +1,3 @@
-import LayoutPublico from "../components/LayoutPublico/LayoutPublico.jsx";
 import HeroSintonia from "../components/HeroSintonia/HeroSintonia.jsx";
 import SeccionAlbumes from "../components/SeccionAlbumes/SeccionAlbumes.jsx";
 import SeccionGeneros from "../components/SeccionGeneros/SeccionGeneros.jsx";
@@ -24,16 +23,7 @@ export default function Home() {
     });
   }
   return (
-    <LayoutPublico
-      destino="#generos"
-      etiqueta={en ? "Catalogue" : "Catálogo"}
-      descripcion={
-        en
-          ? "Albums and artists of every genre, in one place."
-          : "Álbumes y artistas de todos los géneros, en un solo lugar."
-      }
-      onCuenta={abrirCuenta}
-    >
+    <>
       <HeroSintonia
         en={en}
         abrirCuenta={abrirCuenta}
@@ -55,6 +45,6 @@ export default function Home() {
       />
       <InvitacionRegistro en={en} abrirCuenta={abrirCuenta} />
       <DialogoDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
-    </LayoutPublico>
+    </>
   );
 }
