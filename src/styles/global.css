@@ -4,10 +4,10 @@
 }
 body {
   margin: 0;
-  font-family: var(--fuente-texto);
+  font-family: var(--fuente-inter);
   line-height: 1.6;
-  background: var(--fondo);
-  color: var(--tinta);
+  background: var(--fondo-base);
+  color: var(--texto-principal);
 }
 h1,
 h2,
@@ -33,10 +33,10 @@ select {
 }
 
 .landing {
-  background: var(--fondo);
-  color: var(--tinta);
+  background: var(--fondo-base);
+  color: var(--texto-principal);
   min-height: 100dvh;
-  font-family: "Inter", sans-serif;
+  font-family: var(--fuente-inter);
 }
 
 .landing h1,
@@ -53,11 +53,7 @@ select {
 .landing p {
   text-wrap: pretty;
 }
-.landing button,
-.landing input,
-.landing select {
-  font: inherit;
-}
+
 .landing button,
 .landing a {
   -webkit-tap-highlight-color: transparent;
@@ -76,7 +72,7 @@ select {
 .landing a:focus-visible,
 .landing input:focus-visible,
 .landing select:focus-visible {
-  outline: 3px solid var(--acento);
+  outline: 3px solid var(--marca-primario);
   outline-offset: 5px;
 }
 .landing main:focus {
@@ -96,22 +92,22 @@ select {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid var(--borde);
+  border: 1px solid var(--borde-fuerte);
   border-radius: 99px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
-  color: var(--tinta);
+  color: var(--texto-principal);
   background: transparent;
   transition:
     transform 160ms ease,
     filter 160ms ease;
 }
 .boton-home.primario {
-  background: var(--acento);
-  border-color: var(--acento);
-  color: var(--sobre-acento);
+  background: var(--marca-primario);
+  border-color: var(--marca-primario);
+  color: var(--texto-sobre-marca);
 }
 .boton-home:hover {
   filter: brightness(0.94);
@@ -133,7 +129,7 @@ select {
   font-size: 28px;
 }
 .enlace-home {
-  color: var(--acento) !important;
+  color: var(--marca-primario) !important;
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -185,5 +181,5 @@ select {
 .sintonia h1,
 .sintonia h2,
 .sintonia h3 {
-  font-family: "Syne", sans-serif;
+  font-family: var(--fuente-syne);
 }

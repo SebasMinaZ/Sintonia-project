@@ -28,8 +28,8 @@
   position: absolute;
   right: 0;
   bottom: 18%;
-  background: var(--acento);
-  color: var(--sobre-acento);
+  background: var(--marca-primario);
+  color: var(--texto-sobre-marca);
   border-radius: 16px;
   padding: 20px;
   font-size: 14px;
@@ -37,7 +37,7 @@
   transform: rotate(4deg);
 }
 .nota-sintonia b {
-  font-family: "Syne", sans-serif;
+  font-family: var(--fuente-syne);
 }
 @media (max-width: 1000px) {
   .nota-sintonia {

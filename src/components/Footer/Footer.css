@@ -1,5 +1,5 @@
 .pie-home {
-  background: var(--superficie);
+  background: var(--fondo-superficie);
   padding: 56px 0 24px;
 }
 .columnas-pie {
@@ -11,17 +11,17 @@
 .pie-marca p {
   max-width: 340px;
   margin-top: 12px;
-  color: var(--suave);
+  color: var(--texto-secundario);
   font-size: 14px;
 }
 .pie-columna h2 {
   margin-bottom: 16px;
-  font-family: var(--fuente-texto);
+  font-family: var(--fuente-inter);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--suave);
+  color: var(--texto-secundario);
 }
 .pie-columna ul {
   display: grid;
@@ -33,7 +33,7 @@
 .pie-columna a,
 .pie-columna button {
   font-size: 14px;
-  color: var(--tinta);
+  color: var(--texto-principal);
 }
 .pie-columna button {
   padding: 0;
@@ -51,8 +51,8 @@
   gap: 16px;
   margin-top: 40px;
   padding-top: 24px;
-  border-top: 1px solid var(--borde);
-  color: var(--suave);
+  border-top: 1px solid var(--borde-fuerte);
+  color: var(--texto-secundario);
   font-size: 12px;
 }
 @media (max-width: 900px) {

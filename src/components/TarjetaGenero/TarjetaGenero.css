@@ -14,9 +14,7 @@
   z-index: 1;
   display: block;
   align-self: start;
-  font:
-    700 20px "Syne",
-    sans-serif;
+  font: 700 20px var(--fuente-syne);
 }
 .tarjeta-genero .portada-album {
   position: absolute;
@@ -31,7 +29,7 @@
   transform: rotate(12deg) translateY(-8px);
 }
 .tarjeta-genero[aria-pressed="true"] {
-  outline: 3px solid var(--tinta);
+  outline: 3px solid var(--texto-principal);
   outline-offset: 3px;
 }
 .genero-1 {
