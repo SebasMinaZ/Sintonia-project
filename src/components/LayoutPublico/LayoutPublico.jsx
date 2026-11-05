@@ -22,9 +22,6 @@ export default function LayoutPublico() {
         tipo={proyecto.id}
         idioma={idioma}
         onCambiarIdioma={cambiarIdioma}
-        destino="/catalogo"
-        etiqueta={t.catalogo}
-        onCuenta={irACuenta}
       />
       <main id="contenido" tabIndex={-1}>
         <Outlet />
