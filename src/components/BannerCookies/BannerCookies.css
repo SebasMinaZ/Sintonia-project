@@ -13,20 +13,20 @@
   justify-content: space-between;
   gap: 24px;
   padding: 20px 24px;
-  border: 1px solid var(--borde);
-  border-radius: var(--radio);
-  background: var(--superficie);
-  color: var(--tinta);
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio-lg);
+  background: var(--fondo-superficie);
+  color: var(--texto-principal);
 }
 .banner-cookies h2 {
-  font-family: var(--fuente-texto);
+  font-family: var(--fuente-inter);
   font-size: 15px;
   font-weight: 600;
 }
 .banner-cookies p {
   margin-top: 4px;
   font-size: 13px;
-  color: var(--suave);
+  color: var(--texto-secundario);
 }
 .banner-cookies .grupo-botones {
   flex-shrink: 0;

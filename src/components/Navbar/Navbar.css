@@ -15,10 +15,10 @@
   font-size: 14px;
 }
 .menu-home > a {
-  color: var(--suave);
+  color: var(--texto-secundario);
 }
 .menu-home > a:hover {
-  color: var(--tinta);
+  color: var(--texto-principal);
 }
 .acciones-home {
   display: flex;
@@ -30,7 +30,7 @@
   padding: 10px 0;
   background: transparent;
   border: 0;
-  color: var(--tinta);
+  color: var(--texto-principal);
 }
 .ingreso-movil {
   display: none;
@@ -91,8 +91,8 @@
     padding: 8px 14px;
     border: 0;
     border-radius: 99px;
-    background: var(--superficie);
-    color: var(--tinta);
+    background: var(--fondo-superficie);
+    color: var(--texto-principal);
     font-size: 12px !important;
   }
 }
