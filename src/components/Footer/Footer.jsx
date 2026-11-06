@@ -1,14 +1,8 @@
+import { Link } from "react-router";
 import Marca from "../Marca/Marca.jsx";
 import { interfaz } from "../../data/interfaz.js";
 import "./Footer.css";
-export default function Footer({
-  nombre,
-  tipo,
-  descripcion,
-  destino,
-  onCuenta,
-  idioma,
-}) {
+export default function Footer({ nombre, tipo, descripcion, idioma }) {
   const t = interfaz[idioma];
   return (
     <footer className="pie-home">
@@ -22,10 +16,10 @@ export default function Footer({
             <h2>{t.explora}</h2>
             <ul>
               <li>
-                <a href="#contenido">{t.inicio}</a>
+                <Link to="/">{t.inicio}</Link>
               </li>
               <li>
-                <a href={destino}>{t.pieCatalogo}</a>
+                <Link to="/catalogo">{t.pieCatalogo}</Link>
               </li>
             </ul>
           </div>
@@ -33,14 +27,10 @@ export default function Footer({
             <h2>{t.cuenta}</h2>
             <ul>
               <li>
-                <button type="button" onClick={() => onCuenta("ingresar")}>
-                  {t.pieIngresar}
-                </button>
+                <Link to="/ingresar">{t.pieIngresar}</Link>
               </li>
               <li>
-                <button type="button" onClick={() => onCuenta("registro")}>
-                  {t.registro}
-                </button>
+                <Link to="/registro">{t.registro}</Link>
               </li>
             </ul>
           </div>
@@ -48,10 +38,10 @@ export default function Footer({
             <h2>{t.legal}</h2>
             <ul>
               <li>
-                <a href="/terminos">{t.terminos}</a>
+                <Link to="/terminos">{t.terminos}</Link>
               </li>
               <li>
-                <a href="/accesibilidad">{t.accesibilidad}</a>
+                <Link to="/accesibilidad">{t.accesibilidad}</Link>
               </li>
             </ul>
           </div>

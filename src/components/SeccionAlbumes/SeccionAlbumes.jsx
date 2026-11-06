@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaAlbum from "../TarjetaAlbum/TarjetaAlbum.jsx";
 import "./SeccionAlbumes.css";
@@ -23,9 +24,9 @@ export default function SeccionAlbumes({
             {en ? "View all" : "Ver todos"} <Flecha />
           </button>
         ) : (
-          <a className="enlace-home" href="#generos">
+          <Link className="enlace-home" to="/catalogo">
             {en ? "Discover more" : "Descubrir más"} <Flecha />
-          </a>
+          </Link>
         )}
       </div>
       <div className="albumes-grid">

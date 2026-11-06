@@ -1,4 +1,3 @@
-import LayoutPublico from "../components/LayoutPublico/LayoutPublico.jsx";
 import HeroSintonia from "../components/HeroSintonia/HeroSintonia.jsx";
 import SeccionAlbumes from "../components/SeccionAlbumes/SeccionAlbumes.jsx";
 import SeccionGeneros from "../components/SeccionGeneros/SeccionGeneros.jsx";
@@ -9,11 +8,14 @@ import { usePreferencias } from "../hooks/usePreferencias.js";
 import { useDetalle } from "../hooks/useDetalle.js";
 import { useCatalogo } from "../hooks/useCatalogo.js";
 import { albumes, generos } from "../data/catalogo.js";
+import { useTituloPagina } from "../hooks/useTituloPagina.js";
+import { interfaz } from "../data/interfaz.js";
 
 export default function Home() {
   const { idioma } = usePreferencias();
+  useTituloPagina(interfaz[idioma].seoInicio);
   const en = idioma === "en";
-  const { detalle, setDetalle, abrirCuenta } = useDetalle(idioma);
+  const { detalle, setDetalle } = useDetalle();
   const { genero, setGenero, visibles, filtrar } = useCatalogo(albumes);
   function abrirAlbum(album) {
     setDetalle({
@@ -24,21 +26,8 @@ export default function Home() {
     });
   }
   return (
-    <LayoutPublico
-      destino="#generos"
-      etiqueta={en ? "Catalogue" : "Catálogo"}
-      descripcion={
-        en
-          ? "Albums and artists of every genre, in one place."
-          : "Álbumes y artistas de todos los géneros, en un solo lugar."
-      }
-      onCuenta={abrirCuenta}
-    >
-      <HeroSintonia
-        en={en}
-        abrirCuenta={abrirCuenta}
-        totalGeneros={generos.length}
-      />
+    <>
+      <HeroSintonia en={en} totalGeneros={generos.length} />
       <SeccionAlbumes
         visibles={visibles}
         genero={genero}
@@ -50,11 +39,10 @@ export default function Home() {
         generos={generos}
         genero={genero}
         en={en}
-        setGenero={setGenero}
         filtrar={filtrar}
       />
-      <InvitacionRegistro en={en} abrirCuenta={abrirCuenta} />
+      <InvitacionRegistro en={en} />
       <DialogoDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
-    </LayoutPublico>
+    </>
   );
 }

@@ -30,19 +30,11 @@
   padding: 0;
   list-style: none;
 }
-.pie-columna a,
-.pie-columna button {
+.pie-columna a {
   font-size: 14px;
   color: var(--texto-principal);
 }
-.pie-columna button {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  text-align: left;
-}
-.pie-columna a:hover,
-.pie-columna button:hover {
+.pie-columna a:hover {
   text-decoration: underline;
 }
 .pie-creditos {

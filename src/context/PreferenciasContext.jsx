@@ -5,7 +5,6 @@ import {
   guardarCookie,
   borrarCookie,
 } from "../services/cookies.js";
-import { proyecto } from "../config/proyecto.js";
 
 export function PreferenciasProvider({ children }) {
   const [consentimiento, setConsentimiento] = useState(() => {
@@ -20,7 +19,6 @@ export function PreferenciasProvider({ children }) {
   const [error, setError] = useState(false);
   useEffect(() => {
     document.documentElement.lang = idioma;
-    document.title = `${proyecto.nombre} · ${idioma === "en" ? "Home" : "Inicio"}`;
   }, [idioma]);
   function cambiarIdioma(valor) {
     setIdioma(valor);

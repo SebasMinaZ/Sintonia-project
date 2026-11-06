@@ -20,6 +20,16 @@ export const interfaz = {
     academico: "Proyecto académico",
     cookies: "Preferencias de cookies",
     saltar: "Saltar al contenido",
+    seoInicio: "Sintonía · Música por género",
+    seoCatalogo: "Catálogo musical · Sintonía",
+    seoIngresar: "Ingresar · Sintonía",
+    seoRegistro: "Crear cuenta · Sintonía",
+    noEncontradoTitulo: "No encontramos esta página",
+    noEncontradoDescripcion:
+      "Puede que el enlace esté mal escrito o que el contenido ya no exista.",
+    irAlInicio: "Ir al inicio",
+    catalogo: "Catálogo",
+    lema: "Álbumes y artistas de todos los géneros, en un solo lugar.",
     banner: "Usamos cookies",
     descripcion:
       "Usamos solo las cookies necesarias para mantener tu sesión y recordar tu idioma. Puedes aceptarlas o rechazarlas.",
@@ -56,6 +66,16 @@ export const interfaz = {
     academico: "Academic project",
     cookies: "Cookie preferences",
     saltar: "Skip to content",
+    seoInicio: "Sintonía · Music by genre",
+    seoCatalogo: "Music catalog · Sintonía",
+    seoIngresar: "Log in · Sintonía",
+    seoRegistro: "Sign up · Sintonía",
+    noEncontradoTitulo: "We couldn't find this page",
+    noEncontradoDescripcion:
+      "The link may be mistyped, or the content may no longer exist.",
+    irAlInicio: "Go to home",
+    catalogo: "Catalog",
+    lema: "Albums and artists from every genre, in one place.",
     banner: "Browser preferences",
     descripcion:
       "You can allow this project to remember your language. We do not use analytics or advertising cookies.",

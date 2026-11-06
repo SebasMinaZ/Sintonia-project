@@ -183,3 +183,17 @@ select {
 .sintonia h3 {
   font-family: var(--fuente-syne);
 }
+
+.pagina-provisional {
+  padding-block: 64px;
+}
+
+.pagina-no-encontrada {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding-block: 64px;
+}
+.pagina-no-encontrada p {
+  color: var(--texto-secundario);
+}

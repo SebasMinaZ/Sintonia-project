@@ -1,5 +1,6 @@
+import { Link } from "react-router";
 import "./InvitacionRegistro.css";
-export default function InvitacionRegistro({ en, abrirCuenta }) {
+export default function InvitacionRegistro({ en }) {
   return (
     <section className="ancho-home registro-sintonia">
       <div>
@@ -14,9 +15,9 @@ export default function InvitacionRegistro({ en, abrirCuenta }) {
             : "Crea tu cuenta gratis con tu correo. Funciona en el navegador."}
         </p>
       </div>
-      <button className="boton-home" onClick={() => abrirCuenta("registro")}>
+      <Link className="boton-home" to="/registro">
         {en ? "Sign up free" : "Crear cuenta gratis"}
-      </button>
+      </Link>
     </section>
   );
 }

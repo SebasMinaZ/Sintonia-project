@@ -1,7 +1,8 @@
+import { Link } from "react-router";
 import "./Marca.css";
 export default function Marca({ nombre, tipo }) {
   return (
-    <a className="marca-home" href="/" aria-label={`${nombre}, inicio`}>
+    <Link className="marca-home" to="/" aria-label={`${nombre}, inicio`}>
       <span className={`emblema emblema-${tipo}`} aria-hidden="true">
         {tipo === "sintonia" ? (
           <svg viewBox="0 0 32 32">
@@ -33,6 +34,6 @@ export default function Marca({ nombre, tipo }) {
         )}
       </span>
       {nombre}
-    </a>
+    </Link>
   );
 }
