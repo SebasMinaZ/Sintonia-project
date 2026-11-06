@@ -1,20 +1,33 @@
 .idiomas-home {
   display: flex;
-  padding: 3px;
+  padding: var(--espacio-1);
   background: var(--fondo-superficie);
   border: 1px solid var(--borde-fuerte);
-  border-radius: 99px;
+  border-radius: var(--radio-completo);
 }
 .idiomas-home button {
   border: 0;
-  border-radius: 99px;
-  padding: 7px 12px;
+  border-radius: var(--radio-completo);
+  padding: var(--espacio-2) var(--espacio-3);
   color: var(--texto-principal);
   background: transparent;
-  font-size: 12px;
-  font-weight: 600;
+  transition: background-color 160ms ease;
+}
+.idiomas-home button:hover {
+  background: var(--fondo-elevada);
 }
 .idiomas-home button[aria-pressed="true"] {
   background: var(--marca-primario);
   color: var(--texto-sobre-marca);
+}
+.idiomas-home button[aria-pressed="true"]:hover {
+  background: var(--marca-primario-hover);
+}
+.idiomas-home button:disabled {
+  background: transparent;
+  color: var(--texto-terciario);
+  cursor: not-allowed;
+}
+.idiomas-home button[aria-pressed="true"]:disabled {
+  background: var(--fondo-sutil);
 }
