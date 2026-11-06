@@ -1,0 +1,42 @@
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3) var(--espacio-6);
+  border: 1px solid transparent;
+  border-radius: var(--radio-completo);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+.boton-primario {
+  background: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+}
+.boton-primario:hover {
+  background: var(--marca-primario-hover);
+}
+.boton-primario:active {
+  background: var(--marca-primario-presionado);
+}
+.boton-secundario {
+  background: transparent;
+  border-color: var(--borde-fuerte);
+  color: var(--texto-principal);
+}
+.boton-secundario:hover {
+  background: var(--fondo-elevada);
+}
+.boton-secundario:active {
+  background: var(--fondo-sutil);
+}
+.boton:disabled {
+  background: var(--fondo-sutil);
+  border-color: transparent;
+  color: var(--texto-terciario);
+  cursor: not-allowed;
+}

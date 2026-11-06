@@ -54,19 +54,16 @@ select {
   text-wrap: pretty;
 }
 
-.landing button,
-.landing a {
+button,
+a {
   -webkit-tap-highlight-color: transparent;
 }
-.landing button {
+button {
   cursor: pointer;
 }
-.landing a {
+a {
   color: inherit;
   text-decoration: none;
-}
-.landing a:hover {
-  color: inherit;
 }
 .landing button:focus-visible,
 .landing a:focus-visible,

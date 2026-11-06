@@ -1,3 +1,4 @@
+import Button from "../ui/Button.jsx";
 import "./BannerCookies.css";
 export default function BannerCookies({ textos, onAceptar, onRechazar }) {
   return (
@@ -7,20 +8,10 @@ export default function BannerCookies({ textos, onAceptar, onRechazar }) {
         <p>{textos.descripcion}</p>
       </div>
       <div className="grupo-botones">
-        <button
-          type="button"
-          className="boton-home secundario"
-          onClick={onRechazar}
-        >
+        <Button variante="secundario" onClick={onRechazar}>
           {textos.rechazar}
-        </button>
-        <button
-          type="button"
-          className="boton-home primario"
-          onClick={onAceptar}
-        >
-          {textos.aceptar}
-        </button>
+        </Button>
+        <Button onClick={onAceptar}>{textos.aceptar}</Button>
       </div>
     </aside>
   );
