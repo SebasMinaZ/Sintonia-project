@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Button from "../ui/Button.jsx";
 import CollagePortadas from "../CollagePortadas/CollagePortadas.jsx";
 import "./HeroSintonia.css";
 export default function HeroSintonia({ en, totalGeneros }) {
@@ -29,12 +29,12 @@ export default function HeroSintonia({ en, totalGeneros }) {
             : "Explora álbumes y artistas por género y consulta la lista de canciones de cada álbum. Crea tu cuenta gratis con tu correo."}
         </p>
         <div className="grupo-botones">
-          <Link className="boton-home primario" to="/registro">
+          <Button to="/registro">
             {en ? "Sign up free" : "Crear cuenta gratis"}
-          </Link>
-          <Link className="boton-home secundario" to="/catalogo">
+          </Button>
+          <Button variante="secundario" to="/catalogo">
             {en ? "Explore the catalogue" : "Explorar el catálogo"}
-          </Link>
+          </Button>
         </div>
         <dl className="cifras-sintonia">
           <div>

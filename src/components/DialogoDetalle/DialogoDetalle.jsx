@@ -1,3 +1,4 @@
+import Button from "../ui/Button";
 import { useEffect, useRef, useId } from "react";
 import "./DialogoDetalle.css";
 export default function DialogoDetalle({ detalle, onCerrar }) {
@@ -24,12 +25,9 @@ export default function DialogoDetalle({ detalle, onCerrar }) {
       <h2 id={id}>{detalle?.titulo}</h2>
       <p>{detalle?.descripcion}</p>
       {detalle?.contenido}
-      <button
-        className="boton-home primario"
-        onClick={() => dialogo.current.close()}
-      >
+      <Button onClick={() => dialogo.current.close()}>
         {detalle?.cerrar ?? "Cerrar"}
-      </button>
+      </Button>
     </dialog>
   );
 }

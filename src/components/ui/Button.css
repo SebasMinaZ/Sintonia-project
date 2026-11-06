@@ -34,6 +34,16 @@
 .boton-secundario:active {
   background: var(--fondo-sutil);
 }
+.boton-oscuro {
+  background: var(--fondo-base);
+  color: var(--texto-principal);
+}
+.boton-oscuro:hover {
+  background: var(--fondo-elevada);
+}
+.boton-oscuro:active {
+  background: var(--fondo-sutil);
+}
 .boton:disabled {
   background: var(--fondo-sutil);
   border-color: transparent;

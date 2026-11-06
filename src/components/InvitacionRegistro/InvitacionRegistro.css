@@ -16,14 +16,11 @@
 .registro-sintonia p {
   font-size: 14px;
 }
-.registro-sintonia .boton-home {
-  background: #0c0b12;
-  color: #f4f2f7;
+.registro-sintonia .boton {
   flex-shrink: 0;
-  border-color: #0c0b12;
 }
-.registro-sintonia button:focus-visible {
-  outline-color: #0c0b12;
+.registro-sintonia .boton:focus-visible {
+  outline-color: var(--fondo-base);
 }
 @media (max-width: 1000px) {
   .registro-sintonia {
@@ -52,8 +49,17 @@
   }
 }
 @media (max-width: 640px) {
-  .registro-sintonia .boton-home {
+  .registro-sintonia .boton-oscuro {
     background: var(--marca-primario);
     color: var(--texto-sobre-marca);
+  }
+  .registro-sintonia .boton-oscuro:hover {
+    background: var(--marca-primario-hover);
+  }
+  .registro-sintonia .boton-oscuro:active {
+    background: var(--marca-primario-presionado);
+  }
+  .registro-sintonia .boton:focus-visible {
+    outline-color: var(--marca-primario);
   }
 }

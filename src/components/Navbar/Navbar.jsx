@@ -1,3 +1,4 @@
+import Button from "../ui/Button.jsx";
 import { useId, useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
 import Marca from "../Marca/Marca.jsx";
@@ -56,13 +57,9 @@ export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
             >
               {t.ingresar}
             </Link>
-            <Link
-              className="boton-home primario"
-              to="/registro"
-              onClick={() => setAbierto(false)}
-            >
+            <Button to="/registro" onClick={() => setAbierto(false)}>
               {t.registro}
-            </Link>
+            </Button>
           </div>
         </nav>
       </div>
