@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Button from "../ui/Button.jsx";
 import "./InvitacionRegistro.css";
 export default function InvitacionRegistro({ en }) {
   return (
@@ -15,9 +15,9 @@ export default function InvitacionRegistro({ en }) {
             : "Crea tu cuenta gratis con tu correo. Funciona en el navegador."}
         </p>
       </div>
-      <Link className="boton-home" to="/registro">
+      <Button variante="oscuro" to="/registro">
         {en ? "Sign up free" : "Crear cuenta gratis"}
-      </Link>
+      </Button>
     </section>
   );
 }

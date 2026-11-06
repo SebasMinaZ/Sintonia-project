@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Button from "../components/ui/Button.jsx";
 import { usePreferencias } from "../hooks/usePreferencias.js";
 import { useTituloPagina } from "../hooks/useTituloPagina.js";
 import { interfaz } from "../data/interfaz.js";
@@ -11,9 +11,7 @@ export default function NoEncontrado() {
     <section className="ancho-home pagina-no-encontrada">
       <h1>{t.noEncontradoTitulo}</h1>
       <p>{t.noEncontradoDescripcion}</p>
-      <Link className="boton-home primario" to="/">
-        {t.irAlInicio}
-      </Link>
+      <Button to="/">{t.irAlInicio}</Button>
     </section>
   );
 }

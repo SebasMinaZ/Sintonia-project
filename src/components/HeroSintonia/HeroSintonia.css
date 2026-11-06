@@ -29,8 +29,8 @@
   line-height: 1.65;
   margin-bottom: 24px;
 }
-.hero-sintonia .boton-home {
-  min-height: 54px;
+.hero-sintonia .boton {
+  padding-block: var(--espacio-4);
 }
 .cifras-sintonia {
   display: flex;
@@ -97,8 +97,8 @@
   }
 }
 @media (max-width: 640px) {
-  .hero-sintonia .boton-home {
-    min-height: 44px;
+  .hero-sintonia .boton {
+    padding-block: var(--espacio-3);
   }
 }
 @media (max-width: 640px) {

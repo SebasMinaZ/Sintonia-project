@@ -32,7 +32,7 @@
   flex-shrink: 0;
   flex-wrap: nowrap;
 }
-.banner-cookies .boton-home {
+.banner-cookies .boton {
   min-width: 120px;
 }
 @media (max-width: 640px) {
@@ -42,7 +42,7 @@
     gap: 16px;
     padding: 20px;
   }
-  .banner-cookies .boton-home {
+  .banner-cookies .boton {
     flex: 1;
     min-width: 0;
   }

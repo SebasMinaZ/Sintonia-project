@@ -1,0 +1,13 @@
+.tarjeta {
+  display: block;
+  padding: var(--espacio-3);
+  border-radius: var(--radio-lg);
+  background: var(--fondo-superficie);
+  color: var(--texto-principal);
+}
+.tarjeta-enlace {
+  transition: background-color 160ms ease;
+}
+.tarjeta-enlace:hover {
+  background: var(--fondo-elevada);
+}
