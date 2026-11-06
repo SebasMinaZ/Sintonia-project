@@ -1,0 +1,5 @@
+.etiqueta {
+  display: block;
+  margin-bottom: var(--espacio-2);
+  color: var(--texto-principal);
+}
