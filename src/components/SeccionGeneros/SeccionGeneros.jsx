@@ -1,13 +1,8 @@
+import { Link } from "react-router";
 import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaGenero from "../TarjetaGenero/TarjetaGenero.jsx";
 import "./SeccionGeneros.css";
-export default function SeccionGeneros({
-  generos,
-  genero,
-  en,
-  setGenero,
-  filtrar,
-}) {
+export default function SeccionGeneros({ generos, genero, en, filtrar }) {
   return (
     <section
       className="ancho-home seccion-generos"
@@ -18,13 +13,9 @@ export default function SeccionGeneros({
         <h2 id="generos-titulo">
           {en ? "Explore by genre" : "Explora por género"}
         </h2>
-        <a
-          className="enlace-home"
-          href="#albumes"
-          onClick={() => setGenero(null)}
-        >
+        <Link className="enlace-home" to="/catalogo">
           {en ? "View catalogue" : "Ver catálogo"} <Flecha />
-        </a>
+        </Link>
       </div>
       <div className="generos-grid">
         {generos.map((nombre, i) => (

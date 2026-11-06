@@ -12,7 +12,7 @@ import { albumes, generos } from "../data/catalogo.js";
 export default function Home() {
   const { idioma } = usePreferencias();
   const en = idioma === "en";
-  const { detalle, setDetalle, abrirCuenta } = useDetalle(idioma);
+  const { detalle, setDetalle } = useDetalle();
   const { genero, setGenero, visibles, filtrar } = useCatalogo(albumes);
   function abrirAlbum(album) {
     setDetalle({
@@ -24,11 +24,7 @@ export default function Home() {
   }
   return (
     <>
-      <HeroSintonia
-        en={en}
-        abrirCuenta={abrirCuenta}
-        totalGeneros={generos.length}
-      />
+      <HeroSintonia en={en} totalGeneros={generos.length} />
       <SeccionAlbumes
         visibles={visibles}
         genero={genero}
@@ -40,10 +36,9 @@ export default function Home() {
         generos={generos}
         genero={genero}
         en={en}
-        setGenero={setGenero}
         filtrar={filtrar}
       />
-      <InvitacionRegistro en={en} abrirCuenta={abrirCuenta} />
+      <InvitacionRegistro en={en} />
       <DialogoDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
     </>
   );
