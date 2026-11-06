@@ -1,4 +1,5 @@
-import { Outlet } from "react-router";
+import { useEffect } from "react";
+import { Outlet, useLocation } from "react-router";
 import { proyecto } from "../../config/proyecto.js";
 import { usePreferencias } from "../../hooks/usePreferencias.js";
 import { interfaz } from "../../data/interfaz.js";
@@ -11,6 +12,10 @@ export default function LayoutPublico() {
   const { idioma, cambiarIdioma } = usePreferencias();
 
   const t = interfaz[idioma];
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className={`landing ${proyecto.id}`}>

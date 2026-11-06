@@ -8,9 +8,12 @@ import { usePreferencias } from "../hooks/usePreferencias.js";
 import { useDetalle } from "../hooks/useDetalle.js";
 import { useCatalogo } from "../hooks/useCatalogo.js";
 import { albumes, generos } from "../data/catalogo.js";
+import { useTituloPagina } from "../hooks/useTituloPagina.js";
+import { interfaz } from "../data/interfaz.js";
 
 export default function Home() {
   const { idioma } = usePreferencias();
+  useTituloPagina(interfaz[idioma].seoInicio);
   const en = idioma === "en";
   const { detalle, setDetalle } = useDetalle();
   const { genero, setGenero, visibles, filtrar } = useCatalogo(albumes);
