@@ -1,65 +1,41 @@
-import Button from "../ui/Button.jsx";
-import { useId, useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
 import Marca from "../Marca/Marca.jsx";
+import Button from "../ui/Button.jsx";
 import MenuMovil from "../MenuMovil/MenuMovil.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
 import { interfaz } from "../../data/interfaz.js";
 import "./Navbar.css";
 export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
-  const [abierto, setAbierto] = useState(false);
-  const boton = useRef(null);
-  const id = useId();
   const t = interfaz[idioma];
   return (
-    <header
-      className="cabecera-home"
-      onKeyDown={(evento) => {
-        if (evento.key === "Escape" && abierto) {
-          setAbierto(false);
-          boton.current?.focus();
-        }
-      }}
-    >
+    <header className="cabecera-home">
       <div className="ancho-home fila-cabecera">
         <Marca nombre={nombre} tipo={tipo} />
         <Link className="ingreso-movil cuerpo-p" to="/ingresar">
           {t.ingresar}
         </Link>
         <MenuMovil
-          abierto={abierto}
-          onAlternar={() => setAbierto(!abierto)}
-          menuId={id}
-          botonRef={boton}
+          nombre={nombre}
+          tipo={tipo}
+          idioma={idioma}
+          onCambiarIdioma={onCambiarIdioma}
           textos={t}
         />
-        <nav
-          id={id}
-          className={`menu-home ${abierto ? "abierto" : ""}`}
-          aria-label={t.navegacion}
-        >
-          <NavLink to="/" end onClick={() => setAbierto(false)}>
+        <nav className="menu-home" aria-label={t.navegacion}>
+          <NavLink to="/" end>
             {t.inicio}
           </NavLink>
-          <NavLink to="/catalogo" onClick={() => setAbierto(false)}>
-            {t.catalogo}
-          </NavLink>
+          <NavLink to="/catalogo">{t.catalogo}</NavLink>
           <div className="acciones-home">
             <SelectorIdioma
               idioma={idioma}
               onCambiar={onCambiarIdioma}
               etiqueta={t.idioma}
             />
-            <Link
-              className="ingresar-home"
-              to="/ingresar"
-              onClick={() => setAbierto(false)}
-            >
+            <Link className="ingresar-home" to="/ingresar">
               {t.ingresar}
             </Link>
-            <Button to="/registro" onClick={() => setAbierto(false)}>
-              {t.registro}
-            </Button>
+            <Button to="/registro">{t.registro}</Button>
           </div>
         </nav>
       </div>

@@ -1,39 +1,104 @@
+import { useEffect, useId, useRef, useState } from "react";
+import { NavLink } from "react-router";
+import Marca from "../Marca/Marca.jsx";
+import Button from "../ui/Button.jsx";
+import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
 import "./MenuMovil.css";
+
 export default function MenuMovil({
-  abierto,
-  onAlternar,
-  menuId,
-  botonRef,
+  nombre,
+  tipo,
+  idioma,
+  onCambiarIdioma,
   textos,
 }) {
+  const [abierto, setAbierto] = useState(false);
+  const dialogo = useRef(null);
+  const id = useId();
+
+  useEffect(() => {
+    const panel = dialogo.current;
+    if (abierto && !panel.open) panel.showModal();
+    if (!abierto && panel.open) panel.close();
+  }, [abierto]);
+
   return (
-    <button
-      type="button"
-      ref={botonRef}
-      className="boton-menu"
-      aria-label={abierto ? textos.cerrarMenu : textos.abrirMenu}
-      aria-expanded={abierto}
-      aria-controls={menuId}
-      onClick={onAlternar}
-    >
-      <svg
-        viewBox="0 0 20 20"
-        width="20"
-        height="20"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        aria-hidden="true"
+    <>
+      <button
+        type="button"
+        className="boton-menu"
+        aria-label={textos.abrirMenu}
+        aria-expanded={abierto}
+        aria-controls={id}
+        onClick={() => setAbierto(true)}
       >
-        <path
-          d={
-            abierto
-              ? "M14.5 5.5 5.5 14.5M5.5 5.5l9 9"
-              : "M3 5h14M3 10h14M3 15h14"
-          }
-        />
-      </svg>
-    </button>
+        <svg
+          viewBox="0 0 20 20"
+          width="20"
+          height="20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
+          <path d="M3 5h14M3 10h14M3 15h14" />
+        </svg>
+      </button>
+
+      <dialog
+        id={id}
+        ref={dialogo}
+        className="panel-menu"
+        aria-label={textos.navegacion}
+        onClose={() => setAbierto(false)}
+      >
+        <div className="panel-menu-cabecera">
+          <Marca nombre={nombre} tipo={tipo} />
+          <button
+            type="button"
+            className="cerrar-menu"
+            aria-label={textos.cerrarMenu}
+            onClick={() => setAbierto(false)}
+          >
+            <svg
+              viewBox="0 0 18 18"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M13.5 4.5 4.5 13.5M4.5 4.5l9 9" />
+            </svg>
+          </button>
+        </div>
+
+        <nav className="panel-menu-enlaces" aria-label={textos.navegacion}>
+          <NavLink to="/" end>
+            {textos.inicio}
+          </NavLink>
+          <NavLink to="/catalogo">{textos.catalogo}</NavLink>
+        </nav>
+
+        <div className="panel-menu-preferencias">
+          <span aria-hidden="true">{textos.idioma}</span>
+          <SelectorIdioma
+            idioma={idioma}
+            onCambiar={onCambiarIdioma}
+            etiqueta={textos.idioma}
+          />
+        </div>
+
+        <div className="panel-menu-acciones">
+          <Button to="/registro">{textos.registro}</Button>
+          <Button variante="secundario" to="/ingresar">
+            {textos.ingresar}
+          </Button>
+        </div>
+      </dialog>
+    </>
   );
 }
