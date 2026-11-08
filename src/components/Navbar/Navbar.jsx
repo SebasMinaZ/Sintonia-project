@@ -23,7 +23,7 @@ export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
     >
       <div className="ancho-home fila-cabecera">
         <Marca nombre={nombre} tipo={tipo} />
-        <Link className="ingreso-movil" to="/ingresar">
+        <Link className="ingreso-movil cuerpo-p" to="/ingresar">
           {t.ingresar}
         </Link>
         <MenuMovil

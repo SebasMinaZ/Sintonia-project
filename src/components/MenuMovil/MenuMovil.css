@@ -9,8 +9,7 @@
     height: 44px;
     background: none;
     color: var(--texto-principal);
-    border: 1px solid var(--borde-fuerte);
-    border-radius: 50%;
+    border: 0;
   }
 }
 

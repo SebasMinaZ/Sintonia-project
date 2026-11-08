@@ -17,16 +17,21 @@ export default function MenuMovil({
       onClick={onAlternar}
     >
       <svg
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
+        viewBox="0 0 20 20"
+        width="20"
+        height="20"
         fill="none"
         stroke="currentColor"
         strokeWidth="2"
+        strokeLinecap="round"
         aria-hidden="true"
       >
         <path
-          d={abierto ? "m6 6 12 12M6 18 18 6" : "M4 6h16M4 12h16M4 18h16"}
+          d={
+            abierto
+              ? "M14.5 5.5 5.5 14.5M5.5 5.5l9 9"
+              : "M3 5h14M3 10h14M3 15h14"
+          }
         />
       </svg>
     </button>

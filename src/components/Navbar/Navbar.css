@@ -87,13 +87,9 @@
   .ingreso-movil {
     display: block;
     margin-left: auto;
-    margin-right: 12px;
-    padding: 8px 14px;
-    border: 0;
-    border-radius: 99px;
-    background: var(--fondo-superficie);
+    margin-right: var(--espacio-2);
+    padding: var(--espacio-2) var(--espacio-1);
     color: var(--texto-principal);
-    font-size: 12px !important;
   }
 }
 
@@ -115,12 +111,5 @@
   .cabecera-home .emblema svg {
     width: 26px;
     height: 26px;
-  }
-}
-
-@media (max-width: 640px) {
-  .ingreso-movil {
-    padding-inline: 10px;
-    margin-right: 8px;
   }
 }
