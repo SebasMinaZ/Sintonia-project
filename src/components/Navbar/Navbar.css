@@ -72,21 +72,21 @@
 }
 
 @media (max-width: 640px) {
-  .cabecera-home .marca-home {
+  .fila-cabecera > .marca-home {
     font-size: 16px;
     gap: 6px;
   }
 }
 
 @media (max-width: 640px) {
-  .cabecera-home .emblema {
+  .fila-cabecera > .marca-home .emblema {
     width: 28px;
     height: 28px;
   }
 }
 
 @media (max-width: 640px) {
-  .cabecera-home .emblema svg {
+  .fila-cabecera > .marca-home .emblema svg {
     width: 26px;
     height: 26px;
   }

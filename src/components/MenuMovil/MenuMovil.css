@@ -1,20 +1,102 @@
+/* Botón hamburguesa: solo existe en móvil */
 .boton-menu {
   display: none;
 }
+
+/* Panel a pantalla completa (Figma: "Menú móvil") */
+.panel-menu {
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--fondo-base);
+  color: var(--texto-principal);
+}
+.panel-menu[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-menu-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--espacio-3) var(--espacio-2) var(--espacio-3) var(--espacio-4);
+  border-bottom: 1px solid var(--borde-sutil);
+}
+.panel-menu-cabecera .marca-home {
+  gap: 10px;
+  font-size: 22px;
+  line-height: 1;
+}
+.panel-menu-cabecera .emblema {
+  width: 32px;
+  height: 32px;
+}
+.panel-menu-cabecera .emblema svg {
+  width: 28px;
+  height: 28px;
+}
+.cerrar-menu {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radio-completo);
+  background: var(--fondo-sutil);
+  color: var(--texto-principal);
+}
+
+.panel-menu-enlaces {
+  display: flex;
+  flex-direction: column;
+  padding: var(--espacio-4);
+}
+.panel-menu-enlaces a {
+  padding: var(--espacio-4) var(--espacio-3);
+  color: var(--texto-secundario);
+}
+.panel-menu-enlaces a:hover {
+  color: var(--texto-principal);
+}
+
+/* margin-top: auto empuja las preferencias y acciones al fondo */
+.panel-menu-preferencias {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: var(--espacio-4) var(--espacio-6);
+}
+
+.panel-menu-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  padding: var(--espacio-4) var(--espacio-4) var(--espacio-6);
+  background: var(--fondo-superficie);
+}
+.panel-menu-acciones .boton {
+  justify-content: center;
+  min-height: 54px;
+}
+.panel-menu-preferencias .idiomas-home button {
+  padding: var(--espacio-1) var(--espacio-3);
+}
+
 @media (max-width: 640px) {
   .boton-menu {
     display: grid;
     place-items: center;
+    flex-shrink: 0;
     width: 44px;
     height: 44px;
     background: none;
     color: var(--texto-principal);
     border: 0;
-  }
-}
-
-@media (max-width: 640px) {
-  .boton-menu {
-    flex-shrink: 0;
   }
 }

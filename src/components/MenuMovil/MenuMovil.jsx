@@ -77,24 +77,31 @@ export default function MenuMovil({
         </div>
 
         <nav className="panel-menu-enlaces" aria-label={textos.navegacion}>
-          <NavLink to="/" end>
+          <NavLink className="cuerpo-m-fuerte" to="/" end>
             {textos.inicio}
           </NavLink>
-          <NavLink to="/catalogo">{textos.catalogo}</NavLink>
+          <NavLink className="cuerpo-m-fuerte" to="/catalogo">
+            {textos.catalogo}
+          </NavLink>
         </nav>
 
         <div className="panel-menu-preferencias">
-          <span aria-hidden="true">{textos.idioma}</span>
+          <span className="cuerpo-m-fuerte" aria-hidden="true">
+            {textos.idioma}
+          </span>
           <SelectorIdioma
             idioma={idioma}
             onCambiar={onCambiarIdioma}
             etiqueta={textos.idioma}
+            texto="cuerpo-m-fuerte"
           />
         </div>
 
         <div className="panel-menu-acciones">
-          <Button to="/registro">{textos.registro}</Button>
-          <Button variante="secundario" to="/ingresar">
+          <Button to="/registro" texto="cuerpo-m-fuerte">
+            {textos.registro}
+          </Button>
+          <Button variante="secundario" to="/ingresar" texto="cuerpo-m-fuerte">
             {textos.ingresar}
           </Button>
         </div>
