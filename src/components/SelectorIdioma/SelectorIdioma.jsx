@@ -3,6 +3,7 @@ export default function SelectorIdioma({
   idioma,
   onCambiar,
   etiqueta,
+  texto = "detalle-nota-fuerte",
   deshabilitado = false,
 }) {
   return (
@@ -12,7 +13,7 @@ export default function SelectorIdioma({
           type="button"
           key={valor}
           lang={valor}
-          className="detalle-nota-fuerte"
+          className={texto}
           aria-pressed={idioma === valor}
           disabled={deshabilitado}
           onClick={() => onCambiar(valor)}
