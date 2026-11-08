@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router";
 import { proyecto } from "../../config/proyecto.js";
 import { usePreferencias } from "../../hooks/usePreferencias.js";
 import { useTextos } from "../../hooks/useTextos.js";
+import { useRecurso } from "../../hooks/useRecurso.js";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import SaltarContenido from "../SaltarContenido/SaltarContenido.jsx";
@@ -12,6 +13,8 @@ export default function LayoutPublico() {
   const { idioma, cambiarIdioma } = usePreferencias();
 
   const textos = useTextos();
+  const { datos: respuestaIdiomas } = useRecurso("/idiomas");
+  const idiomas = respuestaIdiomas?.datos ?? [];
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,6 +27,7 @@ export default function LayoutPublico() {
         nombre={proyecto.nombre}
         tipo={proyecto.id}
         idioma={idioma}
+        idiomas={idiomas}
         onCambiarIdioma={cambiarIdioma}
       />
       <main id="contenido" tabIndex={-1}>

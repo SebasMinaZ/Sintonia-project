@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <PreferenciasProvider>
         <TextosProvider>
-        <App />
+          <App />
         </TextosProvider>
       </PreferenciasProvider>
     </BrowserRouter>

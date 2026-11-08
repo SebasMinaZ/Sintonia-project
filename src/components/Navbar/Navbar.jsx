@@ -5,7 +5,13 @@ import MenuMovil from "../MenuMovil/MenuMovil.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
 import { interfaz } from "../../data/interfaz.js";
 import "./Navbar.css";
-export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
+export default function Navbar({
+  nombre,
+  tipo,
+  idioma,
+  idiomas,
+  onCambiarIdioma,
+}) {
   const t = interfaz[idioma];
   return (
     <header className="cabecera-home">
@@ -18,6 +24,7 @@ export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
           nombre={nombre}
           tipo={tipo}
           idioma={idioma}
+          idiomas={idiomas}
           onCambiarIdioma={onCambiarIdioma}
           textos={t}
         />
@@ -29,6 +36,7 @@ export default function Navbar({ nombre, tipo, idioma, onCambiarIdioma }) {
           <div className="acciones-home">
             <SelectorIdioma
               idioma={idioma}
+              idiomas={idiomas}
               onCambiar={onCambiarIdioma}
               etiqueta={t.idioma}
             />

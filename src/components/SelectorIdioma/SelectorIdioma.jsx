@@ -1,24 +1,28 @@
 import "./SelectorIdioma.css";
 export default function SelectorIdioma({
   idioma,
+  idiomas,
   onCambiar,
   etiqueta,
   texto = "detalle-nota-fuerte",
   deshabilitado = false,
 }) {
+  if (idiomas.length === 0) return null;
   return (
     <div className="idiomas-home" role="group" aria-label={etiqueta}>
-      {["es", "en"].map((valor) => (
+      {idiomas.map(({ codigo, nombre }) => (
+        // Aqui, aplico destructuring... Saco sus propiedades directamente
         <button
           type="button"
-          key={valor}
-          lang={valor}
+          key={codigo}
+          lang={codigo}
           className={texto}
-          aria-pressed={idioma === valor}
+          aria-label={nombre}
+          aria-pressed={idioma === codigo}
           disabled={deshabilitado}
-          onClick={() => onCambiar(valor)}
+          onClick={() => onCambiar(codigo)}
         >
-          {valor.toUpperCase()}
+          {codigo.toUpperCase()}
         </button>
       ))}
     </div>

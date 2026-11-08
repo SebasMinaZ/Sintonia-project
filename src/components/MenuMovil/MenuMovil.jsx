@@ -9,6 +9,7 @@ export default function MenuMovil({
   nombre,
   tipo,
   idioma,
+  idiomas,
   onCambiarIdioma,
   textos,
 }) {
@@ -104,6 +105,7 @@ export default function MenuMovil({
           </span>
           <SelectorIdioma
             idioma={idioma}
+            idiomas={idiomas}
             onCambiar={onCambiarIdioma}
             etiqueta={textos.idioma}
             texto="cuerpo-m-fuerte"
