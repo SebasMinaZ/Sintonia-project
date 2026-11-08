@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import { proyecto } from "../../config/proyecto.js";
 import { usePreferencias } from "../../hooks/usePreferencias.js";
-import { interfaz } from "../../data/interfaz.js";
+import { useTextos } from "../../hooks/useTextos.js";
 import Navbar from "../Navbar/Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import SaltarContenido from "../SaltarContenido/SaltarContenido.jsx";
@@ -11,7 +11,7 @@ import "./LayoutPublico.css";
 export default function LayoutPublico() {
   const { idioma, cambiarIdioma } = usePreferencias();
 
-  const t = interfaz[idioma];
+  const textos = useTextos();
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +19,7 @@ export default function LayoutPublico() {
 
   return (
     <div className={`landing ${proyecto.id}`}>
-      <SaltarContenido texto={t.saltar} />
+      <SaltarContenido texto={textos.general.aria.saltarAlContenido} />
       <Navbar
         nombre={proyecto.nombre}
         tipo={proyecto.id}
@@ -33,7 +33,7 @@ export default function LayoutPublico() {
         nombre={proyecto.nombre}
         tipo={proyecto.id}
         idioma={idioma}
-        descripcion={t.lema}
+        descripcion={textos.footer.lema}
       />
       <GestorCookies />
     </div>
