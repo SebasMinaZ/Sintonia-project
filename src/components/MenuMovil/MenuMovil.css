@@ -19,6 +19,10 @@
   display: flex;
   flex-direction: column;
 }
+/* Mientras el panel está abierto, la página de fondo no hace scroll */
+html:has(.panel-menu[open]) {
+  overflow: hidden;
+}
 
 .panel-menu-cabecera {
   display: flex;

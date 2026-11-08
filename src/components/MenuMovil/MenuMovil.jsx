@@ -22,6 +22,16 @@ export default function MenuMovil({
     if (!abierto && panel.open) panel.close();
   }, [abierto]);
 
+  useEffect(() => {
+    if (!abierto) return;
+    const escritorio = window.matchMedia("(min-width: 641px)");
+    const alCambiar = (evento) => {
+      if (evento.matches) setAbierto(false);
+    };
+    escritorio.addEventListener("change", alCambiar);
+    return () => escritorio.removeEventListener("change", alCambiar);
+  }, [abierto]);
+
   return (
     <>
       <button
@@ -52,6 +62,9 @@ export default function MenuMovil({
         className="panel-menu"
         aria-label={textos.navegacion}
         onClose={() => setAbierto(false)}
+        onClick={(evento) => {
+          if (evento.target.closest("a")) setAbierto(false);
+        }}
       >
         <div className="panel-menu-cabecera">
           <Marca nombre={nombre} tipo={tipo} />
