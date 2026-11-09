@@ -7,11 +7,15 @@ export default function HeroSintonia({ totalGeneros }) {
   return (
     <section className="ancho-home hero-sintonia">
       <div className="texto-hero">
-        <span className="etiqueta-sintonia detalle-nota-fuerte">{hero.etiquetas.temporada}</span>
+        <span className="etiqueta-sintonia detalle-nota-fuerte">
+          {hero.etiquetas.temporada}
+        </span>
         <h1 className="titular-gigante">{hero.titulo}</h1>
         <p className="cuerpo-g">{hero.subtitulo}</p>
         <div className="grupo-botones">
-          <Button texto="cuerpo-m-fuerte" to="/registro">{hero.botones.crearCuentaGratis}</Button>
+          <Button texto="cuerpo-m-fuerte" to="/registro">
+            {hero.botones.crearCuentaGratis}
+          </Button>
           <Button texto="cuerpo-m-fuerte" variante="secundario" to="/catalogo">
             {hero.botones.explorarCatalogo}
           </Button>

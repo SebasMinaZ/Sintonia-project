@@ -4,11 +4,12 @@
   grid-template-columns: minmax(0, 692fr) minmax(0, 540fr);
   gap: var(--espacio-12);
   align-items: center;
-  padding-top: 72px; /* Pendiente de confirmar en Figma */
+  padding-top: 72px;
   padding-bottom: 88px; /* Figma: 88px, sin variable */
 }
 .etiqueta-sintonia {
-  display: inline-block;
+  display: block;
+  width: fit-content;
   padding: var(--espacio-1) 10px; /* Figma: 4px 10px */
   border-radius: var(--radio-completo);
   background: var(--marca-suave);
@@ -22,7 +23,6 @@
   align-items: center;
 }
 .hero-sintonia .texto-hero > p {
-  max-width: 650px; /* Pendiente de confirmar en Figma */
   margin-bottom: var(--espacio-6);
   color: var(--texto-secundario);
 }
