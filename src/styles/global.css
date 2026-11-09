@@ -45,11 +45,6 @@ select {
 .landing p {
   margin: 0;
 }
-.landing h1,
-.landing h2,
-.landing h3 {
-  text-wrap: balance;
-}
 .landing p {
   text-wrap: pretty;
 }
