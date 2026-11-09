@@ -3,7 +3,7 @@ import Marca from "../Marca/Marca.jsx";
 import Button from "../ui/Button.jsx";
 import MenuMovil from "../MenuMovil/MenuMovil.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
-import { interfaz } from "../../data/interfaz.js";
+import { useTextos } from "../../hooks/useTextos.js";
 import "./Navbar.css";
 export default function Navbar({
   nombre,
@@ -12,13 +12,13 @@ export default function Navbar({
   idiomas,
   onCambiarIdioma,
 }) {
-  const t = interfaz[idioma];
+  const { navbar } = useTextos();
   return (
     <header className="cabecera-home">
       <div className="ancho-home fila-cabecera">
         <Marca nombre={nombre} tipo={tipo} />
         <Link className="ingreso-movil cuerpo-p" to="/ingresar">
-          {t.ingresar}
+          {navbar.botones.invitado.ingresar}
         </Link>
         <MenuMovil
           nombre={nombre}
@@ -26,24 +26,25 @@ export default function Navbar({
           idioma={idioma}
           idiomas={idiomas}
           onCambiarIdioma={onCambiarIdioma}
-          textos={t}
         />
-        <nav className="menu-home" aria-label={t.navegacion}>
+        <nav className="menu-home" aria-label={navbar.aria.navegacion}>
           <NavLink to="/" end>
-            {t.inicio}
+            {navbar.enlaces.inicio}
           </NavLink>
-          <NavLink to="/catalogo">{t.catalogo}</NavLink>
+          <NavLink to="/catalogo">{navbar.enlaces.catalogo}</NavLink>
           <div className="acciones-home">
             <SelectorIdioma
               idioma={idioma}
               idiomas={idiomas}
               onCambiar={onCambiarIdioma}
-              etiqueta={t.idioma}
+              etiqueta={navbar.aria.idioma}
             />
             <Link className="ingresar-home" to="/ingresar">
-              {t.ingresar}
+              {navbar.botones.invitado.ingresar}
             </Link>
-            <Button to="/registro">{t.registro}</Button>
+            <Button to="/registro">
+              {navbar.botones.invitado.crearCuenta}
+            </Button>
           </div>
         </nav>
       </div>
