@@ -92,21 +92,20 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: var(--espacio-4);
+  margin-bottom: 20px; /* Figma: 20px, sin variable */
 }
 .titulo-seccion h2 {
   font-size: 28px;
 }
 .enlace-home {
-  color: var(--marca-primario) !important;
   display: inline-flex;
-  gap: 8px;
+  gap: 6px; /* Figma: 6px, sin variable */
   align-items: center;
+  padding: 0;
   background: none;
   border: 0;
-  font-size: 14px;
-  font-weight: 600;
+  color: var(--marca-primario);
 }
 .enlace-home:hover {
   text-decoration: underline;
@@ -119,23 +118,25 @@ a {
 }
 @media (max-width: 640px) {
   .ancho-home {
-    width: calc(100% - 40px);
+    width: calc(100% - 2 * var(--espacio-4));
   }
-}
-@media (max-width: 640px) {
   .titulo-seccion {
-    gap: 12px;
+    gap: var(--espacio-3);
+    margin-bottom: var(--espacio-3);
   }
-}
-@media (max-width: 640px) {
+  /* En móvil el título de sección usa el estilo .titular-h3 de Figma */
   .titulo-seccion h2 {
-    font-size: 21px;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.005em;
   }
-}
-@media (max-width: 640px) {
+  /* En móvil el enlace va subrayado y sin flecha */
   .enlace-home {
-    font-size: 12px;
     flex-shrink: 0;
+    text-decoration: underline;
+  }
+  .enlace-home .icono-flecha {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
