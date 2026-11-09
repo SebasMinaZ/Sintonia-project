@@ -20,8 +20,18 @@
   width: 32px;
   height: 32px;
 }
+/* Móvil (cabecera y panel del menú): logo de 128 × 32 según Figma */
 @media (max-width: 640px) {
   .marca-home {
     font-size: 20px;
+    line-height: 1;
+  }
+  .emblema {
+    width: 32px;
+    height: 32px;
+  }
+  .emblema svg {
+    width: 28px;
+    height: 28px;
   }
 }

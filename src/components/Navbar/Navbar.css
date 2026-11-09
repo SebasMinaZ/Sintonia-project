@@ -1,18 +1,17 @@
 .cabecera-home {
-  min-height: 72px;
+  min-height: 72px; /* Figma: 72px */
 }
 .fila-cabecera {
   display: flex;
   align-items: center;
   min-height: 72px;
-  gap: 40px;
+  gap: 40px; /* Figma: 40px, sin variable */
 }
 .menu-home {
   display: flex;
   align-items: center;
   flex: 1;
-  gap: 28px;
-  font-size: 14px;
+  gap: 28px; /* Figma: 28px, sin variable */
 }
 .menu-home > a {
   color: var(--texto-secundario);
@@ -23,14 +22,18 @@
 .acciones-home {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 40px; /* Figma: 40px, sin variable */
   margin-left: auto;
 }
 .ingresar-home {
   padding: 10px 0;
-  background: transparent;
-  border: 0;
   color: var(--texto-principal);
+}
+/* Botón "Crear cuenta" del Navbar: 40px de alto y 20px a los lados */
+.acciones-home .boton {
+  min-height: 40px;
+  padding-block: 0;
+  padding-inline: 20px;
 }
 .ingreso-movil {
   display: none;
@@ -38,56 +41,32 @@
 
 @media (max-width: 900px) {
   .fila-cabecera {
-    gap: 24px;
+    gap: var(--espacio-6);
+  }
+  .acciones-home {
+    gap: var(--espacio-4);
   }
 }
 
-@media (max-width: 900px) {
-  .acciones-home {
-    gap: 16px;
-  }
-}
 @media (max-width: 640px) {
+  .cabecera-home {
+    min-height: 0;
+    border-bottom: 1px solid var(--borde-sutil);
+  }
   .fila-cabecera {
-    min-height: 68px;
+    min-height: 60px; /* Figma: 60px */
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 0;
   }
-}
-@media (max-width: 640px) {
   .menu-home {
     display: none;
   }
-}
-
-@media (max-width: 640px) {
+  /* "Ingresar": caja de 96 × 40 (Figma) */
   .ingreso-movil {
     display: block;
     margin-left: auto;
-    margin-right: var(--espacio-2);
-    padding: var(--espacio-2) var(--espacio-1);
+    margin-right: var(--espacio-1);
+    padding: 10px 20px; /* Figma: 96 × 40 con texto de 56 × 20 */
     color: var(--texto-principal);
-  }
-}
-
-@media (max-width: 640px) {
-  .fila-cabecera > .marca-home {
-    font-size: 16px;
-    gap: 6px;
-  }
-}
-
-@media (max-width: 640px) {
-  .fila-cabecera > .marca-home .emblema {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-@media (max-width: 640px) {
-  .fila-cabecera > .marca-home .emblema svg {
-    width: 26px;
-    height: 26px;
   }
 }

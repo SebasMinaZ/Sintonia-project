@@ -1,14 +1,20 @@
+/* Figma: cápsula de 98 × 40 con píldoras de 44 × 32 */
 .idiomas-home {
   display: flex;
-  padding: var(--espacio-1);
+  gap: 2px; /* Figma: 98 − 2 × 44 − 2 × 3 − 2 × 1 = 2px entre píldoras */
+  padding: 3px; /* Figma: 3px, sin variable */
   background: var(--fondo-superficie);
   border: 1px solid var(--borde-fuerte);
   border-radius: var(--radio-completo);
 }
 .idiomas-home button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 32px;
+  padding: 0;
   border: 0;
   border-radius: var(--radio-completo);
-  padding: var(--espacio-2) var(--espacio-3);
   color: var(--texto-principal);
   background: transparent;
   transition: background-color 160ms ease;
