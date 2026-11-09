@@ -1,54 +1,60 @@
 import { Link } from "react-router";
 import Marca from "../Marca/Marca.jsx";
-import { interfaz } from "../../data/interfaz.js";
+import { useTextos } from "../../hooks/useTextos.js";
+import { formatear } from "../../utils/formatear.js";
 import "./Footer.css";
-export default function Footer({ nombre, tipo, descripcion, idioma }) {
-  const t = interfaz[idioma];
+export default function Footer({ nombre, tipo }) {
+  const { footer } = useTextos();
+  const { explora, cuenta, legal } = footer.columnas;
   return (
     <footer className="pie-home">
       <div className="ancho-home">
         <div className="columnas-pie">
           <div className="pie-marca">
             <Marca nombre={nombre} tipo={tipo} />
-            <p>{descripcion}</p>
+            <p>{footer.lema}</p>
           </div>
           <div className="pie-columna">
-            <h2>{t.explora}</h2>
+            <h2>{explora.titulo}</h2>
             <ul>
               <li>
-                <Link to="/">{t.inicio}</Link>
+                <Link to="/">{explora.enlaces.inicio}</Link>
               </li>
               <li>
-                <Link to="/catalogo">{t.pieCatalogo}</Link>
+                <Link to="/catalogo">{explora.enlaces.catalogo}</Link>
               </li>
             </ul>
           </div>
           <div className="pie-columna">
-            <h2>{t.cuenta}</h2>
+            <h2>{cuenta.titulo}</h2>
             <ul>
               <li>
-                <Link to="/ingresar">{t.pieIngresar}</Link>
+                <Link to="/ingresar">{cuenta.enlaces.ingresar}</Link>
               </li>
               <li>
-                <Link to="/registro">{t.registro}</Link>
+                <Link to="/registro">{cuenta.enlaces.crearCuenta}</Link>
               </li>
             </ul>
           </div>
           <div className="pie-columna">
-            <h2>{t.legal}</h2>
+            <h2>{legal.titulo}</h2>
             <ul>
               <li>
-                <Link to="/terminos">{t.terminos}</Link>
+                <Link to="/terminos">{legal.enlaces.terminos}</Link>
               </li>
               <li>
-                <Link to="/accesibilidad">{t.accesibilidad}</Link>
+                <Link to="/accesibilidad">{legal.enlaces.accesibilidad}</Link>
               </li>
             </ul>
           </div>
         </div>
         <div className="pie-creditos">
-          <p>{t.derechos}</p>
-          <p>{t.notaAudio}</p>
+          <p>
+            {formatear(footer.legal.derechos, {
+              anio: new Date().getFullYear(),
+            })}
+          </p>
+          <p>{footer.legal.nota}</p>
         </div>
       </div>
     </footer>

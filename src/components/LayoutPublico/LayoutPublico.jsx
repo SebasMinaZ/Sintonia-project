@@ -33,12 +33,7 @@ export default function LayoutPublico() {
       <main id="contenido" tabIndex={-1}>
         <Outlet />
       </main>
-      <Footer
-        nombre={proyecto.nombre}
-        tipo={proyecto.id}
-        idioma={idioma}
-        descripcion={textos.footer.lema}
-      />
+      <Footer nombre={proyecto.nombre} tipo={proyecto.id} />
       <GestorCookies />
     </div>
   );
