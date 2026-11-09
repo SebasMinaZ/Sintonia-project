@@ -26,7 +26,7 @@
   margin-left: auto;
 }
 .ingresar-home {
-  padding: 10px 0;
+  padding: 10px 20px; /* Figma: 96 × 40 con texto de 56 × 20 */
   color: var(--texto-principal);
 }
 /* Botón "Crear cuenta" del Navbar: 40px de alto y 20px a los lados */
@@ -39,12 +39,17 @@
   display: none;
 }
 
+/* Entre 641 y 900px no hay diseño en Figma: se reducen las separaciones para que todo quepa */
 @media (max-width: 900px) {
-  .fila-cabecera {
-    gap: var(--espacio-6);
+  .fila-cabecera,
+  .menu-home {
+    gap: var(--espacio-4);
   }
   .acciones-home {
     gap: var(--espacio-4);
+  }
+  .ingresar-home {
+    padding-inline: var(--espacio-2);
   }
 }
 
