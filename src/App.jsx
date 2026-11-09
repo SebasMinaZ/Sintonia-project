@@ -11,15 +11,15 @@ export default function App() {
         <Route index element={<Home />} />
         <Route
           path="catalogo"
-          element={<PaginaProvisional clave="pieCatalogo" seo="seoCatalogo" />}
+          element={<PaginaProvisional pagina="catalogo" />}
         />
         <Route
           path="ingresar"
-          element={<PaginaProvisional clave="ingresar" seo="seoIngresar" />}
+          element={<PaginaProvisional pagina="ingresar" />}
         />
         <Route
           path="registro"
-          element={<PaginaProvisional clave="registro" seo="seoRegistro" />}
+          element={<PaginaProvisional pagina="registro" />}
         />
         <Route path="*" element={<NoEncontrado />} />
       </Route>

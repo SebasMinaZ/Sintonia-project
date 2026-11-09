@@ -1,14 +1,16 @@
 import { Link } from "react-router";
 import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaAlbum from "../TarjetaAlbum/TarjetaAlbum.jsx";
+import { useTextos } from "../../hooks/useTextos.js";
 import "./SeccionAlbumes.css";
 export default function SeccionAlbumes({
   visibles,
   genero,
-  en,
   setGenero,
   onSeleccionar,
 }) {
+  const { paginas, general } = useTextos();
+  const { destacados } = paginas.inicioPublico;
   return (
     <section
       className="ancho-home seccion-albumes"
@@ -16,16 +18,14 @@ export default function SeccionAlbumes({
       aria-labelledby="albumes-titulo"
     >
       <div className="titulo-seccion">
-        <h2 id="albumes-titulo">
-          {genero || (en ? "Playing this week" : "Suena esta semana")}
-        </h2>
+        <h2 id="albumes-titulo">{genero || destacados.titulo}</h2>
         {genero ? (
           <button className="enlace-home" onClick={() => setGenero(null)}>
-            {en ? "View all" : "Ver todos"} <Flecha />
+            {general.acciones.verTodo} <Flecha />
           </button>
         ) : (
           <Link className="enlace-home" to="/catalogo">
-            {en ? "Discover more" : "Descubrir más"} <Flecha />
+            {destacados.enlaces.descubrirMas} <Flecha />
           </Link>
         )}
       </div>
@@ -38,13 +38,7 @@ export default function SeccionAlbumes({
           />
         ))}
       </div>
-      {!visibles.length && (
-        <p role="status">
-          {en
-            ? "No albums in this genre yet."
-            : "Todavía no hay álbumes de este género en la selección semanal."}
-        </p>
-      )}
+      {!visibles.length && <p role="status">{paginas.catalogo.vacio.titulo}</p>}
     </section>
   );
 }

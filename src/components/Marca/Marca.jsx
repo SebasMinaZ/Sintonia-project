@@ -1,8 +1,10 @@
 import { Link } from "react-router";
+import { useTextos } from "../../hooks/useTextos.js";
 import "./Marca.css";
 export default function Marca({ nombre, tipo }) {
+  const textos = useTextos();
   return (
-    <Link className="marca-home" to="/" aria-label={`${nombre}, inicio`}>
+    <Link className="marca-home" to="/" aria-label={textos.navbar.logo.aria}>
       <span className={`emblema emblema-${tipo}`} aria-hidden="true">
         {tipo === "sintonia" ? (
           <svg viewBox="0 0 32 32">

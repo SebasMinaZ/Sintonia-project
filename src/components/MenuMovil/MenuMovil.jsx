@@ -3,15 +3,17 @@ import { NavLink } from "react-router";
 import Marca from "../Marca/Marca.jsx";
 import Button from "../ui/Button.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
+import { useTextos } from "../../hooks/useTextos.js";
 import "./MenuMovil.css";
 
 export default function MenuMovil({
   nombre,
   tipo,
   idioma,
+  idiomas,
   onCambiarIdioma,
-  textos,
 }) {
+  const { navbar, menuMovil } = useTextos();
   const [abierto, setAbierto] = useState(false);
   const dialogo = useRef(null);
   const id = useId();
@@ -37,7 +39,7 @@ export default function MenuMovil({
       <button
         type="button"
         className="boton-menu"
-        aria-label={textos.abrirMenu}
+        aria-label={menuMovil.abrir}
         aria-expanded={abierto}
         aria-controls={id}
         onClick={() => setAbierto(true)}
@@ -60,7 +62,7 @@ export default function MenuMovil({
         id={id}
         ref={dialogo}
         className="panel-menu"
-        aria-label={textos.navegacion}
+        aria-label={menuMovil.aria}
         onClose={() => setAbierto(false)}
         onClick={(evento) => {
           if (evento.target.closest("a")) setAbierto(false);
@@ -71,7 +73,7 @@ export default function MenuMovil({
           <button
             type="button"
             className="cerrar-menu"
-            aria-label={textos.cerrarMenu}
+            aria-label={menuMovil.cerrar}
             onClick={() => setAbierto(false)}
           >
             <svg
@@ -89,33 +91,34 @@ export default function MenuMovil({
           </button>
         </div>
 
-        <nav className="panel-menu-enlaces" aria-label={textos.navegacion}>
+        <nav className="panel-menu-enlaces" aria-label={navbar.aria.navegacion}>
           <NavLink className="cuerpo-m-fuerte" to="/" end>
-            {textos.inicio}
+            {menuMovil.enlaces.inicio}
           </NavLink>
           <NavLink className="cuerpo-m-fuerte" to="/catalogo">
-            {textos.catalogo}
+            {menuMovil.enlaces.catalogo}
           </NavLink>
         </nav>
 
         <div className="panel-menu-preferencias">
           <span className="cuerpo-m-fuerte" aria-hidden="true">
-            {textos.idioma}
+            {menuMovil.secciones.idioma}
           </span>
           <SelectorIdioma
             idioma={idioma}
+            idiomas={idiomas}
             onCambiar={onCambiarIdioma}
-            etiqueta={textos.idioma}
+            etiqueta={menuMovil.secciones.idioma}
             texto="cuerpo-m-fuerte"
           />
         </div>
 
         <div className="panel-menu-acciones">
           <Button to="/registro" texto="cuerpo-m-fuerte">
-            {textos.registro}
+            {menuMovil.botones.invitado.crearCuenta}
           </Button>
           <Button variante="secundario" to="/ingresar" texto="cuerpo-m-fuerte">
-            {textos.ingresar}
+            {menuMovil.botones.invitado.ingresar}
           </Button>
         </div>
       </dialog>

@@ -75,16 +75,7 @@
     margin: 20px 0 16px;
   }
 }
-@media (max-width: 640px) {
-  .hero-sintonia h1 br {
-    display: none;
-  }
-}
-@media (max-width: 640px) {
-  .hero-sintonia h1 br::after {
-    content: " ";
-  }
-}
+
 @media (max-width: 640px) {
   .hero-sintonia .texto-hero > p {
     font-size: 14px;

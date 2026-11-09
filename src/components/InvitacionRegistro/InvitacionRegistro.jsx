@@ -1,22 +1,16 @@
 import Button from "../ui/Button.jsx";
+import { useTextos } from "../../hooks/useTextos.js";
 import "./InvitacionRegistro.css";
-export default function InvitacionRegistro({ en }) {
+export default function InvitacionRegistro() {
+  const { cta } = useTextos().paginas.inicioPublico;
   return (
     <section className="ancho-home registro-sintonia">
       <div>
-        <h2>
-          {en
-            ? "Your next favourite song is one click away"
-            : "Tu próxima canción favorita está a un clic"}
-        </h2>
-        <p>
-          {en
-            ? "Sign up free with your email. Works in your browser."
-            : "Crea tu cuenta gratis con tu correo. Funciona en el navegador."}
-        </p>
+        <h2>{cta.titulo}</h2>
+        <p>{cta.texto}</p>
       </div>
       <Button variante="oscuro" to="/registro">
-        {en ? "Sign up free" : "Crear cuenta gratis"}
+        {cta.botones.crearCuentaGratis}
       </Button>
     </section>
   );
