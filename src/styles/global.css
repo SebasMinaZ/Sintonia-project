@@ -163,3 +163,26 @@ a {
 .pagina-no-encontrada p {
   color: var(--texto-secundario);
 }
+
+/* Ajustes del panel de accesibilidad (clases que pone useAjustesAccesibilidad en <html>) */
+/* Alto contraste: sin variables en Figma; textos secundarios y bordes más claros */
+html.a11y-contraste {
+  --texto-secundario: var(--texto-principal);
+  --borde-sutil: #8d8a9e;
+  --borde-fuerte: #c9c6d6;
+}
+html.a11y-movimiento *,
+html.a11y-movimiento *::before,
+html.a11y-movimiento *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-subrayar a {
+  text-decoration: underline !important;
+}
+html.a11y-espaciado body * {
+  line-height: 1.7 !important;
+  letter-spacing: 0.04em !important;
+  word-spacing: 0.08em !important;
+}

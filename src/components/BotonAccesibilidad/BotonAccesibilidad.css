@@ -1,0 +1,16 @@
+/* Figma: círculo de 40 × 40 con borde, en el Navbar y en el menú móvil */
+.boton-accesibilidad {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--borde-fuerte);
+  border-radius: var(--radio-completo);
+  background: var(--fondo-elevada);
+  color: var(--texto-secundario);
+}
+.boton-accesibilidad:hover {
+  color: var(--texto-principal);
+}
