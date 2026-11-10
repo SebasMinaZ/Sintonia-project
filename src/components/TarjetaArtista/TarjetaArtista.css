@@ -1,0 +1,22 @@
+/* Medidas tomadas de la captura de Figma (pendientes de confirmar en Dev Mode) */
+.tarjeta-artista {
+  display: grid;
+  justify-items: center;
+  gap: var(--espacio-2);
+  text-align: center;
+  color: var(--texto-principal);
+}
+.tarjeta-artista .cuerpo-p {
+  color: var(--texto-secundario);
+}
+.avatar-artista {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radio-completo);
+}
+@media (max-width: 640px) {
+  .avatar-artista {
+    width: 96px;
+    height: 96px;
+  }
+}

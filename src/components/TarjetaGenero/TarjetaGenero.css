@@ -30,6 +30,11 @@
 .tarjeta-genero:hover .portada-album {
   transform: rotate(12deg) translateY(-8px);
 }
+/* Género elegido en el catálogo: borde claro por dentro, como en Figma */
+.tarjeta-genero[aria-current="true"] {
+  outline: 3px solid var(--texto-principal);
+  outline-offset: -3px;
+}
 /* Fondos oscuros de la API (por ejemplo, Lo-fi): texto claro para mantener el contraste */
 .tarjeta-genero-oscura {
   color: var(--texto-principal);
