@@ -16,7 +16,7 @@ const INTERRUPTORES = [
   ["espaciado", "espaciado"],
 ];
 
-export default function PanelAccesibilidad({ abierto, onCerrar }) {
+export default function PanelAccesibilidad({ abierto, onCerrar, ancla }) {
   const { accesibilidad: t } = useTextos();
   const { ajustes, cambiar, restablecer } = useAjustesAccesibilidad();
   const dialogo = useRef(null);
@@ -25,9 +25,19 @@ export default function PanelAccesibilidad({ abierto, onCerrar }) {
   // Igual que el menú móvil: el estado de React abre y cierra el <dialog>
   useEffect(() => {
     const panel = dialogo.current;
+    // Escritorio: el panel se abre debajo del botón, alineado a su borde derecho
+    const boton = ancla?.current;
+    if (abierto && boton?.offsetParent) {
+      const caja = boton.getBoundingClientRect();
+      panel.style.setProperty("--panel-arriba", `${caja.bottom + 12}px`);
+      panel.style.setProperty(
+        "--panel-derecha",
+        `${document.documentElement.clientWidth - caja.right}px`,
+      );
+    }
     if (abierto && !panel.open) panel.showModal();
     if (!abierto && panel.open) panel.close();
-  }, [abierto]);
+  }, [abierto, ancla]);
 
   const tamano = ajustes.tamano;
 

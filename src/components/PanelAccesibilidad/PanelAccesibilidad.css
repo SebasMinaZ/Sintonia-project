@@ -139,17 +139,37 @@
   background: var(--fondo-sutil);
 }
 
-/* Escritorio: panel flotante bajo el botón, sin oscurecer el fondo */
+/* Escritorio (Figma): panel de 360px bajo el botón, sin oscurecer el fondo */
 @media (min-width: 641px) {
   .panel-accesibilidad {
-    width: 380px;
-    max-height: calc(100dvh - 96px);
-    margin: 80px 40px auto auto;
+    /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón */
+    inset: var(--panel-arriba, 80px) var(--panel-derecha, 40px) auto auto;
+    width: 360px;
+    max-height: calc(100dvh - var(--panel-arriba, 80px) - var(--espacio-4));
+    margin: 0;
+    padding: var(--espacio-6);
     border: 1px solid var(--borde-sutil);
-    border-radius: var(--radio-xl);
+    border-radius: var(--radio-lg);
     box-shadow: var(--sombra-tarjeta);
   }
   .panel-accesibilidad::backdrop {
     background: transparent;
+  }
+  /* Figma: en escritorio la ayuda va a 14px, la nota a 12px y el pie a 14px */
+  .lista-interruptores .cuerpo-m {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .nota-accesibilidad {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .pie-accesibilidad {
+    gap: var(--espacio-1);
+  }
+  .pie-accesibilidad .cuerpo-m-fuerte {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: nowrap;
   }
 }

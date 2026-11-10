@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
 import Marca from "../Marca/Marca.jsx";
 import Button from "../ui/Button.jsx";
@@ -18,6 +18,7 @@ export default function Navbar({
   const { navbar } = useTextos();
   // Un solo panel, que se abre desde el Navbar o desde el menú móvil
   const [accesibilidad, setAccesibilidad] = useState(false);
+  const botonAccesibilidad = useRef(null);
   return (
     <header className="cabecera-home">
       <div className="ancho-home fila-cabecera">
@@ -42,6 +43,7 @@ export default function Navbar({
           </NavLink>
           <div className="acciones-home">
             <BotonAccesibilidad
+              ref={botonAccesibilidad}
               etiqueta={navbar.aria.accesibilidad}
               onClick={() => setAccesibilidad(true)}
             />
@@ -62,6 +64,7 @@ export default function Navbar({
       </div>
       <PanelAccesibilidad
         abierto={accesibilidad}
+        ancla={botonAccesibilidad}
         onCerrar={() => setAccesibilidad(false)}
       />
     </header>
