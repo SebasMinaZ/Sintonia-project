@@ -1,11 +1,17 @@
 import PortadaAlbum from "../PortadaAlbum/PortadaAlbum.jsx";
 import "./CollagePortadas.css";
-export default function CollagePortadas() {
+const POSICIONES = ["album-principal", "album-superior", "album-inferior"];
+// Ilustración del Hero: las portadas de los tres primeros géneros de la API
+export default function CollagePortadas({ portadas }) {
   return (
     <div className="collage-sintonia" aria-hidden="true">
-      <PortadaAlbum className="album-principal" />
-      <PortadaAlbum variante={4} className="album-superior" />
-      <PortadaAlbum variante={1} className="album-inferior" />
+      {portadas.slice(0, 3).map((portada, i) => (
+        <PortadaAlbum
+          key={POSICIONES[i]}
+          portada={portada}
+          className={POSICIONES[i]}
+        />
+      ))}
       <div className="nota-sintonia">
         <b className="titular-h4">
           Sube la niebla

@@ -33,15 +33,12 @@
   padding: 18px; /* Figma: 18px, sin variable */
   transform: rotate(4deg);
 }
-.nota-sintonia b {
-  .nota-sintonia > * {
-    display: block;
-  }
+.nota-sintonia > * {
+  display: block;
 }
 @media (max-width: 1000px) {
   .nota-sintonia {
     padding: var(--espacio-3);
-    font-size: 12px;
   }
 }
 @media (max-width: 640px) {

@@ -3,14 +3,8 @@ import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaAlbum from "../TarjetaAlbum/TarjetaAlbum.jsx";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./SeccionAlbumes.css";
-export default function SeccionAlbumes({
-  visibles,
-  genero,
-  setGenero,
-  onSeleccionar,
-}) {
-  const { paginas, general } = useTextos();
-  const { destacados } = paginas.inicioPublico;
+export default function SeccionAlbumes({ albumes, onSeleccionar }) {
+  const { destacados } = useTextos().paginas.inicioPublico;
   return (
     <section
       className="ancho-home seccion-albumes"
@@ -18,27 +12,22 @@ export default function SeccionAlbumes({
       aria-labelledby="albumes-titulo"
     >
       <div className="titulo-seccion">
-        <h2 id="albumes-titulo">{genero || destacados.titulo}</h2>
-        {genero ? (
-          <button className="enlace-home" onClick={() => setGenero(null)}>
-            {general.acciones.verTodo} <Flecha />
-          </button>
-        ) : (
-          <Link className="enlace-home" to="/catalogo">
-            {destacados.enlaces.descubrirMas} <Flecha />
-          </Link>
-        )}
+        <h2 id="albumes-titulo" className="titular-h2">
+          {destacados.titulo}
+        </h2>
+        <Link className="enlace-home cuerpo-p-fuerte" to="/catalogo">
+          {destacados.enlaces.descubrirMas} <Flecha />
+        </Link>
       </div>
       <div className="albumes-grid">
-        {visibles.map((album) => (
+        {albumes.map((album) => (
           <TarjetaAlbum
-            key={album.nombre}
+            key={album.id}
             album={album}
             onSeleccionar={onSeleccionar}
           />
         ))}
       </div>
-      {!visibles.length && <p role="status">{paginas.catalogo.vacio.titulo}</p>}
     </section>
   );
 }

@@ -1,0 +1,36 @@
+/* Medidas tomadas de la captura de Figma (pendientes de confirmar en Dev Mode) */
+.lista-canciones {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lista-canciones li {
+  border-bottom: 1px solid var(--borde-sutil);
+}
+.fila-cancion {
+  display: grid;
+  grid-template-columns: var(--espacio-6) 1fr auto;
+  align-items: center;
+  gap: var(--espacio-4);
+  /* Figma (estimado): fila de 70px, sin variable */
+  min-height: 70px;
+  padding: var(--espacio-3) var(--espacio-4);
+  color: var(--texto-principal);
+}
+.fila-cancion:hover {
+  background: var(--fondo-elevada);
+}
+.numero-cancion,
+.duracion-cancion,
+.datos-cancion .cuerpo-p {
+  color: var(--texto-secundario);
+}
+.datos-cancion {
+  display: grid;
+  min-width: 0;
+}
+@media (max-width: 640px) {
+  .fila-cancion {
+    padding-inline: var(--espacio-1);
+  }
+}
