@@ -1,24 +1,39 @@
 .seccion-albumes {
-  padding-bottom: 100px;
+  padding-bottom: 112px; /* Figma: 112px, sin variable */
 }
 .albumes-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 16px;
+  gap: var(--espacio-4);
 }
+/* Entre 641 y 1000px no hay diseño en Figma */
 @media (max-width: 1000px) {
   .albumes-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-@media (max-width: 640px) {
-  .albumes-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
+/* Figma móvil: carrusel horizontal de tarjetas de 200px que llega al borde de la pantalla */
 @media (max-width: 640px) {
   .seccion-albumes {
-    padding-bottom: 40px;
+    padding-bottom: var(--espacio-8);
+  }
+  .albumes-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 200px;
+    gap: var(--espacio-3);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--espacio-4);
+    scrollbar-width: none;
+    /* Se extiende hasta los bordes de la pantalla */
+    margin-inline: calc(-1 * var(--espacio-4));
+    padding-inline: var(--espacio-4);
+    /* Espacio para que el anillo de foco y el hover no se corten */
+    margin-block: calc(-1 * var(--espacio-2));
+    padding-block: var(--espacio-2);
+  }
+  .albumes-grid > * {
+    scroll-snap-align: start;
   }
 }

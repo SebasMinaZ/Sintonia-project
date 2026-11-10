@@ -7,7 +7,7 @@ export default function TarjetaGenero({ nombre, i, genero, filtrar }) {
       aria-pressed={genero === nombre}
       onClick={() => filtrar(nombre)}
     >
-      <span>{nombre}</span>
+      <span className="titular-h3">{nombre}</span>
       <PortadaAlbum variante={[0, 4, 1, 3, 5, 2, 0, 1][i]} />
     </button>
   );

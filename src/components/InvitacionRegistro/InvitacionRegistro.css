@@ -1,54 +1,58 @@
+/* Figma: bloque de 1280 × 174 en escritorio y 358 × 224 en móvil */
 .registro-sintonia {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 32px;
-  padding: 40px 48px;
-  margin-bottom: 80px;
+  gap: var(--espacio-8);
+  padding: var(--espacio-12) 56px; /* Figma: 48px 56px */
+  margin-bottom: 88px; /* Figma: 88px, sin variable */
+  border-radius: 28px; /* Figma: 28px, sin variable */
   background: var(--marca-primario);
   color: var(--texto-sobre-marca);
-  border-radius: 16px;
 }
 .registro-sintonia h2 {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-.registro-sintonia p {
-  font-size: 14px;
+  margin-bottom: var(--espacio-2);
 }
 .registro-sintonia .boton {
   flex-shrink: 0;
+  padding: var(--espacio-4) var(--espacio-8); /* Figma: 213 × 56 */
 }
 .registro-sintonia .boton:focus-visible {
   outline-color: var(--fondo-base);
 }
+/* Entre 641 y 1000px no hay diseño en Figma */
 @media (max-width: 1000px) {
   .registro-sintonia {
-    padding: 32px;
+    padding: var(--espacio-8);
   }
 }
 @media (max-width: 640px) {
   .registro-sintonia {
-    padding: 24px;
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: var(--espacio-4);
+    padding: var(--espacio-6) 20px; /* Figma: 24px 20px */
+    margin-bottom: 40px; /* Figma: 40px, sin variable */
+    border-radius: 20px; /* Figma: 20px, sin variable */
     background: var(--fondo-superficie);
     color: var(--texto-principal);
   }
-}
-@media (max-width: 640px) {
+  /* Figma móvil: .titular-h3 */
   .registro-sintonia h2 {
-    font-size: 22px;
+    margin-bottom: var(--espacio-4);
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.005em;
   }
-}
-@media (max-width: 640px) {
+  /* Figma móvil: el texto usa .cuerpo-p */
   .registro-sintonia p {
+    font-size: 14px;
+    line-height: 20px;
     color: var(--texto-secundario);
   }
-}
-@media (max-width: 640px) {
+  .registro-sintonia .boton {
+    padding-block: 14px; /* Figma: 318 × 52 */
+  }
   .registro-sintonia .boton-oscuro {
     background: var(--marca-primario);
     color: var(--texto-sobre-marca);

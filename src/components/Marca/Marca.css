@@ -1,37 +1,24 @@
+/* Figma: logo de 128 × 32 (escritorio y móvil) */
 .marca-home {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /* Figma: 10px, sin variable */
   flex-shrink: 0;
   font-family: var(--fuente-syne);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1;
 }
 .emblema {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
-  background: var(--marca-primario);
-  color: var(--texto-sobre-marca);
-  border-radius: 50%;
-}
-.emblema svg {
   width: 32px;
   height: 32px;
+  background: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+  border-radius: var(--radio-completo);
 }
-/* Móvil (cabecera y panel del menú): logo de 128 × 32 según Figma */
-@media (max-width: 640px) {
-  .marca-home {
-    font-size: 20px;
-    line-height: 1;
-  }
-  .emblema {
-    width: 32px;
-    height: 32px;
-  }
-  .emblema svg {
-    width: 28px;
-    height: 28px;
-  }
+.emblema svg {
+  width: 28px;
+  height: 28px;
 }

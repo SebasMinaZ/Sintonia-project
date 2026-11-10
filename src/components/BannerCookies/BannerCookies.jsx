@@ -6,8 +6,10 @@ export default function BannerCookies({ onAceptar, onRechazar }) {
   return (
     <aside className="banner-cookies" aria-labelledby="banner-cookies-titulo">
       <div className="banner-cookies-texto">
-        <h2 id="banner-cookies-titulo">{banner.titulo}</h2>
-        <p>{banner.texto}</p>
+        <h2 id="banner-cookies-titulo" className="cuerpo-m-fuerte">
+          {banner.titulo}
+        </h2>
+        <p className="cuerpo-p">{banner.texto}</p>
       </div>
       <div className="grupo-botones">
         <Button variante="secundario" onClick={onRechazar}>

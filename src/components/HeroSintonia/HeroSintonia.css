@@ -27,11 +27,9 @@
   color: var(--texto-secundario);
 }
 /* Botones del Hero: 14px 28px; el primario no tiene borde en Figma (205 × 52) */
+/* Botones del Hero: 14px 28px (Figma: 205 × 52 y 212 × 54) */
 .hero-sintonia .boton {
   padding: 14px 28px;
-}
-.hero-sintonia .boton-primario {
-  border: 0;
 }
 .cifras-sintonia {
   display: flex;

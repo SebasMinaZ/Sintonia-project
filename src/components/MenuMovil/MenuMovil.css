@@ -24,11 +24,13 @@ html:has(.panel-menu[open]) {
   overflow: hidden;
 }
 
+/* Figma: fila de 60px, logo a 16px y botón cerrar a 8px de los bordes */
 .panel-menu-cabecera {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--espacio-3) var(--espacio-2) var(--espacio-3) var(--espacio-4);
+  min-height: 61px; /* 60px hasta la línea + 1px de la línea, igual que la cabecera */
+  padding: 0 var(--espacio-2) 0 var(--espacio-4);
   border-bottom: 1px solid var(--borde-sutil);
 }
 

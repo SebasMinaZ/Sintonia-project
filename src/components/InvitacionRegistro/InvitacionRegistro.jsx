@@ -6,10 +6,10 @@ export default function InvitacionRegistro() {
   return (
     <section className="ancho-home registro-sintonia">
       <div>
-        <h2>{cta.titulo}</h2>
-        <p>{cta.texto}</p>
+        <h2 className="titular-h1">{cta.titulo}</h2>
+        <p className="cuerpo-m">{cta.texto}</p>
       </div>
-      <Button variante="oscuro" to="/registro">
+      <Button variante="oscuro" to="/registro" texto="cuerpo-m-fuerte">
         {cta.botones.crearCuentaGratis}
       </Button>
     </section>

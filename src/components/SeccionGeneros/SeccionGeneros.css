@@ -1,15 +1,23 @@
 .seccion-generos {
-  padding-bottom: 48px;
+  padding-bottom: var(--espacio-12);
 }
+/* Figma: 4 columnas de 263px con 16px de separación = 1100px */
 .generos-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: var(--espacio-4);
   max-width: 1100px;
 }
 @media (max-width: 640px) {
+  .seccion-generos {
+    padding-bottom: var(--espacio-8);
+  }
   .generos-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: var(--espacio-3);
+  }
+  /* Figma móvil: el inicio muestra solo 4 géneros */
+  .generos-grid > :nth-child(n + 5) {
+    display: none;
   }
 }
