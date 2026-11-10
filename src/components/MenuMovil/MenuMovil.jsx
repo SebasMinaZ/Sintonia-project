@@ -3,6 +3,7 @@ import { NavLink } from "react-router";
 import Marca from "../Marca/Marca.jsx";
 import Button from "../ui/Button.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
+import BotonAccesibilidad from "../BotonAccesibilidad/BotonAccesibilidad.jsx";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./MenuMovil.css";
 
@@ -12,6 +13,7 @@ export default function MenuMovil({
   idioma,
   idiomas,
   onCambiarIdioma,
+  onAbrirAccesibilidad,
 }) {
   const { navbar, menuMovil } = useTextos();
   const [abierto, setAbierto] = useState(false);
@@ -110,6 +112,19 @@ export default function MenuMovil({
             onCambiar={onCambiarIdioma}
             etiqueta={menuMovil.secciones.idioma}
             texto="cuerpo-m-fuerte"
+          />
+        </div>
+
+        <div className="panel-menu-preferencias panel-menu-accesibilidad">
+          <span className="cuerpo-m-fuerte" aria-hidden="true">
+            {menuMovil.secciones.accesibilidad}
+          </span>
+          <BotonAccesibilidad
+            etiqueta={navbar.aria.accesibilidad}
+            onClick={() => {
+              setAbierto(false);
+              onAbrirAccesibilidad();
+            }}
           />
         </div>
 

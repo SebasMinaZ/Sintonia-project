@@ -68,6 +68,13 @@ html:has(.panel-menu[open]) {
   padding: var(--espacio-4) var(--espacio-6);
 }
 
+/* Figma: la fila de Accesibilidad va justo debajo de la de Idioma */
+.panel-menu-accesibilidad {
+  margin-top: 0;
+  padding-top: var(--espacio-2);
+  padding-bottom: var(--espacio-3);
+}
+
 .panel-menu-acciones {
   display: flex;
   flex-direction: column;
