@@ -1,28 +1,30 @@
+/* Figma: 263 × 132 en escritorio y 173 × 96 en móvil */
 .tarjeta-genero {
   position: relative;
+  display: grid;
+  align-content: start; /* El nombre va arriba a la izquierda, como en Figma */
   min-height: 132px;
   overflow: hidden;
+  padding: var(--espacio-4);
   border: 0;
-  border-radius: 14px;
-  color: #0c0b12;
+  border-radius: 14px; /* Figma: 14px, sin variable */
+  background: var(--portada-3);
+  color: var(--fijo-negro);
   text-align: left;
-  padding: 16px;
-  background: #24beb4;
 }
 .tarjeta-genero span {
   position: relative;
   z-index: 1;
-  display: block;
-  align-self: start;
-  font: 700 20px var(--fuente-syne);
 }
 .tarjeta-genero .portada-album {
   position: absolute;
-  width: 92px;
+  width: 92px; /* Figma: 92 × 92 */
   height: 92px;
-  right: -8px;
-  bottom: -26px;
-  transform: rotate(22deg);
+  right: 17.5px; /* La caja rotada queda a 4,55px del borde (Figma) */
+  bottom: -31px; /* y sobresale 43,92px por abajo (Figma) */
+  transform: rotate(
+    20deg
+  ); /* Figma: −20° (Figma gira en sentido contrario a CSS) */
   transition: transform 180ms ease;
 }
 .tarjeta-genero:hover .portada-album {
@@ -32,37 +34,39 @@
   outline: 3px solid var(--texto-principal);
   outline-offset: 3px;
 }
+/* Colores provisionales: en el paso 15 vendrán de la API (color → --portada-N) */
 .genero-1 {
-  background: #ff655c;
+  background: var(--portada-2);
 }
 .genero-2,
 .genero-6 {
-  background: #9176fa;
+  background: var(--portada-1);
 }
 .genero-3 {
-  background: #4b86fa;
+  background: var(--portada-6);
 }
 .genero-4 {
-  background: #fa55a3;
+  background: var(--portada-5);
 }
 .genero-5 {
-  background: #f8b946;
+  background: var(--portada-4);
 }
 @media (max-width: 640px) {
   .tarjeta-genero {
-    min-height: 104px;
-    padding: 12px;
-    border-radius: 10px;
+    min-height: 96px;
+    padding: var(--espacio-3);
+    border-radius: 12px; /* Figma: 12px, sin variable */
   }
-}
-@media (max-width: 640px) {
+  /* Figma móvil: .titular-h4 */
   .tarjeta-genero span {
     font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
   }
-}
-@media (max-width: 640px) {
   .tarjeta-genero .portada-album {
-    width: 68px;
-    height: 68px;
+    width: 64px; /* Figma: 64 × 64 */
+    height: 64px;
+    right: 17.9px; /* Figma: 8,86px */
+    bottom: -11px; /* Figma: −20,03px */
   }
 }

@@ -24,31 +24,22 @@ html:has(.panel-menu[open]) {
   overflow: hidden;
 }
 
+/* Figma: fila de 60px, logo a 16px y botón cerrar a 8px de los bordes */
 .panel-menu-cabecera {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--espacio-3) var(--espacio-2) var(--espacio-3) var(--espacio-4);
+  min-height: 61px; /* 60px hasta la línea + 1px de la línea, igual que la cabecera */
+  padding: 0 var(--espacio-2) 0 var(--espacio-4);
   border-bottom: 1px solid var(--borde-sutil);
 }
-.panel-menu-cabecera .marca-home {
-  gap: 10px;
-  font-size: 22px;
-  line-height: 1;
-}
-.panel-menu-cabecera .emblema {
-  width: 32px;
-  height: 32px;
-}
-.panel-menu-cabecera .emblema svg {
-  width: 28px;
-  height: 28px;
-}
+
 .cerrar-menu {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
+  padding: 0;
   border: 0;
   border-radius: var(--radio-completo);
   background: var(--fondo-sutil);
@@ -88,17 +79,18 @@ html:has(.panel-menu[open]) {
   justify-content: center;
   min-height: 54px;
 }
-.panel-menu-preferencias .idiomas-home button {
-  padding: var(--espacio-1) var(--espacio-3);
-}
 
 @media (max-width: 640px) {
   .boton-menu {
     display: grid;
     place-items: center;
     flex-shrink: 0;
+    margin-right: calc(
+      -1 * var(--espacio-2)
+    ); /* Figma: la zona táctil queda a 8px del borde */
     width: 44px;
     height: 44px;
+    padding: 0;
     background: none;
     color: var(--texto-principal);
     border: 0;

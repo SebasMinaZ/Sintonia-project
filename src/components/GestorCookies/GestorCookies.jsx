@@ -19,7 +19,7 @@ export default function GestorCookies() {
         />
       )}
       {error && (
-        <p className="error-cookies" role="alert">
+        <p className="error-cookies cuerpo-p" role="alert">
           {errores.generico}
         </p>
       )}

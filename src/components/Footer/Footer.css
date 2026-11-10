@@ -1,37 +1,38 @@
 .pie-home {
+  padding: 56px 0 var(--espacio-8); /* Figma: 56px arriba, 32px abajo */
   background: var(--fondo-superficie);
-  padding: 56px 0 24px;
 }
 .columnas-pie {
   display: grid;
   grid-template-columns: 1fr repeat(3, auto);
-  column-gap: 64px;
-  row-gap: 32px;
+  column-gap: 80px; /* Figma: 80px, sin variable */
+  row-gap: var(--espacio-8);
+}
+/* El logo como bloque, para que no añada la altura de una línea de texto */
+.pie-marca .marca-home {
+  display: flex;
+  width: fit-content;
 }
 .pie-marca p {
-  max-width: 340px;
-  margin-top: 12px;
+  max-width: 340px; /* Figma: 340px */
+  margin-top: var(--espacio-3);
   color: var(--texto-secundario);
-  font-size: 14px;
 }
 .pie-columna h2 {
-  margin-bottom: 16px;
-  font-family: var(--fuente-inter);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin-bottom: var(--espacio-4);
   color: var(--texto-secundario);
 }
 .pie-columna ul {
   display: grid;
-  gap: 12px;
+  gap: var(--espacio-3);
   margin: 0;
   padding: 0;
   list-style: none;
 }
+/* Como bloque, cada enlace mide los 20px de su línea y no los 25,6px del texto base */
 .pie-columna a {
-  font-size: 14px;
+  display: block;
+  width: fit-content;
   color: var(--texto-principal);
 }
 .pie-columna a:hover {
@@ -40,13 +41,13 @@
 .pie-creditos {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
-  margin-top: 40px;
-  padding-top: 24px;
+  gap: var(--espacio-4);
+  margin-top: 40px; /* Figma: 40px, sin variable */
+  padding-top: var(--espacio-6);
   border-top: 1px solid var(--borde-fuerte);
   color: var(--texto-secundario);
-  font-size: 12px;
 }
+/* Entre 641 y 900px no hay diseño en Figma */
 @media (max-width: 900px) {
   .columnas-pie {
     grid-template-columns: repeat(3, auto);
@@ -57,11 +58,20 @@
   }
 }
 @media (max-width: 640px) {
+  .pie-home {
+    padding-top: 40px; /* Figma: 40px, sin variable */
+  }
+  /* Figma móvil: el footer tiene 24px de margen lateral (el resto de la página, 16px) */
+  .pie-home .ancho-home {
+    width: calc(100% - 2 * var(--espacio-6));
+  }
   .columnas-pie {
     grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
+    column-gap: var(--espacio-8);
+    row-gap: var(--espacio-6);
   }
   .pie-creditos {
     flex-direction: column;
+    margin-top: var(--espacio-8);
   }
 }

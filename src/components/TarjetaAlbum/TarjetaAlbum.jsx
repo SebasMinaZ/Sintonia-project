@@ -8,8 +8,8 @@ export default function TarjetaAlbum({ album, onSeleccionar }) {
       onClick={() => onSeleccionar(album)}
     >
       <PortadaAlbum variante={album.arte} />
-      <span>{album.nombre}</span>
-      <small>{album.artista}</small>
+      <span className="cuerpo-m-fuerte">{album.nombre}</span>
+      <small className="cuerpo-p">{album.artista}</small>
     </button>
   );
 }

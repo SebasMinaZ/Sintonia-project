@@ -1,7 +1,6 @@
 .collage-sintonia {
   position: relative;
-  aspect-ratio: 1.15;
-  margin-top: 20px;
+  aspect-ratio: 540 / 480; /* Figma: 540 × 480 */
 }
 .collage-sintonia > .portada-album {
   position: absolute;
@@ -30,18 +29,18 @@
   bottom: 18%;
   background: var(--marca-primario);
   color: var(--texto-sobre-marca);
-  border-radius: 16px;
-  padding: 20px;
-  font-size: 14px;
-  line-height: 1.7;
+  border-radius: 20px; /* Figma: 20px, sin variable */
+  padding: 18px; /* Figma: 18px, sin variable */
   transform: rotate(4deg);
 }
 .nota-sintonia b {
-  font-family: var(--fuente-syne);
+  .nota-sintonia > * {
+    display: block;
+  }
 }
 @media (max-width: 1000px) {
   .nota-sintonia {
-    padding: 14px;
+    padding: var(--espacio-3);
     font-size: 12px;
   }
 }

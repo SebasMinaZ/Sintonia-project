@@ -1,49 +1,49 @@
+/* Figma: aviso de 1200 × 98 en escritorio y 358 × 188 en móvil */
 .banner-cookies {
   position: fixed;
   z-index: 20;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
+  left: var(--espacio-4);
+  right: var(--espacio-4);
+  bottom: var(--espacio-4);
   max-width: 1200px;
-  max-height: calc(100dvh - 32px);
+  max-height: calc(100dvh - 2 * var(--espacio-4));
   overflow: auto;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 20px 24px;
+  gap: var(--espacio-8);
+  padding: var(--espacio-6) var(--espacio-8);
   border: 1px solid var(--borde-fuerte);
-  border-radius: var(--radio-lg);
+  border-radius: var(--radio-xl);
   background: var(--fondo-superficie);
   color: var(--texto-principal);
 }
-.banner-cookies h2 {
-  font-family: var(--fuente-inter);
-  font-size: 15px;
-  font-weight: 600;
+/* El bloque de texto ocupa el espacio libre: queda a 32px de los botones */
+.banner-cookies-texto {
+  flex: 1;
 }
 .banner-cookies p {
-  margin-top: 4px;
-  font-size: 13px;
+  margin-top: var(--espacio-1);
   color: var(--texto-secundario);
 }
 .banner-cookies .grupo-botones {
   flex-shrink: 0;
   flex-wrap: nowrap;
+  align-items: center;
 }
+/* Figma: Rechazar 106 × 42 y Aceptar 94 × 40 */
 .banner-cookies .boton {
-  min-width: 120px;
+  padding: 10px 20px; /* Figma: 10px 20px, sin variable */
 }
 @media (max-width: 640px) {
   .banner-cookies {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
-    padding: 20px;
+    gap: var(--espacio-4);
+    padding: 20px; /* Figma: 20px, sin variable */
   }
   .banner-cookies .boton {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 0;
   }
 }

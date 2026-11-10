@@ -17,7 +17,7 @@ export default function Navbar({
     <header className="cabecera-home">
       <div className="ancho-home fila-cabecera">
         <Marca nombre={nombre} tipo={tipo} />
-        <Link className="ingreso-movil cuerpo-p" to="/ingresar">
+        <Link className="ingreso-movil cuerpo-p-fuerte" to="/ingresar">
           {navbar.botones.invitado.ingresar}
         </Link>
         <MenuMovil
@@ -28,10 +28,12 @@ export default function Navbar({
           onCambiarIdioma={onCambiarIdioma}
         />
         <nav className="menu-home" aria-label={navbar.aria.navegacion}>
-          <NavLink to="/" end>
+          <NavLink className="cuerpo-p-fuerte" to="/" end>
             {navbar.enlaces.inicio}
           </NavLink>
-          <NavLink to="/catalogo">{navbar.enlaces.catalogo}</NavLink>
+          <NavLink className="cuerpo-p-fuerte" to="/catalogo">
+            {navbar.enlaces.catalogo}
+          </NavLink>
           <div className="acciones-home">
             <SelectorIdioma
               idioma={idioma}
@@ -39,7 +41,7 @@ export default function Navbar({
               onCambiar={onCambiarIdioma}
               etiqueta={navbar.aria.idioma}
             />
-            <Link className="ingresar-home" to="/ingresar">
+            <Link className="ingresar-home cuerpo-p-fuerte" to="/ingresar">
               {navbar.botones.invitado.ingresar}
             </Link>
             <Button to="/registro">

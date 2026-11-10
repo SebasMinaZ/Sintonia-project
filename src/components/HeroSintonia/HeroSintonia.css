@@ -1,98 +1,87 @@
+/* Figma (1440): columna de texto de 692px + gap de 48px + collage de 540px = 1280px */
 .hero-sintonia {
   display: grid;
-  grid-template-columns: 1.18fr 1fr;
-  gap: 52px;
+  grid-template-columns: minmax(0, 692fr) minmax(0, 540fr);
+  gap: var(--espacio-12);
   align-items: center;
   padding-top: 72px;
-  padding-bottom: 88px;
+  padding-bottom: 88px; /* Figma: 88px, sin variable */
 }
 .etiqueta-sintonia {
-  display: inline-block;
-  border-radius: 99px;
-  background: #293315;
+  display: block;
+  width: fit-content;
+  padding: var(--espacio-1) 10px; /* Figma: 4px 10px */
+  border-radius: var(--radio-completo);
+  background: var(--marca-suave);
   color: var(--marca-primario);
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 600;
 }
 .hero-sintonia h1 {
-  margin: 28px 0;
-  font-size: clamp(64px, 7.5vw, 108px);
-  font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  margin: var(--espacio-6) 0;
+}
+/* Los botones conservan su propio alto (52 y 54px en Figma) */
+.hero-sintonia .grupo-botones {
+  align-items: center;
 }
 .hero-sintonia .texto-hero > p {
-  max-width: 650px;
-  font-size: 18px;
+  margin-bottom: var(--espacio-6);
   color: var(--texto-secundario);
-  line-height: 1.65;
-  margin-bottom: 24px;
 }
+/* Botones del Hero: 14px 28px; el primario no tiene borde en Figma (205 × 52) */
+/* Botones del Hero: 14px 28px (Figma: 205 × 52 y 212 × 54) */
 .hero-sintonia .boton {
-  padding-block: var(--espacio-4);
+  padding: 14px 28px;
 }
 .cifras-sintonia {
   display: flex;
-  gap: 40px;
-  margin: 32px 0 0;
-}
-.cifras-sintonia dt {
-  font: 700 30px var(--fuente-syne);
+  gap: 40px; /* Figma: 40px, sin variable */
+  margin: var(--espacio-6) 0 0;
 }
 .cifras-sintonia dd {
-  margin: 4px 0 0;
-  font-size: 12px;
+  margin: var(--espacio-1) 0 0;
   color: var(--texto-secundario);
 }
+
+/* Por debajo de 1360px la columna de texto mide menos de 692px y Figma no tiene diseño:
+   el título .titular-gigante se reduce en proporción para no partir palabras */
+@media (max-width: 1359px) {
+  .hero-sintonia h1 {
+    font-size: 8.5vw;
+    line-height: 0.9; /* 108 / 120, como en .titular-gigante */
+  }
+}
 @media (max-width: 1000px) {
   .hero-sintonia {
-    gap: 24px;
+    gap: var(--espacio-6);
   }
-}
-@media (max-width: 1000px) {
-  .hero-sintonia h1 {
-    font-size: 72px;
-  }
-}
-@media (max-width: 1000px) {
   .cifras-sintonia {
-    gap: 20px;
-  }
-}
-@media (max-width: 640px) {
-  .hero-sintonia {
-    display: block;
-    padding-top: 32px;
-    padding-bottom: 48px;
-  }
-}
-@media (max-width: 640px) {
-  .hero-sintonia h1 {
-    font-size: clamp(42px, 10vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    margin: 20px 0 16px;
+    gap: var(--espacio-6);
   }
 }
 
 @media (max-width: 640px) {
-  .hero-sintonia .texto-hero > p {
-    font-size: 14px;
-    line-height: 1.6;
+  .hero-sintonia {
+    display: block;
+    padding-top: var(--espacio-6);
+    padding-bottom: var(--espacio-8);
   }
-}
-@media (max-width: 640px) {
+  /* Figma móvil: .titular-h1 */
+  .hero-sintonia h1 {
+    margin: 0 0 var(--espacio-4);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 46px;
+    letter-spacing: -0.015em;
+  }
+  /* Figma móvil: .cuerpo-m */
+  .hero-sintonia .texto-hero > p {
+    margin-bottom: var(--espacio-4);
+    font-size: 16px;
+    line-height: 24px;
+  }
   .hero-sintonia .grupo-botones {
     flex-direction: column;
+    align-items: stretch;
   }
-}
-@media (max-width: 640px) {
-  .hero-sintonia .boton {
-    padding-block: var(--espacio-3);
-  }
-}
-@media (max-width: 640px) {
   .cifras-sintonia,
   .etiqueta-sintonia {
     display: none;
