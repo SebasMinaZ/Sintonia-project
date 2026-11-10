@@ -3,7 +3,7 @@ import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaGenero from "../TarjetaGenero/TarjetaGenero.jsx";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./SeccionGeneros.css";
-export default function SeccionGeneros({ generos, genero, filtrar }) {
+export default function SeccionGeneros({ generos }) {
   const textos = useTextos().paginas.inicioPublico.generos;
   return (
     <section
@@ -12,20 +12,16 @@ export default function SeccionGeneros({ generos, genero, filtrar }) {
       aria-labelledby="generos-titulo"
     >
       <div className="titulo-seccion">
-        <h2 id="generos-titulo">{textos.titulo}</h2>
-        <Link className="enlace-home" to="/catalogo">
+        <h2 id="generos-titulo" className="titular-h2">
+          {textos.titulo}
+        </h2>
+        <Link className="enlace-home cuerpo-p-fuerte" to="/catalogo">
           {textos.enlaces.verCatalogo} <Flecha />
         </Link>
       </div>
       <div className="generos-grid">
-        {generos.map((nombre, i) => (
-          <TarjetaGenero
-            key={nombre}
-            nombre={nombre}
-            i={i}
-            genero={genero}
-            filtrar={filtrar}
-          />
+        {generos.map((genero) => (
+          <TarjetaGenero key={genero.id} genero={genero} />
         ))}
       </div>
     </section>

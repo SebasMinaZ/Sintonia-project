@@ -1,56 +1,53 @@
+import { colorToken } from "../../utils/colores.js";
 import "./PortadaAlbum.css";
-export default function PortadaAlbum({ variante = 0, className = "" }) {
+
+// Dibuja la portada con portada.patron y portada.colores de la API.
+// Patrones: 0 anillos, 1 rayas, 2 colina, 3 puntos.
+export default function PortadaAlbum({ portada, className = "" }) {
+  const [fondo, figura] = portada.colores.map(colorToken);
+  const detalle = "var(--fijo-blanco)";
   return (
     <svg
       className={`portada-album ${className}`}
       viewBox="0 0 200 200"
       aria-hidden="true"
     >
-      <rect
-        width="200"
-        height="200"
-        fill={
-          ["#24beb4", "#fa55a3", "#f8b946", "#4b86fa", "#ff655c", "#9176fa"][
-            variante % 6
-          ]
-        }
-      />
-      {variante === 0 && (
-        <>
-          <circle cx="153" cy="47" r="22" fill="white" />
-          <circle cx="100" cy="174" r="68" fill="#0c0b12" />
-        </>
-      )}
-      {variante === 1 && (
+      <rect width="200" height="200" style={{ fill: fondo }} />
+      {portada.patron === 0 && (
         <>
           <circle
             cx="205"
             cy="205"
             r="155"
-            fill="none"
-            stroke="#9176fa"
             strokeWidth="46"
+            style={{ fill: "none", stroke: figura }}
           />
-          <circle cx="205" cy="205" r="65" fill="#9176fa" />
+          <circle cx="205" cy="205" r="65" style={{ fill: figura }} />
         </>
       )}
-      {(variante === 2 || variante === 5) &&
+      {portada.patron === 1 &&
+        Array.from({ length: 7 }, (_, i) => (
+          <path
+            key={i}
+            d={`M-60 ${i * 48}L260 ${i * 48 - 200}`}
+            strokeWidth="23"
+            style={{ stroke: figura }}
+          />
+        ))}
+      {portada.patron === 2 && (
+        <>
+          <circle cx="153" cy="47" r="22" style={{ fill: detalle }} />
+          <circle cx="100" cy="174" r="68" style={{ fill: figura }} />
+        </>
+      )}
+      {portada.patron === 3 &&
         Array.from({ length: 9 }, (_, i) => (
           <circle
             key={i}
             cx={45 + (i % 3) * 55}
             cy={45 + Math.floor(i / 3) * 55}
             r="18"
-            fill={i % 2 ? (variante === 2 ? "#ff655c" : "#fa55a3") : "#fff"}
-          />
-        ))}
-      {(variante === 3 || variante === 4) &&
-        Array.from({ length: 7 }, (_, i) => (
-          <path
-            key={i}
-            d={`M-60 ${i * 48}L260 ${i * 48 - 200}`}
-            stroke={variante === 3 ? "#24beb4" : "#f8b946"}
-            strokeWidth="23"
+            style={{ fill: i % 2 ? figura : detalle }}
           />
         ))}
     </svg>

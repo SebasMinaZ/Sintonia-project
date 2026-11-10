@@ -8,7 +8,6 @@
   padding: var(--espacio-4);
   border: 0;
   border-radius: 14px; /* Figma: 14px, sin variable */
-  background: var(--portada-3);
   color: var(--fijo-negro);
   text-align: left;
 }
@@ -22,34 +21,18 @@
   height: 92px;
   right: 17.5px; /* La caja rotada queda a 4,55px del borde (Figma) */
   bottom: -31px; /* y sobresale 43,92px por abajo (Figma) */
-  transform: rotate(
-    20deg
-  ); /* Figma: −20° (Figma gira en sentido contrario a CSS) */
+  /* Figma: −20° (Figma gira en sentido contrario a CSS) */
+  transform: rotate(20deg);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-tarjeta);
   transition: transform 180ms ease;
 }
 .tarjeta-genero:hover .portada-album {
   transform: rotate(12deg) translateY(-8px);
 }
-.tarjeta-genero[aria-pressed="true"] {
-  outline: 3px solid var(--texto-principal);
-  outline-offset: 3px;
-}
-/* Colores provisionales: en el paso 15 vendrán de la API (color → --portada-N) */
-.genero-1 {
-  background: var(--portada-2);
-}
-.genero-2,
-.genero-6 {
-  background: var(--portada-1);
-}
-.genero-3 {
-  background: var(--portada-6);
-}
-.genero-4 {
-  background: var(--portada-5);
-}
-.genero-5 {
-  background: var(--portada-4);
+/* Fondos oscuros de la API (por ejemplo, Lo-fi): texto claro para mantener el contraste */
+.tarjeta-genero-oscura {
+  color: var(--texto-principal);
 }
 @media (max-width: 640px) {
   .tarjeta-genero {
@@ -66,6 +49,7 @@
   .tarjeta-genero .portada-album {
     width: 64px; /* Figma: 64 × 64 */
     height: 64px;
+    box-shadow: none; /* En Figma móvil la figura no lleva sombra */
     right: 17.9px; /* Figma: 8,86px */
     bottom: -11px; /* Figma: −20,03px */
   }
