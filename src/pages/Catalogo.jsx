@@ -1,4 +1,5 @@
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
+import Flecha from "../components/Flecha/Flecha.jsx";
 import TarjetaGenero from "../components/TarjetaGenero/TarjetaGenero.jsx";
 import TarjetaAlbum from "../components/TarjetaAlbum/TarjetaAlbum.jsx";
 import TarjetaArtista from "../components/TarjetaArtista/TarjetaArtista.jsx";
@@ -12,7 +13,8 @@ import { formatear } from "../utils/formatear.js";
 import "./Catalogo.css";
 
 export default function Catalogo() {
-  const { catalogo } = useTextos().paginas;
+  const textos = useTextos();
+  const { catalogo } = textos.paginas;
   useTituloPagina(catalogo.seo.titulo);
 
   // El filtro vive en la URL: /catalogo?genero=gen_andina
@@ -29,7 +31,6 @@ export default function Catalogo() {
 
   if (error?.codigo === "no_encontrado") return <NoEncontrado />;
 
-  const titulo = idGenero ? genero?.nombre : catalogo.encabezado.titulo;
   const descripcion = idGenero
     ? genero?.descripcion
     : catalogo.encabezado.subtitulo;
@@ -37,7 +38,21 @@ export default function Catalogo() {
   return (
     <div className="catalogo">
       <header className="catalogo-encabezado">
-        <h1 className="titular-h1">{titulo}</h1>
+        <h1 className="titular-h1">
+          {idGenero ? (
+            genero?.nombre
+          ) : (
+            <>
+              {/* Figma: en móvil el título es el texto corto del menú */}
+              <span className="titulo-escritorio">
+                {catalogo.encabezado.titulo}
+              </span>
+              <span className="titulo-movil">
+                {textos.navbar.enlaces.catalogo}
+              </span>
+            </>
+          )}
+        </h1>
         <p className="cuerpo-m">{descripcion}</p>
       </header>
 
@@ -72,6 +87,10 @@ export default function Catalogo() {
             <h2 id="catalogo-destacados" className="titular-h2">
               {catalogo.destacados.titulo}
             </h2>
+            {/* Ruta del sprint 2: por ahora lleva a "No encontrado" */}
+            <Link className="enlace-home cuerpo-p-fuerte" to="/albumes">
+              {catalogo.destacados.enlaces.descubrirMas} <Flecha />
+            </Link>
           </div>
           <div className="albumes-grid catalogo-albumes">
             {destacados.map((album) => (

@@ -28,7 +28,10 @@
 .catalogo-seccion-canciones .titulo-seccion {
   margin-bottom: var(--espacio-4);
 }
-
+/* Título: el texto largo en escritorio y el corto en móvil */
+.titulo-movil {
+  display: none;
+}
 /* Géneros: 4 columnas de 263px como en el Inicio */
 .catalogo-generos {
   display: grid;
@@ -67,8 +70,13 @@
     border-radius: 0;
     background: none;
   }
-  .catalogo-encabezado p {
+  .catalogo-encabezado p,
+  .titulo-escritorio,
+  .catalogo .enlace-home {
     display: none;
+  }
+  .titulo-movil {
+    display: inline;
   }
   .catalogo-encabezado,
   .catalogo-seccion {
