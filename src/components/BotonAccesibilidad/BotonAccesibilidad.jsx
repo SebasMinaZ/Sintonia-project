@@ -4,9 +4,11 @@ export default function BotonAccesibilidad({
   etiqueta,
   onClick,
   className = "",
+  ref,
 }) {
   return (
     <button
+      ref={ref}
       type="button"
       className={`boton-accesibilidad ${className}`.trim()}
       aria-label={etiqueta}
