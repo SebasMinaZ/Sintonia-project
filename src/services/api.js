@@ -5,6 +5,9 @@ const cabecerasSimulacion = [
   ["X-Simular-Error", proyecto.simularError],
 ];
 
+const simulacionActiva = cabecerasSimulacion.some(([, valor]) => valor);
+const cache = new Map(); // ruta -> promesa de la petición GET
+
 function crearCabeceras(ruta, cuerpo) {
   const cabeceras = { Accept: "application/json" };
   if (cuerpo) cabeceras["Content-Type"] = "application/json";
@@ -27,7 +30,7 @@ function crearErrorRespuesta(respuesta, datos) {
   return error;
 }
 
-export async function consultar(ruta, { signal, metodo = "GET", cuerpo } = {}) {
+async function pedir(ruta, { signal, metodo = "GET", cuerpo } = {}) {
   let respuesta;
   try {
     respuesta = await fetch(`${proyecto.api}${ruta}`, {
@@ -46,4 +49,19 @@ export async function consultar(ruta, { signal, metodo = "GET", cuerpo } = {}) {
   const datos = await respuesta.json();
   if (!respuesta.ok) throw crearErrorRespuesta(respuesta, datos);
   return datos;
+}
+
+// Las peticiones GET se piden una sola vez por ruta: quien llega después
+// recibe la misma promesa. Si falla, se borra para que «Reintentar» la repita.
+// La petición compartida no usa el signal de un solo llamador. O(1).
+export function consultar(ruta, opciones = {}) {
+  if (opciones.metodo && opciones.metodo !== "GET")
+    return pedir(ruta, opciones);
+  if (simulacionActiva) return pedir(ruta, opciones);
+  if (!cache.has(ruta)) {
+    const peticion = pedir(ruta);
+    peticion.catch(() => cache.delete(ruta));
+    cache.set(ruta, peticion);
+  }
+  return cache.get(ruta);
 }
