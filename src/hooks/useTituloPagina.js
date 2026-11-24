@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 
-export function useTituloPagina(titulo) {
+export function useTituloPagina(titulo, descripcion) {
   useEffect(() => {
     document.title = titulo;
-  }, [titulo]);
+    if (descripcion) {
+      document
+        .querySelector('meta[name="description"]')
+        .setAttribute("content", descripcion);
+    }
+  }, [titulo, descripcion]);
 }
