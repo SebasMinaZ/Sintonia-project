@@ -17,5 +17,11 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    rules: {
+      "no-duplicate-imports": "error",
+      complexity: ["error", 10],
+      "max-depth": ["error", 3],
+      "no-unused-vars": "error",
+    },
   },
 ]);
