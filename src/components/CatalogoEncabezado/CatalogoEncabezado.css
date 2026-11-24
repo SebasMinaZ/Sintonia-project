@@ -1,0 +1,26 @@
+.catalogo-encabezado {
+  /* Figma (estimado): 28px, sin variable */
+  margin-bottom: 28px;
+}
+.catalogo-encabezado p {
+  margin-top: var(--espacio-2);
+  color: var(--texto-secundario);
+}
+/* Título: el texto largo en escritorio y el corto en móvil */
+.titulo-movil {
+  display: none;
+}
+/* Móvil: sin la descripción */
+@media (max-width: 640px) {
+  .catalogo-encabezado {
+    /* Figma (estimado): 20px, sin variable */
+    margin-bottom: 20px;
+  }
+  .catalogo-encabezado p,
+  .titulo-escritorio {
+    display: none;
+  }
+  .titulo-movil {
+    display: inline;
+  }
+}
