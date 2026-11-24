@@ -14,6 +14,8 @@
 .tarjeta-genero span {
   position: relative;
   z-index: 1;
+  /* Figma: 16px móvil · 20px escritorio */
+  font-size: clamp(1rem, 0.9071rem + 0.381vw, 1.25rem);
 }
 .tarjeta-genero .portada-album {
   position: absolute;
@@ -45,10 +47,9 @@
     padding: var(--espacio-3);
     border-radius: 12px; /* Figma: 12px, sin variable */
   }
-  /* Figma móvil: .titular-h4 */
+  /* Figma móvil: .titular-h4 (el tamaño lo da el clamp) */
   .tarjeta-genero span {
-    font-size: 16px;
-    line-height: 22px;
+    line-height: 1.375;
     letter-spacing: 0;
   }
   .tarjeta-genero .portada-album {

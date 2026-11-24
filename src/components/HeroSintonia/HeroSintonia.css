@@ -17,6 +17,8 @@
 }
 .hero-sintonia h1 {
   margin: var(--espacio-6) 0;
+  /* Figma: 40px móvil · 120px escritorio */
+  font-size: clamp(2.5rem, 0.6429rem + 7.619vw, 7.5rem);
 }
 /* Los botones conservan su propio alto (52 y 54px en Figma) */
 .hero-sintonia .grupo-botones {
@@ -25,6 +27,8 @@
 .hero-sintonia .texto-hero > p {
   margin-bottom: var(--espacio-6);
   color: var(--texto-secundario);
+  /* Figma: 16px móvil · 18px escritorio */
+  font-size: clamp(1rem, 0.9536rem + 0.1905vw, 1.125rem);
 }
 /* Botones del Hero: 14px 28px; el primario no tiene borde en Figma (205 × 52) */
 /* Botones del Hero: 14px 28px (Figma: 205 × 52 y 212 × 54) */
@@ -41,14 +45,6 @@
   color: var(--texto-secundario);
 }
 
-/* Por debajo de 1360px la columna de texto mide menos de 692px y Figma no tiene diseño:
-   el título .titular-gigante se reduce en proporción para no partir palabras */
-@media (max-width: 1359px) {
-  .hero-sintonia h1 {
-    font-size: 8.5vw;
-    line-height: 0.9; /* 108 / 120, como en .titular-gigante */
-  }
-}
 @media (max-width: 1000px) {
   .hero-sintonia {
     gap: var(--espacio-6);
@@ -64,19 +60,17 @@
     padding-top: var(--espacio-6);
     padding-bottom: var(--espacio-8);
   }
-  /* Figma móvil: .titular-h1 */
+  /* Figma móvil: .titular-h1 (el tamaño lo da el clamp) */
   .hero-sintonia h1 {
     margin: 0 0 var(--espacio-4);
-    font-size: 40px;
     font-weight: 700;
-    line-height: 46px;
+    line-height: 1.15;
     letter-spacing: -0.015em;
   }
-  /* Figma móvil: .cuerpo-m */
+  /* Figma móvil: .cuerpo-m (el tamaño lo da el clamp) */
   .hero-sintonia .texto-hero > p {
     margin-bottom: var(--espacio-4);
-    font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5;
   }
   .hero-sintonia .grupo-botones {
     flex-direction: column;
