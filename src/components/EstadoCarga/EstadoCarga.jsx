@@ -1,7 +1,9 @@
 import "./EstadoCarga.css";
 
 // Esqueletos con la forma de las tarjetas que reemplazan: "genero" o "album".
-// "className" reutiliza la cuadrícula de la vista. Complejidad: O(cantidad).
+// "className" reutiliza la cuadrícula de la vista y envuelve solo los esqueletos:
+// el texto para lectores queda fuera para no contar como hijo de la cuadrícula.
+// Complejidad: O(cantidad).
 export default function EstadoCarga({
   etiqueta,
   forma,
@@ -25,13 +27,9 @@ export default function EstadoCarga({
   ));
 
   return (
-    <div
-      className={`estado-carga ${className}`.trim()}
-      role="status"
-      aria-busy="true"
-    >
+    <div className="estado-carga" role="status" aria-busy="true">
       <span className="solo-lectores">{etiqueta}</span>
-      {esqueletos}
+      <div className={className}>{esqueletos}</div>
     </div>
   );
 }
