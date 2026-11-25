@@ -1,0 +1,6 @@
+/* Móvil: el enlace «Descubrir más» no aparece en Figma */
+@media (max-width: 640px) {
+  .catalogo .enlace-home {
+    display: none;
+  }
+}

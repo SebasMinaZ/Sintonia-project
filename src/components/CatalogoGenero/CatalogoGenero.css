@@ -1,0 +1,13 @@
+.catalogo-seccion-canciones .titulo-seccion {
+  margin-bottom: var(--espacio-4);
+}
+.catalogo-artistas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8);
+}
+@media (max-width: 640px) {
+  .catalogo-artistas {
+    gap: var(--espacio-4);
+  }
+}

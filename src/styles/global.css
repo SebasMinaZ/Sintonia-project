@@ -91,7 +91,8 @@ a {
   margin-bottom: 20px; /* Figma: 20px, sin variable */
 }
 .titulo-seccion h2 {
-  font-size: 28px;
+  /* Figma: 20px móvil · 28px escritorio */
+  font-size: clamp(1.25rem, 1.0643rem + 0.7619vw, 1.75rem);
 }
 .enlace-home {
   display: inline-flex;
@@ -119,10 +120,9 @@ a {
     gap: var(--espacio-3);
     margin-bottom: var(--espacio-3);
   }
-  /* En móvil el título de sección usa el estilo .titular-h3 de Figma */
+  /* En móvil el título de sección usa el estilo .titular-h3 de Figma (el tamaño lo da el clamp) */
   .titulo-seccion h2 {
-    font-size: 20px;
-    line-height: 26px;
+    line-height: 1.3;
     letter-spacing: -0.005em;
   }
   /* En móvil el enlace va subrayado y sin flecha */

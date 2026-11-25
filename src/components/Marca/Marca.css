@@ -1,13 +1,9 @@
-/* Figma: logo de 128 × 32 (escritorio y móvil) */
+/* Figma: logo de 128 × 32 (escritorio y móvil); el texto usa .titular-h3 */
 .marca-home {
   display: inline-flex;
   align-items: center;
   gap: 10px; /* Figma: 10px, sin variable */
   flex-shrink: 0;
-  font-family: var(--fuente-syne);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
 }
 .emblema {
   display: grid;

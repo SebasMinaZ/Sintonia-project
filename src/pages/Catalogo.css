@@ -9,11 +9,6 @@
   border-radius: var(--radio-xl);
   background: var(--fondo-superficie);
 }
-.catalogo-encabezado p {
-  margin-top: var(--espacio-2);
-  color: var(--texto-secundario);
-}
-.catalogo-encabezado,
 .catalogo-seccion {
   /* Figma (estimado): 28px, sin variable */
   margin-bottom: 28px;
@@ -21,16 +16,9 @@
 .catalogo-seccion:last-child {
   margin-bottom: 0;
 }
-/* Separación título → contenido: 20px por defecto (.titulo-seccion); estas dos cambian */
+/* Separación título → contenido: 20px por defecto (.titulo-seccion); géneros y canciones cambian */
 .catalogo-seccion-generos .titulo-seccion {
   margin-bottom: var(--espacio-3);
-}
-.catalogo-seccion-canciones .titulo-seccion {
-  margin-bottom: var(--espacio-4);
-}
-/* Título: el texto largo en escritorio y el corto en móvil */
-.titulo-movil {
-  display: none;
 }
 /* Géneros: 4 columnas de 263px como en el Inicio */
 .catalogo-generos {
@@ -51,18 +39,12 @@
 /* Tarjetas de 200px repartidas a lo ancho del panel */
 @media (min-width: 1001px) {
   .catalogo-albumes {
-    grid-template-columns: repeat(6, 200px);
+    grid-template-columns: repeat(6, minmax(0, 200px));
     justify-content: space-between;
   }
 }
 
-.catalogo-artistas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espacio-8);
-}
-
-/* Móvil: sin panel, 8 géneros en 2 columnas y sin la descripción */
+/* Móvil: sin panel y 8 géneros en 2 columnas */
 @media (max-width: 640px) {
   .catalogo {
     margin: 0;
@@ -70,15 +52,6 @@
     border-radius: 0;
     background: none;
   }
-  .catalogo-encabezado p,
-  .titulo-escritorio,
-  .catalogo .enlace-home {
-    display: none;
-  }
-  .titulo-movil {
-    display: inline;
-  }
-  .catalogo-encabezado,
   .catalogo-seccion {
     /* Figma (estimado): 20px, sin variable */
     margin-bottom: 20px;
@@ -95,8 +68,5 @@
   }
   .catalogo-generos > :nth-child(n + 9) {
     display: none;
-  }
-  .catalogo-artistas {
-    gap: var(--espacio-4);
   }
 }
