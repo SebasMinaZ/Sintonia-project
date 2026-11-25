@@ -17,7 +17,7 @@ const ESQUELETOS_GENEROS = 8;
 export default function Catalogo() {
   const { paginas, estados, errores } = useTextos();
   const { catalogo } = paginas;
-  useTituloPagina(catalogo.seo.titulo);
+  useTituloPagina(catalogo.seo.titulo, catalogo.seo.descripcion);
 
   // El filtro vive en la URL: /catalogo?genero=gen_andina
   const [parametros] = useSearchParams();
