@@ -1,0 +1,102 @@
+/* El botón de volver solo existe en el diseño móvil */
+.encabezado-album-volver {
+  display: none;
+  align-self: flex-start;
+  color: var(--texto-principal);
+}
+
+/* Escritorio: portada a la izquierda y datos alineados con su borde inferior */
+.encabezado-album {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px; /* Figma: 28px, sin variable */
+}
+.encabezado-album-portada {
+  flex: none;
+  width: 232px; /* Figma: 232px, sin variable */
+  height: 232px; /* Figma: 232px, sin variable */
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-flotante);
+}
+.encabezado-album-datos {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px; /* Figma: 10px, sin variable */
+  min-width: 0;
+}
+.encabezado-album-tipo {
+  padding: var(--espacio-1) 10px; /* Figma: 10px, sin variable */
+  border-radius: var(--radio-completo);
+  background: var(--fondo-sutil);
+  color: var(--texto-secundario);
+}
+.encabezado-album-titulo {
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--fuente-syne);
+  font-weight: 800;
+  /* Figma: 28px móvil · 64px escritorio */
+  font-size: clamp(1.75rem, 0.9143rem + 3.4286vw, 4rem);
+  line-height: 1.0625;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.encabezado-album-resumen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2);
+  color: var(--texto-secundario);
+}
+.encabezado-album-mini {
+  flex: none;
+  width: 28px; /* Figma: 28px, sin variable */
+  height: 28px; /* Figma: 28px, sin variable */
+  border-radius: var(--radio-completo);
+}
+.encabezado-album-artista {
+  font-weight: 600;
+  color: var(--texto-principal);
+}
+
+/* Móvil: botón de volver, portada centrada y datos en columna */
+@media (max-width: 640px) {
+  .encabezado-album-volver {
+    display: inline-flex;
+  }
+  .encabezado-album {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px; /* Figma: 18px, sin variable */
+  }
+  .encabezado-album-portada {
+    align-self: center;
+    width: 200px; /* Figma: 200px, sin variable */
+    height: 200px; /* Figma: 200px, sin variable */
+    border-radius: 14px; /* Figma: 14px, sin variable */
+  }
+  .encabezado-album-datos {
+    gap: 6px; /* Figma: 6px, sin variable */
+  }
+  .encabezado-album-tipo {
+    background: var(--marca-secundario-suave);
+    color: var(--marca-secundario);
+  }
+  .encabezado-album-titulo {
+    font-weight: 700;
+    line-height: 1.2143;
+    letter-spacing: -0.01em;
+  }
+  .encabezado-album-resumen {
+    display: block;
+  }
+  .encabezado-album-mini {
+    display: none;
+  }
+  .encabezado-album-artista {
+    font-weight: inherit;
+    color: inherit;
+  }
+}

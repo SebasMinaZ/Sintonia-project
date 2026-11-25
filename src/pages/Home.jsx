@@ -2,9 +2,6 @@ import HeroSintonia from "../components/HeroSintonia/HeroSintonia.jsx";
 import SeccionAlbumes from "../components/SeccionAlbumes/SeccionAlbumes.jsx";
 import SeccionGeneros from "../components/SeccionGeneros/SeccionGeneros.jsx";
 import InvitacionRegistro from "../components/InvitacionRegistro/InvitacionRegistro.jsx";
-import PortadaAlbum from "../components/PortadaAlbum/PortadaAlbum.jsx";
-import DialogoDetalle from "../components/DialogoDetalle/DialogoDetalle.jsx";
-import { useDetalle } from "../hooks/useDetalle.js";
 import { useRecurso } from "../hooks/useRecurso.js";
 import { useAlbumesDestacados } from "../hooks/useAlbumesDestacados.js";
 import { useTituloPagina } from "../hooks/useTituloPagina.js";
@@ -19,15 +16,6 @@ export default function Home() {
   const { datos } = useRecurso("/generos");
   const generos = datos?.datos ?? [];
   const { albumes } = useAlbumesDestacados(generos);
-  const { detalle, setDetalle } = useDetalle();
-
-  function abrirAlbum(album) {
-    setDetalle({
-      titulo: album.titulo,
-      descripcion: `${album.artista.nombre} · ${album.genero}`,
-      contenido: <PortadaAlbum portada={album.portada} />,
-    });
-  }
 
   return (
     <>
@@ -35,10 +23,9 @@ export default function Home() {
         totalGeneros={generos.length}
         portadas={generos.map((genero) => genero.portada)}
       />
-      <SeccionAlbumes albumes={albumes} onSeleccionar={abrirAlbum} />
+      <SeccionAlbumes albumes={albumes} />
       <SeccionGeneros generos={generos.slice(0, GENEROS_EN_INICIO)} />
       <InvitacionRegistro />
-      <DialogoDetalle detalle={detalle} onCerrar={() => setDetalle(null)} />
     </>
   );
 }

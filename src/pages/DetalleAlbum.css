@@ -1,0 +1,30 @@
+/* Escritorio: panel con fondo de superficie, como en el Catálogo */
+.detalle-album {
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* Figma: 28px, sin variable */
+  margin: var(--espacio-3) var(--espacio-3) var(--espacio-2) var(--espacio-2);
+  /* Figma: 8px arriba, 28px a los lados y 36px abajo */
+  padding: var(--espacio-2) 28px 36px;
+  border-radius: var(--radio-lg);
+  background: var(--fondo-superficie);
+}
+
+/* Móvil: sin panel */
+@media (max-width: 640px) {
+  .detalle-album {
+    gap: 18px; /* Figma: 18px, sin variable */
+    margin: 0;
+    padding: var(--espacio-2) var(--espacio-4) var(--espacio-4);
+    border-radius: 0;
+    background: none;
+  }
+}
+
+/* Carga: tarjetas de 200px que ocupan el lugar de «Más de {artista}» */
+.detalle-album-esqueletos {
+  display: grid;
+  /* Figma: tarjetas de 200px, sin variable */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
+  gap: var(--espacio-4);
+}
