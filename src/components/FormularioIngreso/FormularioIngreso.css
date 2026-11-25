@@ -1,1 +1,105 @@
-/* Estilos en la etapa 2 */
+/* Figma: «4 · Iniciar sesión» y «Ingreso · campos obligatorios» */
+.formulario-ingreso,
+.formulario-ingreso-form {
+  display: grid;
+  /* Figma (estimado): 20px, sin variable */
+  gap: 20px;
+}
+.formulario-ingreso-error {
+  /* Figma (estimado): 6px, sin variable */
+  padding-top: 6px;
+  color: var(--estado-error);
+}
+
+/* Resumen de errores */
+.formulario-ingreso-aviso {
+  display: flex;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--estado-error);
+  /* Figma: 12px, sin variable */
+  border-radius: 12px;
+  background: var(--estado-error-suave);
+}
+.formulario-ingreso-aviso-icono {
+  flex-shrink: 0;
+  color: var(--estado-error);
+}
+.formulario-ingreso-aviso-contenido {
+  display: grid;
+  gap: var(--espacio-1);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.formulario-ingreso-aviso-titulo {
+  color: var(--texto-principal);
+}
+.formulario-ingreso-aviso-texto {
+  color: var(--texto-secundario);
+}
+
+/* Casilla (solo visual) y enlace de recuperación */
+.formulario-ingreso-opciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-3) var(--espacio-4);
+}
+.formulario-ingreso-casilla {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  color: var(--texto-principal);
+  cursor: pointer;
+}
+.formulario-ingreso-marca {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  /* Figma: 20px con borde de 1.5px y radio de 4px, sin variable */
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--borde-fuerte);
+  border-radius: 4px;
+  color: var(--texto-sobre-marca);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+.formulario-ingreso-marca svg {
+  /* Figma (estimado): check de 16px, sin variable */
+  width: 16px;
+  height: 16px;
+  visibility: hidden;
+}
+.formulario-ingreso-casilla input:checked + .formulario-ingreso-marca {
+  border-color: var(--marca-primario);
+  background: var(--marca-primario);
+}
+.formulario-ingreso-casilla input:checked + .formulario-ingreso-marca svg {
+  visibility: visible;
+}
+.formulario-ingreso-casilla input:focus-visible + .formulario-ingreso-marca {
+  outline: 3px solid var(--marca-primario);
+  outline-offset: 2px;
+}
+.formulario-ingreso-enlace {
+  color: var(--texto-marca);
+  text-decoration: underline;
+}
+.formulario-ingreso-enlace:hover {
+  color: var(--marca-primario-hover);
+}
+
+/* Botón y enlace a registro */
+.formulario-ingreso-boton {
+  width: 100%;
+  /* Figma: 14px 28px, sin variable */
+  padding: 14px 28px;
+}
+.formulario-ingreso-registro {
+  color: var(--texto-secundario);
+  text-align: center;
+  overflow-wrap: anywhere;
+}

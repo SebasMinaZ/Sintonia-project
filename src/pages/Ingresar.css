@@ -1,1 +1,94 @@
-/* Estilos en la etapa 2 */
+/* Figma: «4 · Iniciar sesión» (web 1440 × 900 y móvil 390 × 820) */
+/* Escritorio: columna del formulario (640px) y panel de presentación (800px) */
+.ingresar {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+}
+.ingresar-columna {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  /* Figma: 56px a los lados, sin variable */
+  padding: var(--espacio-16) 56px;
+}
+/* Figma: formulario de 400px de ancho, sin variable */
+.ingresar-columna > * {
+  width: 100%;
+  max-width: 400px;
+}
+.ingresar-titulo {
+  padding-bottom: var(--espacio-6);
+  color: var(--texto-principal);
+}
+.ingresar-subtitulo {
+  /* Figma (estimado): 20px, sin variable */
+  padding-bottom: 20px;
+  color: var(--texto-secundario);
+}
+.ingresar-presentacion {
+  display: grid;
+  align-content: center;
+  padding: var(--espacio-16) 56px;
+  background: var(--fondo-superficie);
+}
+/* Figma: 4 portadas de 160px por fila, con 16px entre ellas */
+.ingresar-portadas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-4);
+  padding-bottom: var(--espacio-8);
+}
+.ingresar-portada {
+  width: 100%;
+  height: auto;
+  /* Figma: 20px, sin variable */
+  border-radius: 20px;
+}
+.ingresar-presentacion-titulo {
+  /* Figma (estimado): 36px, sin variable */
+  padding-bottom: 36px;
+  color: var(--texto-principal);
+}
+.ingresar-presentacion-texto {
+  color: var(--texto-secundario);
+}
+
+/* Móvil y tablet: la presentación pasa arriba con 3 portadas y sin textos */
+@media (max-width: 999px) {
+  .ingresar {
+    grid-template-columns: 1fr;
+  }
+  .ingresar-presentacion {
+    order: -1;
+    padding: var(--espacio-8) var(--espacio-6) 0;
+    background: none;
+  }
+  .ingresar-columna {
+    justify-items: center;
+    padding: var(--espacio-8) var(--espacio-6) var(--espacio-12);
+  }
+  .ingresar-portadas {
+    grid-template-columns: 2fr 3fr 2fr;
+    align-items: center;
+    gap: var(--espacio-2);
+    width: 100%;
+    max-width: 400px;
+    margin-inline: auto;
+    padding-bottom: 0;
+  }
+  /* Figma: la portada del centro es la primera, con las otras dos a los lados */
+  .ingresar-portada:nth-child(1) {
+    order: 2;
+  }
+  .ingresar-portada:nth-child(2) {
+    order: 1;
+  }
+  .ingresar-portada:nth-child(3) {
+    order: 3;
+  }
+  .ingresar-portada:nth-child(n + 4),
+  .ingresar-presentacion-titulo,
+  .ingresar-presentacion-texto {
+    display: none;
+  }
+}

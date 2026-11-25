@@ -46,7 +46,7 @@ export default function FormularioIngreso() {
         </div>
         <div className="formulario-ingreso-opciones">
           <label className="formulario-ingreso-casilla cuerpo-p">
-            <input type="checkbox" defaultChecked />
+            <input type="checkbox" className="solo-lectores" defaultChecked />
             <span className="formulario-ingreso-marca" aria-hidden="true">
               <svg
                 viewBox="0 0 18 18"

@@ -1,1 +1,29 @@
-/* Estilos en la etapa 2 */
+/* Input y botón del ojo comparten celda: el botón queda sobre el borde derecho */
+.campo-clave {
+  display: grid;
+  align-items: center;
+}
+.campo-clave > * {
+  grid-area: 1 / 1;
+}
+.campo-clave-input {
+  padding-right: var(--espacio-12);
+}
+.campo-clave-ojo {
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  /* Figma (estimado): zona de toque de 40px con ícono de 24px, a 6px del borde */
+  width: 40px;
+  height: 40px;
+  margin-right: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio-completo);
+  background: none;
+  color: var(--texto-secundario);
+  transition: color 160ms ease;
+}
+.campo-clave-ojo:hover {
+  color: var(--texto-principal);
+}
