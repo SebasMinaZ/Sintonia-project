@@ -57,6 +57,7 @@
   border-radius: 8px;
   background: var(--fondo-sutil);
   color: var(--texto-principal);
+  /* Figma (estimado): 20px, sin variable */
   font-size: 20px;
 }
 .control-tamano button:disabled {
@@ -140,6 +141,17 @@
   background: var(--fondo-sutil);
 }
 
+/* Textos que son más pequeños en escritorio que en móvil */
+.lista-interruptores .cuerpo-m,
+.pie-accesibilidad .cuerpo-m-fuerte {
+  /* Figma: 16px móvil · 14px escritorio */
+  font-size: clamp(0.875rem, 1.0464rem - 0.1905vw, 1rem);
+}
+.panel-accesibilidad .nota-accesibilidad {
+  /* Figma: 14px móvil · 12px escritorio */
+  font-size: clamp(0.75rem, 0.9214rem - 0.1905vw, 0.875rem);
+}
+
 /* Escritorio (Figma): panel de 360px bajo el botón, sin oscurecer el fondo */
 @media (min-width: 641px) {
   .panel-accesibilidad {
@@ -156,21 +168,25 @@
   .panel-accesibilidad::backdrop {
     background: transparent;
   }
-  /* Figma: en escritorio la ayuda va a 14px, la nota a 12px y el pie a 14px */
+  /* Figma escritorio: interlíneas de 20px (ayuda y pie) y 16px (nota) */
   .lista-interruptores .cuerpo-m {
-    font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4286;
   }
-  .nota-accesibilidad {
-    font-size: 12px;
-    line-height: 16px;
+  .panel-accesibilidad .nota-accesibilidad {
+    line-height: 1.3333;
   }
   .pie-accesibilidad {
     gap: var(--espacio-1);
   }
   .pie-accesibilidad .cuerpo-m-fuerte {
-    font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4286;
     white-space: nowrap;
+  }
+}
+
+/* Hasta 1000px el texto fluido no cabe en una fila: el botón pasa a la siguiente */
+@media (min-width: 641px) and (max-width: 1000px) {
+  .pie-accesibilidad {
+    flex-wrap: wrap;
   }
 }
