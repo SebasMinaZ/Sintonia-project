@@ -93,6 +93,7 @@ export default function FormularioIngreso() {
   const [segundos, setSegundos] = useState(0);
   const refCorreo = useRef(null);
   const refClave = useRef(null);
+  const refAviso = useRef(null);
   const idErrorCorreo = `${id}-correo-error`;
   const idErrorClave = `${id}-clave-error`;
   const bloqueado = segundos > 0;
@@ -120,11 +121,14 @@ export default function FormularioIngreso() {
     return () => clearInterval(intervalo);
   }, [bloqueado]);
 
-  // Manda el foco al primer campo con error, si hay alguno. Complejidad: O(1).
-  function enfocarPrimerError({ correo, clave }) {
-    if (correo) return refCorreo.current?.focus();
-    if (clave) refClave.current?.focus();
-  }
+  // Con los mensajes ya pintados, manda el foco al primer campo con error o,
+  // si el fallo no es de un campo, al aviso general (el botón deshabilitado lo
+  // habría perdido). Complejidad: O(1).
+  useEffect(() => {
+    if (faltan.correo || camposApi.correo) return refCorreo.current.focus();
+    if (faltan.clave || camposApi.clave) return refClave.current.focus();
+    if (fallo) refAviso.current?.focus();
+  }, [faltan, camposApi, fallo]);
 
   // Guarda en el estado lo que falló para mostrarlo. Complejidad: O(1).
   function mostrarError(error) {
@@ -133,11 +137,10 @@ export default function FormularioIngreso() {
     setTextoFallo(resultado.texto);
     setCamposApi(resultado.campos ?? {});
     setSegundos(resultado.segundos ?? 0);
-    enfocarPrimerError(resultado.campos ?? {});
   }
 
-  // Si falta un dato, lo marca y manda el foco al primer campo con error.
-  // Si no falta ninguno, envía los datos; con «Reintentar» reenvía los mismos.
+  // Si falta un dato, lo marca. Si no falta ninguno, envía los datos; con
+  // «Reintentar» reenvía los mismos.
   // Complejidad: O(1).
   async function enviar(evento) {
     evento.preventDefault();
@@ -146,7 +149,7 @@ export default function FormularioIngreso() {
     setCamposApi({});
     const sinDatos = { correo: !correo.trim(), clave: !clave };
     setFaltan(sinDatos);
-    if (sinDatos.correo || sinDatos.clave) return enfocarPrimerError(sinDatos);
+    if (sinDatos.correo || sinDatos.clave) return;
     setEnviando(true);
     try {
       const respuesta = await consultar("/sesion", {
@@ -166,6 +169,7 @@ export default function FormularioIngreso() {
       <form className="formulario-ingreso-form" noValidate onSubmit={enviar}>
         {aviso && (
           <AvisoFormulario
+            ref={refAviso}
             key={fallo ?? "faltan"}
             titulo={aviso.titulo}
             texto={aviso.texto}
