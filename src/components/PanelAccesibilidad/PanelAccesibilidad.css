@@ -14,6 +14,7 @@
   color: var(--texto-principal);
 }
 .panel-accesibilidad::backdrop {
+  /* Figma (estimado): negro al 60 %, sin variable */
   background: rgb(0 0 0 / 0.6);
 }
 
