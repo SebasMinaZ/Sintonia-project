@@ -1,8 +1,8 @@
 import "./AvisoFormulario.css";
 
 // Aviso de un formulario (errores de campos, credenciales, conexión…).
-// Se anuncia a lectores de pantalla con role="alert"; el texto lleva
-// aria-live="off" para que una cuenta regresiva no se repita cada segundo.
+// Se anuncia a lectores de pantalla con role="alert"; si hay título, el texto
+// lleva aria-live="off" para que una cuenta regresiva no se repita cada segundo.
 // Ícono oficial public/iconos/alert.svg, dentro del JSX para heredar
 // currentColor. Complejidad: O(1).
 export default function AvisoFormulario({ titulo, texto }) {
@@ -28,7 +28,10 @@ export default function AvisoFormulario({ titulo, texto }) {
         {titulo && (
           <p className="aviso-formulario-titulo cuerpo-p-fuerte">{titulo}</p>
         )}
-        <p className="aviso-formulario-texto cuerpo-p" aria-live="off">
+        <p
+          className="aviso-formulario-texto cuerpo-p"
+          aria-live={titulo ? "off" : undefined}
+        >
           {texto}
         </p>
       </div>

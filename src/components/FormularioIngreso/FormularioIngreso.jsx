@@ -22,8 +22,8 @@ function mensajesPorCampo(error) {
   };
 }
 
-// Decide qué mostrar según lo que falló. La API manda 422 con "campos" (un
-// mensaje por campo); lo demás se muestra en un aviso. Complejidad: O(1).
+// Decide qué mostrar según lo que falló. Todo fallo lleva aviso; un 422 trae
+// además "campos" (un mensaje por campo). Complejidad: O(1).
 function clasificarError(error, erroresApi) {
   if (error.sinRed) return { fallo: "conexion" };
   if (error.codigo === "credenciales_invalidas")
@@ -31,11 +31,10 @@ function clasificarError(error, erroresApi) {
   if (error.codigo === "demasiadas_peticiones") {
     return { fallo: "demasiados", segundos: error.reintentarEn };
   }
-  const campos = mensajesPorCampo(error);
-  if (campos.correo || campos.clave) return { campos };
   return {
     fallo: "texto",
     texto: erroresApi[error.codigo] ?? erroresApi.generico,
+    campos: mensajesPorCampo(error),
   };
 }
 
@@ -74,8 +73,8 @@ function atributosError(mensaje, idMensaje) {
 // Ícono oficial public/iconos/check.svg y rueda de carga (vector del Figma
 // «Ingreso · cargando»), dentro del JSX para heredar currentColor.
 // Formulario de ingreso: valida en el cliente, envía POST /sesion y, si entra,
-// guarda el usuario y vuelve al inicio. El mensaje de cada campo lleva
-// role="alert": con un 422 no hay aviso general y así también se anuncia.
+// guarda el usuario y vuelve al inicio. Solo el aviso general se anuncia; el
+// mensaje de cada campo se lee con el foco (aria-describedby).
 // Complejidad: O(1).
 export default function FormularioIngreso() {
   const id = useId();
@@ -181,7 +180,6 @@ export default function FormularioIngreso() {
           {errorCorreo && (
             <p
               id={idErrorCorreo}
-              role="alert"
               className="formulario-ingreso-error detalle-nota"
             >
               {errorCorreo}
@@ -201,7 +199,6 @@ export default function FormularioIngreso() {
           {errorClave && (
             <p
               id={idErrorClave}
-              role="alert"
               className="formulario-ingreso-error detalle-nota"
             >
               {errorClave}

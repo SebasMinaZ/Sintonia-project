@@ -9,6 +9,7 @@
   /* Figma (estimado): 6px, sin variable */
   padding-top: 6px;
   color: var(--estado-error);
+  overflow-wrap: anywhere;
 }
 
 /* Casilla (solo visual) y enlace de recuperación */
