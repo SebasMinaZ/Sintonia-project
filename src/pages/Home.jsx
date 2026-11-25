@@ -18,7 +18,7 @@ export default function Home() {
   useTituloPagina(paginas.inicioPublico.seo.titulo);
   const { datos } = useRecurso("/generos");
   const generos = datos?.datos ?? [];
-  const albumes = useAlbumesDestacados(generos);
+  const { albumes } = useAlbumesDestacados(generos);
   const { detalle, setDetalle } = useDetalle();
 
   function abrirAlbum(album) {
