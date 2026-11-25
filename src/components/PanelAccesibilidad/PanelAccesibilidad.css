@@ -155,9 +155,17 @@
 /* Escritorio (Figma): panel de 360px bajo el botón, sin oscurecer el fondo */
 @media (min-width: 641px) {
   .panel-accesibilidad {
-    /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón */
-    inset: var(--panel-arriba, 80px) var(--panel-derecha, 40px) auto auto;
-    width: 360px;
+    /* El ancho nunca supera la pantalla menos un margen a cada lado */
+    --panel-ancho: min(360px, calc(100% - 2 * var(--espacio-4)));
+    /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón;
+       el tope de la derecha impide que el panel pase del borde izquierdo */
+    inset: var(--panel-arriba, 80px)
+      min(
+        var(--panel-derecha, 40px),
+        calc(100% - var(--panel-ancho) - var(--espacio-4))
+      )
+      auto auto;
+    width: var(--panel-ancho);
     max-height: calc(100dvh - var(--panel-arriba, 80px) - var(--espacio-4));
     margin: 0;
     padding: var(--espacio-6);
