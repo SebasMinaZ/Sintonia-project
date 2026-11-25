@@ -108,7 +108,7 @@ src/
 - Estados de carga (esqueletos) y error con «Reintentar» en el Catálogo y en el detalle de álbum; el Catálogo tiene además estado vacío.
 - Detalle de álbum con título y descripción propios; un álbum inexistente muestra «No encontrado» con el botón para volver al catálogo.
 - Ingreso con validación de campos obligatorios, botón «Ingresando…» y mensajes para credenciales incorrectas, demasiados intentos (con cuenta regresiva) y falta de conexión.
-- Sesión conservada al recargar, menú de cuenta, y cierre de sesión. Si la sesión vence, al volver a la pestaña la aplicación lleva a `/ingresar`. El token no se guarda en `localStorage` ni en el estado.
+- Sesión conservada al recargar, menú de cuenta y cierre de sesión. Si la sesión vence, al volver a la pestaña la aplicación lleva a `/ingresar`. El token no se guarda en `localStorage` ni en el estado.
 
 ## Equivalencias Next.js → React
 
