@@ -120,6 +120,12 @@ export default function FormularioIngreso() {
     return () => clearInterval(intervalo);
   }, [bloqueado]);
 
+  // Manda el foco al primer campo con error, si hay alguno. Complejidad: O(1).
+  function enfocarPrimerError({ correo, clave }) {
+    if (correo) return refCorreo.current.focus();
+    if (clave) refClave.current.focus();
+  }
+
   // Guarda en el estado lo que falló para mostrarlo. Complejidad: O(1).
   function mostrarError(error) {
     const resultado = clasificarError(error, textos.errores);
@@ -127,6 +133,7 @@ export default function FormularioIngreso() {
     setTextoFallo(resultado.texto);
     setCamposApi(resultado.campos ?? {});
     setSegundos(resultado.segundos ?? 0);
+    enfocarPrimerError(resultado.campos ?? {});
   }
 
   // Si falta un dato, lo marca y manda el foco al primer campo con error.
@@ -139,8 +146,7 @@ export default function FormularioIngreso() {
     setCamposApi({});
     const sinDatos = { correo: !correo.trim(), clave: !clave };
     setFaltan(sinDatos);
-    if (sinDatos.correo) return refCorreo.current.focus();
-    if (sinDatos.clave) return refClave.current.focus();
+    if (sinDatos.correo || sinDatos.clave) return enfocarPrimerError(sinDatos);
     setEnviando(true);
     try {
       const respuesta = await consultar("/sesion", {
