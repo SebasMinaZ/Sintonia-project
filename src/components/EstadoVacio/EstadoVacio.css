@@ -1,0 +1,4 @@
+/* Mismo estilo del bloque vacío del Catálogo: título y texto con clases tipográficas */
+.estado-vacio {
+  overflow-wrap: anywhere;
+}

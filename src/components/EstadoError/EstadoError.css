@@ -1,0 +1,37 @@
+/* Figma: «Ingreso · error de conexión» (aviso + botón «Reintentar») */
+.estado-error {
+  display: grid;
+  gap: var(--espacio-4);
+  /* Figma: 400px de ancho del formulario, sin variable */
+  max-width: 400px;
+}
+.estado-error-aviso {
+  display: flex;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3) var(--espacio-4);
+  border: 1px solid var(--estado-error);
+  /* Figma: 12px, sin variable */
+  border-radius: 12px;
+  background: var(--estado-error-suave);
+}
+.estado-error-icono {
+  flex-shrink: 0;
+  color: var(--estado-error);
+}
+.estado-error-contenido {
+  display: grid;
+  gap: var(--espacio-1);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.estado-error-titulo {
+  color: var(--texto-principal);
+}
+.estado-error-descripcion {
+  color: var(--texto-secundario);
+}
+.estado-error-boton {
+  width: 100%;
+  /* Figma: 14px 28px, sin variable */
+  padding: 14px 28px;
+}

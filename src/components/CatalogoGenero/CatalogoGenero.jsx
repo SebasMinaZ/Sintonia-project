@@ -1,13 +1,47 @@
 import TarjetaArtista from "../TarjetaArtista/TarjetaArtista.jsx";
 import TarjetaAlbum from "../TarjetaAlbum/TarjetaAlbum.jsx";
 import ListaCanciones from "../ListaCanciones/ListaCanciones.jsx";
+import EstadoCarga from "../EstadoCarga/EstadoCarga.jsx";
+import EstadoError from "../EstadoError/EstadoError.jsx";
+import EstadoVacio from "../EstadoVacio/EstadoVacio.jsx";
 import { useTextos } from "../../hooks/useTextos.js";
 import { formatear } from "../../utils/formatear.js";
 import "./CatalogoGenero.css";
 
-// Detalle del género elegido: artistas, álbumes y canciones
-export default function CatalogoGenero({ genero }) {
-  const { catalogo } = useTextos().paginas;
+// Figma: una fila de 6 tarjetas de álbum
+const ESQUELETOS_ALBUMES = 6;
+
+// Detalle del género elegido: artistas, álbumes y canciones.
+// Mientras carga o si falla (salvo «no encontrado», que resuelve la página)
+// muestra el estado correspondiente.
+export default function CatalogoGenero({ genero, cargando, error, recargar }) {
+  const { paginas, estados, errores } = useTextos();
+  const { catalogo } = paginas;
+
+  if (cargando) {
+    return (
+      <section className="catalogo-seccion">
+        <EstadoCarga
+          etiqueta={estados.cargando.aria}
+          forma="album"
+          cantidad={ESQUELETOS_ALBUMES}
+          className="albumes-grid catalogo-albumes"
+        />
+      </section>
+    );
+  }
+  if (error) {
+    return (
+      <section className="catalogo-seccion">
+        <EstadoError
+          titulo={estados.error.titulo}
+          descripcion={errores[error.codigo] ?? estados.error.descripcion}
+          textoBoton={estados.error.botones.reintentar}
+          onReintentar={recargar}
+        />
+      </section>
+    );
+  }
 
   return (
     <>
@@ -47,10 +81,10 @@ export default function CatalogoGenero({ genero }) {
             ))}
           </div>
         ) : (
-          <div>
-            <p className="cuerpo-m-fuerte">{catalogo.vacio.titulo}</p>
-            <p className="cuerpo-p">{catalogo.vacio.texto}</p>
-          </div>
+          <EstadoVacio
+            titulo={catalogo.vacio.titulo}
+            texto={catalogo.vacio.texto}
+          />
         )}
       </section>
 
