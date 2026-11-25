@@ -1,5 +1,6 @@
 import { useId, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import AvisoFormulario from "../AvisoFormulario/AvisoFormulario.jsx";
 import Button from "../ui/Button.jsx";
 import Input from "../ui/Input.jsx";
 import Label from "../ui/Label.jsx";
@@ -9,8 +10,8 @@ import { useTextos } from "../../hooks/useTextos.js";
 import { consultar } from "../../services/api.js";
 import "./FormularioIngreso.css";
 
-// Íconos oficiales public/iconos/alert.svg y check.svg, dentro del JSX para
-// heredar currentColor.
+// Ícono oficial public/iconos/check.svg, dentro del JSX para heredar
+// currentColor.
 // Formulario de ingreso: valida en el cliente, envía POST /sesion y, si entra,
 // guarda el usuario y vuelve al inicio. Complejidad: O(1).
 export default function FormularioIngreso() {
@@ -21,6 +22,7 @@ export default function FormularioIngreso() {
   const { etiquetas, placeholders, enlaces, mensajes, botones } = formulario;
   const [correo, setCorreo] = useState("");
   const [clave, setClave] = useState("");
+  const [enviando, setEnviando] = useState(false);
   const [faltan, setFaltan] = useState({ correo: false, clave: false });
   const refCorreo = useRef(null);
   const refClave = useRef(null);
@@ -31,10 +33,12 @@ export default function FormularioIngreso() {
   // Si no falta ninguno, envía los datos. Complejidad: O(1).
   async function enviar(evento) {
     evento.preventDefault();
+    if (enviando) return;
     const sinDatos = { correo: !correo.trim(), clave: !clave };
     setFaltan(sinDatos);
     if (sinDatos.correo) return refCorreo.current.focus();
     if (sinDatos.clave) return refClave.current.focus();
+    setEnviando(true);
     try {
       const respuesta = await consultar("/sesion", {
         metodo: "POST",
@@ -45,6 +49,7 @@ export default function FormularioIngreso() {
     } catch (error) {
       // Provisional: la ficha 05 lo reemplaza con los errores de la API.
       console.error(error);
+      setEnviando(false);
     }
   }
 
@@ -52,32 +57,10 @@ export default function FormularioIngreso() {
     <div className="formulario-ingreso">
       <form className="formulario-ingreso-form" noValidate onSubmit={enviar}>
         {(faltan.correo || faltan.clave) && (
-          <div className="formulario-ingreso-aviso" role="alert">
-            <svg
-              className="formulario-ingreso-aviso-icono"
-              viewBox="0 0 18 18"
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M9 16.5C13.1421 16.5 16.5 13.1421 16.5 9C16.5 4.85786 13.1421 1.5 9 1.5C4.85786 1.5 1.5 4.85786 1.5 9C1.5 13.1421 4.85786 16.5 9 16.5Z" />
-              <path d="M9 6V9" />
-              <path d="M9 12H9.0075" />
-            </svg>
-            <div className="formulario-ingreso-aviso-contenido">
-              <p className="formulario-ingreso-aviso-titulo cuerpo-p-fuerte">
-                {errores.camposObligatorios.titulo}
-              </p>
-              <p className="formulario-ingreso-aviso-texto cuerpo-p">
-                {errores.camposObligatorios.texto}
-              </p>
-            </div>
-          </div>
+          <AvisoFormulario
+            titulo={errores.camposObligatorios.titulo}
+            texto={errores.camposObligatorios.texto}
+          />
         )}
         <div className="formulario-ingreso-campo">
           <Label htmlFor={`${id}-correo`}>{etiquetas.correo}</Label>
@@ -151,8 +134,10 @@ export default function FormularioIngreso() {
           type="submit"
           texto="cuerpo-m-fuerte"
           className="formulario-ingreso-boton"
+          disabled={enviando}
+          aria-busy={enviando}
         >
-          {botones.ingresar}
+          {enviando ? mensajes.ingresando : botones.ingresar}
         </Button>
       </form>
       <p className="formulario-ingreso-registro cuerpo-p">
