@@ -1,9 +1,11 @@
 import Button from "../ui/Button.jsx";
 import CollagePortadas from "../CollagePortadas/CollagePortadas.jsx";
+import { useSesion } from "../../hooks/useSesion.js";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./HeroSintonia.css";
 export default function HeroSintonia({ totalGeneros, portadas }) {
   const { hero, cifras } = useTextos().paginas.inicioPublico;
+  const { usuario } = useSesion();
   return (
     <section className="ancho-home hero-sintonia">
       <div className="texto-hero">
@@ -13,9 +15,12 @@ export default function HeroSintonia({ totalGeneros, portadas }) {
         <h1 className="titular-gigante">{hero.titulo}</h1>
         <p className="cuerpo-g">{hero.subtitulo}</p>
         <div className="grupo-botones">
-          <Button texto="cuerpo-m-fuerte" to="/registro">
-            {hero.botones.crearCuentaGratis}
-          </Button>
+          {/* Figma con sesión: queda solo «Explorar», con su estilo secundario */}
+          {!usuario && (
+            <Button texto="cuerpo-m-fuerte" to="/registro">
+              {hero.botones.crearCuentaGratis}
+            </Button>
+          )}
           <Button texto="cuerpo-m-fuerte" variante="secundario" to="/catalogo">
             {hero.botones.explorarCatalogo}
           </Button>
