@@ -4,6 +4,8 @@ import Marca from "../Marca/Marca.jsx";
 import Button from "../ui/Button.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
 import BotonAccesibilidad from "../BotonAccesibilidad/BotonAccesibilidad.jsx";
+import IconoBuscar from "../IconoBuscar/IconoBuscar.jsx";
+import { useSesion } from "../../hooks/useSesion.js";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./MenuMovil.css";
 
@@ -16,6 +18,7 @@ export default function MenuMovil({
   onAbrirAccesibilidad,
 }) {
   const { navbar, menuMovil } = useTextos();
+  const { usuario, cerrarSesion } = useSesion();
   const [abierto, setAbierto] = useState(false);
   const dialogo = useRef(null);
   const id = useId();
@@ -95,9 +98,27 @@ export default function MenuMovil({
 
         <nav className="panel-menu-enlaces" aria-label={navbar.aria.navegacion}>
           <NavLink className="cuerpo-m-fuerte" to="/" end>
+            {/* Figma: los íconos solo aparecen en el menú con sesión */}
+            {usuario && (
+              <svg
+                viewBox="0 0 20 20"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12.5 17.5V10.8333C12.5 10.6123 12.4122 10.4004 12.2559 10.2441C12.0996 10.0878 11.8877 10 11.6667 10H8.33333C8.11232 10 7.90036 10.0878 7.74408 10.2441C7.5878 10.4004 7.5 10.6123 7.5 10.8333V17.5" />
+                <path d="M2.5 8.33322C2.49994 8.09078 2.55278 7.85124 2.65482 7.63132C2.75687 7.4114 2.90566 7.21639 3.09083 7.05989L8.92417 2.06073C9.22499 1.80648 9.60613 1.66699 10 1.66699C10.3939 1.66699 10.775 1.80648 11.0758 2.06073L16.9092 7.05989C17.0943 7.21639 17.2431 7.4114 17.3452 7.63132C17.4472 7.85124 17.5001 8.09078 17.5 8.33322V15.8332C17.5 16.2753 17.3244 16.6992 17.0118 17.0117C16.6993 17.3243 16.2754 17.4999 15.8333 17.4999H4.16667C3.72464 17.4999 3.30072 17.3243 2.98816 17.0117C2.67559 16.6992 2.5 16.2753 2.5 15.8332V8.33322Z" />
+              </svg>
+            )}
             {menuMovil.enlaces.inicio}
           </NavLink>
           <NavLink className="cuerpo-m-fuerte" to="/catalogo">
+            {usuario && <IconoBuscar />}
             {menuMovil.enlaces.catalogo}
           </NavLink>
         </nav>
@@ -128,14 +149,47 @@ export default function MenuMovil({
           />
         </div>
 
-        <div className="panel-menu-acciones">
-          <Button to="/registro" texto="cuerpo-m-fuerte">
-            {menuMovil.botones.invitado.crearCuenta}
-          </Button>
-          <Button variante="secundario" to="/ingresar" texto="cuerpo-m-fuerte">
-            {menuMovil.botones.invitado.ingresar}
-          </Button>
-        </div>
+        {usuario ? (
+          <div className="panel-menu-cuenta">
+            <span
+              className="panel-menu-avatar detalle-nota-fuerte"
+              aria-hidden="true"
+            >
+              {usuario.iniciales}
+            </span>
+            <div className="panel-menu-persona">
+              {/* Figma: solo el primer nombre */}
+              <span className="cuerpo-m-fuerte">
+                {usuario.nombre.split(" ")[0]}
+              </span>
+              <span className="panel-menu-estado detalle-nota">
+                {menuMovil.secciones.cuenta}
+              </span>
+            </div>
+            <Button
+              variante="secundario"
+              onClick={() => {
+                setAbierto(false);
+                cerrarSesion();
+              }}
+            >
+              {menuMovil.botones.conSesion.cerrarSesion}
+            </Button>
+          </div>
+        ) : (
+          <div className="panel-menu-acciones">
+            <Button to="/registro" texto="cuerpo-m-fuerte">
+              {menuMovil.botones.invitado.crearCuenta}
+            </Button>
+            <Button
+              variante="secundario"
+              to="/ingresar"
+              texto="cuerpo-m-fuerte"
+            >
+              {menuMovil.botones.invitado.ingresar}
+            </Button>
+          </div>
+        )}
       </dialog>
     </>
   );

@@ -6,6 +6,9 @@ import MenuMovil from "../MenuMovil/MenuMovil.jsx";
 import SelectorIdioma from "../SelectorIdioma/SelectorIdioma.jsx";
 import BotonAccesibilidad from "../BotonAccesibilidad/BotonAccesibilidad.jsx";
 import PanelAccesibilidad from "../PanelAccesibilidad/PanelAccesibilidad.jsx";
+import MenuCuenta from "../MenuCuenta/MenuCuenta.jsx";
+import IconoBuscar from "../IconoBuscar/IconoBuscar.jsx";
+import { useSesion } from "../../hooks/useSesion.js";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./Navbar.css";
 export default function Navbar({
@@ -16,6 +19,7 @@ export default function Navbar({
   onCambiarIdioma,
 }) {
   const { navbar } = useTextos();
+  const { usuario } = useSesion();
   // Un solo panel, que se abre desde el Navbar o desde el menú móvil
   const [accesibilidad, setAccesibilidad] = useState(false);
   const botonAccesibilidad = useRef(null);
@@ -23,9 +27,19 @@ export default function Navbar({
     <header className="cabecera-home">
       <div className="ancho-home fila-cabecera">
         <Marca nombre={nombre} tipo={tipo} />
-        <Link className="ingreso-movil cuerpo-p-fuerte" to="/ingresar">
-          {navbar.botones.invitado.ingresar}
-        </Link>
+        {usuario ? (
+          <Link
+            className="buscar-movil"
+            to="/buscar"
+            aria-label={navbar.buscador.placeholder}
+          >
+            <IconoBuscar />
+          </Link>
+        ) : (
+          <Link className="ingreso-movil cuerpo-p-fuerte" to="/ingresar">
+            {navbar.botones.invitado.ingresar}
+          </Link>
+        )}
         <MenuMovil
           nombre={nombre}
           tipo={tipo}
@@ -53,12 +67,18 @@ export default function Navbar({
               onCambiar={onCambiarIdioma}
               etiqueta={navbar.aria.idioma}
             />
-            <Link className="ingresar-home cuerpo-p-fuerte" to="/ingresar">
-              {navbar.botones.invitado.ingresar}
-            </Link>
-            <Button to="/registro">
-              {navbar.botones.invitado.crearCuenta}
-            </Button>
+            {usuario ? (
+              <MenuCuenta />
+            ) : (
+              <>
+                <Link className="ingresar-home cuerpo-p-fuerte" to="/ingresar">
+                  {navbar.botones.invitado.ingresar}
+                </Link>
+                <Button to="/registro">
+                  {navbar.botones.invitado.crearCuenta}
+                </Button>
+              </>
+            )}
           </div>
         </nav>
       </div>

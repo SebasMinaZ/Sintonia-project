@@ -1,0 +1,68 @@
+.menu-cuenta {
+  position: relative;
+}
+/* Figma: círculo de 40 × 40 en el Navbar y en la cabecera del menú */
+.menu-cuenta-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio-completo);
+  background: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+}
+button.menu-cuenta-avatar:hover {
+  background: var(--marca-primario-hover);
+}
+
+/* Capa flotante bajo el avatar, alineada a su derecha (Figma: 272px) */
+.menu-cuenta-panel {
+  position: absolute;
+  top: calc(100% + var(--espacio-2));
+  right: 0;
+  z-index: 10;
+  width: 272px; /* Figma: 272px, sin variable */
+  max-width: calc(100vw - 2 * var(--espacio-4));
+  padding: var(--espacio-4) var(--espacio-2) var(--espacio-2);
+  border: 1px solid var(--borde-sutil);
+  border-radius: var(--radio-md);
+  background: var(--fondo-elevada);
+  box-shadow: var(--sombra-flotante);
+}
+.menu-cuenta-datos {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: 0 var(--espacio-2) var(--espacio-4);
+  border-bottom: 1px solid var(--borde-sutil);
+}
+.menu-cuenta-persona {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.menu-cuenta-correo {
+  color: var(--texto-secundario);
+}
+.menu-cuenta-salir {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  width: 100%;
+  min-height: 40px; /* Figma: 40px, sin variable */
+  margin-top: var(--espacio-1);
+  padding: var(--espacio-2);
+  border: 0;
+  border-radius: var(--radio-sm);
+  background: transparent;
+  color: var(--texto-principal);
+  text-align: left;
+}
+.menu-cuenta-salir:hover {
+  background: var(--fondo-sutil);
+}
+.menu-cuenta-salir svg {
+  flex-shrink: 0;
+}

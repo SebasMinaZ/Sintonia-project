@@ -1,8 +1,12 @@
 import Button from "../ui/Button.jsx";
+import { useSesion } from "../../hooks/useSesion.js";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./InvitacionRegistro.css";
 export default function InvitacionRegistro() {
   const { cta } = useTextos().paginas.inicioPublico;
+  const { usuario } = useSesion();
+  // Figma: con sesión no se invita a registrarse
+  if (usuario) return null;
   return (
     <section className="ancho-home registro-sintonia">
       <div>

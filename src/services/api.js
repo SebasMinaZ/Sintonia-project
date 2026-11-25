@@ -53,11 +53,13 @@ async function pedir(ruta, { signal, metodo = "GET", cuerpo } = {}) {
 
 // Las peticiones GET se piden una sola vez por ruta: quien llega después
 // recibe la misma promesa. Si falla, se borra para que «Reintentar» la repita.
-// La petición compartida no usa el signal de un solo llamador. O(1).
+// La petición compartida no usa el signal de un solo llamador. Las rutas de
+// /sesion nunca se guardan: su respuesta cambia al ingresar o salir. O(1).
 export function consultar(ruta, opciones = {}) {
   if (opciones.metodo && opciones.metodo !== "GET")
     return pedir(ruta, opciones);
-  if (simulacionActiva) return pedir(ruta, opciones);
+  if (simulacionActiva || ruta.startsWith("/sesion"))
+    return pedir(ruta, opciones);
   if (!cache.has(ruta)) {
     const peticion = pedir(ruta);
     peticion.catch(() => cache.delete(ruta));
