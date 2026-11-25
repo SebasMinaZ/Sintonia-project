@@ -2,11 +2,9 @@
 .tarjeta-album {
   min-width: 0;
   padding: var(--espacio-3);
-  border: 0;
   border-radius: var(--radio-lg);
   background: var(--fondo-superficie);
   color: var(--texto-principal);
-  text-align: left;
   transition:
     transform 180ms ease,
     background 180ms ease;
