@@ -1,0 +1,134 @@
+/* Figma: «4 · Iniciar sesión» (web 1440 × 900 y móvil 390 × 820) */
+/* Escritorio: columna del formulario (640px) y panel de presentación (800px) */
+.ingresar {
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  min-height: 100dvh;
+}
+.ingresar-columna {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: start;
+  /* Figma: 56px a los lados, sin variable */
+  padding: 56px;
+}
+.ingresar-contenido {
+  align-self: center;
+  width: 100%;
+  /* Figma: formulario de 400px de ancho, sin variable */
+  max-width: 400px;
+  padding-block: var(--espacio-8);
+}
+.ingresar-titulo {
+  padding-bottom: var(--espacio-6);
+  color: var(--texto-principal);
+}
+.ingresar-subtitulo {
+  /* Figma (estimado): 20px, sin variable */
+  padding-bottom: 20px;
+  color: var(--texto-secundario);
+}
+.ingresar-derechos {
+  color: var(--texto-terciario);
+}
+.ingresar-presentacion {
+  display: grid;
+  align-content: center;
+  padding: var(--espacio-16) 56px;
+  background: var(--fondo-superficie);
+}
+/* Figma: 4 portadas de 160px por fila, con 16px entre ellas */
+.ingresar-portadas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--espacio-4);
+  padding-bottom: var(--espacio-8);
+}
+.ingresar-portada {
+  width: 100%;
+  height: auto;
+  /* Figma: 20px, sin variable */
+  border-radius: 20px;
+}
+.ingresar-presentacion-titulo {
+  /* Figma (estimado): 36px, sin variable */
+  padding-bottom: 36px;
+  color: var(--texto-principal);
+}
+.ingresar-presentacion-texto {
+  color: var(--texto-secundario);
+}
+
+/* Móvil y tablet: las portadas pasan arriba, inclinadas y solapadas */
+@media (max-width: 999px) {
+  .ingresar {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .ingresar-presentacion {
+    order: -1;
+    padding: 0;
+    background: none;
+  }
+  .ingresar-columna {
+    grid-template-rows: auto;
+    /* Figma (estimado): 20px, sin variable */
+    gap: 20px;
+    width: 100%;
+    /* Figma: formulario de 400px con 24px a los lados, sin variable */
+    max-width: 448px;
+    margin-inline: auto;
+    padding: 0 var(--espacio-6) var(--espacio-12);
+  }
+  .ingresar-contenido {
+    padding-block: 0;
+  }
+  .ingresar-derechos,
+  .ingresar-presentacion-titulo,
+  .ingresar-presentacion-texto {
+    display: none;
+  }
+
+  /* Composición decorativa (aria-hidden) de 390 × 210 con las portadas por capas */
+  .ingresar-portadas {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    margin-inline: auto;
+    padding-bottom: 0;
+    /* Figma: 390 × 210, sin variable */
+    aspect-ratio: 390 / 210;
+  }
+  .ingresar-portada {
+    position: absolute;
+    transform-origin: top left;
+  }
+  /* Figma: centro de 150px (x 120, y 32), radio 18px, con sombra */
+  .ingresar-portada:nth-child(1) {
+    top: 15.24%;
+    left: 30.77%;
+    width: 38.46%;
+    border-radius: 12%;
+    box-shadow: var(--sombra-flotante);
+  }
+  /* Figma: izquierda de 96px (x 36, y 104), girada -10°, radio 14px */
+  .ingresar-portada:nth-child(2) {
+    top: 49.52%;
+    left: 9.23%;
+    width: 24.62%;
+    border-radius: 14.58%;
+    transform: rotate(-10deg);
+  }
+  /* Figma: derecha de 96px (x 262, y 48), girada 10°, radio 14px */
+  .ingresar-portada:nth-child(3) {
+    top: 22.86%;
+    left: 67.18%;
+    width: 24.62%;
+    border-radius: 14.58%;
+    transform: rotate(10deg);
+  }
+  .ingresar-portada:nth-child(n + 4) {
+    display: none;
+  }
+}
