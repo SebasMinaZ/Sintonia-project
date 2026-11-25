@@ -39,7 +39,7 @@
 /* Tarjetas de 200px repartidas a lo ancho del panel */
 @media (min-width: 1001px) {
   .catalogo-albumes {
-    grid-template-columns: repeat(6, 200px);
+    grid-template-columns: repeat(6, minmax(0, 200px));
     justify-content: space-between;
   }
 }
