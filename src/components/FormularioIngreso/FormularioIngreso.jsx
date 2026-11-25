@@ -10,8 +10,8 @@ import { useTextos } from "../../hooks/useTextos.js";
 import { consultar } from "../../services/api.js";
 import "./FormularioIngreso.css";
 
-// Ícono oficial public/iconos/check.svg, dentro del JSX para heredar
-// currentColor.
+// Ícono oficial public/iconos/check.svg y rueda de carga (vector del Figma
+// «Ingreso · cargando»), dentro del JSX para heredar currentColor.
 // Formulario de ingreso: valida en el cliente, envía POST /sesion y, si entra,
 // guarda el usuario y vuelve al inicio. Complejidad: O(1).
 export default function FormularioIngreso() {
@@ -137,6 +137,20 @@ export default function FormularioIngreso() {
           disabled={enviando}
           aria-busy={enviando}
         >
+          <svg
+            className="formulario-ingreso-rueda"
+            viewBox="176.5 624 20 20"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M193.25 634C193.243 635.425 192.785 636.81 191.942 637.959C191.099 639.107 189.914 639.96 188.558 640.394C187.201 640.828 185.741 640.822 184.388 640.376C183.035 639.93 181.858 639.068 181.025 637.912C180.192 636.757 179.745 635.367 179.75 633.943C179.755 632.518 180.21 631.132 181.051 629.981C181.892 628.831 183.075 627.977 184.431 627.54C185.787 627.103 187.246 627.107 188.6 627.55" />
+          </svg>
           {enviando ? mensajes.ingresando : botones.ingresar}
         </Button>
       </form>

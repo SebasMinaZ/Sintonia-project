@@ -1,4 +1,4 @@
-/* Figma: «4 · Iniciar sesión» y «Ingreso · campos obligatorios» */
+/* Figma: «4 · Iniciar sesión», «Ingreso · campos obligatorios» e «Ingreso · cargando» */
 .formulario-ingreso,
 .formulario-ingreso-form {
   display: grid;
@@ -76,4 +76,26 @@
   color: var(--texto-secundario);
   text-align: center;
   overflow-wrap: anywhere;
+}
+
+/* Cargando: el botón sigue verde, con opacidad y una rueda que gira */
+.formulario-ingreso-boton[aria-busy="true"]:disabled {
+  background: var(--marca-primario);
+  color: var(--texto-sobre-marca);
+  /* Figma: opacidad 0.8, sin variable */
+  opacity: 0.8;
+  cursor: progress;
+}
+.formulario-ingreso-rueda {
+  display: none;
+  flex-shrink: 0;
+  animation: formulario-ingreso-giro 0.8s linear infinite;
+}
+.formulario-ingreso-boton[aria-busy="true"] .formulario-ingreso-rueda {
+  display: block;
+}
+@keyframes formulario-ingreso-giro {
+  to {
+    transform: rotate(360deg);
+  }
 }
