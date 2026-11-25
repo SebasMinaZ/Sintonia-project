@@ -122,8 +122,8 @@ export default function FormularioIngreso() {
 
   // Manda el foco al primer campo con error, si hay alguno. Complejidad: O(1).
   function enfocarPrimerError({ correo, clave }) {
-    if (correo) return refCorreo.current.focus();
-    if (clave) refClave.current.focus();
+    if (correo) return refCorreo.current?.focus();
+    if (clave) refClave.current?.focus();
   }
 
   // Guarda en el estado lo que falló para mostrarlo. Complejidad: O(1).
