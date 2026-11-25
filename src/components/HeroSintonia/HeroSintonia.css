@@ -15,10 +15,14 @@
   background: var(--marca-suave);
   color: var(--marca-primario);
 }
+.hero-sintonia .texto-hero {
+  container-type: inline-size;
+}
 .hero-sintonia h1 {
   margin: var(--espacio-6) 0;
   /* Figma: 40px móvil · 120px escritorio */
-  font-size: clamp(2.5rem, 0.6429rem + 7.619vw, 7.5rem);
+  /* 17.35cqi: tope para que «música» quepa en la columna (692px → 120px) */
+  font-size: clamp(2.5rem, min(0.6429rem + 7.619vw, 17.35cqi), 7.5rem);
 }
 /* Los botones conservan su propio alto (52 y 54px en Figma) */
 .hero-sintonia .grupo-botones {
