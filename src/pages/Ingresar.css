@@ -72,7 +72,8 @@
   }
   .ingresar-columna {
     grid-template-rows: auto;
-    gap: 20px; /* Figma (estimado): 20px, sin variable */
+    /* Figma (estimado): 20px, sin variable */
+    gap: 20px;
     width: 100%;
     /* Figma: formulario de 400px con 24px a los lados, sin variable */
     max-width: 448px;
