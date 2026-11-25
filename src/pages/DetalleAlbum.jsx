@@ -21,6 +21,7 @@ function tituloSinAlbum(error, noExiste, textosAlbum, estados) {
 }
 
 // Ruta /albumes/:id. Solo compone: pide GET /albumes/:id y reparte los datos.
+// Complejidad: O(1).
 export default function DetalleAlbum() {
   const { id } = useParams();
   const { paginas, estados, errores } = useTextos();

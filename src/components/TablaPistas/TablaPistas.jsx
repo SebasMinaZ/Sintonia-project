@@ -14,7 +14,7 @@ export default function TablaPistas({ pistas }) {
 
   return (
     <table className="tabla-pistas">
-      <thead>
+      <thead className="solo-lectores">
         <tr>
           <th scope="col" className="tabla-pistas-numero detalle-etiqueta">
             {etiquetas.numero}

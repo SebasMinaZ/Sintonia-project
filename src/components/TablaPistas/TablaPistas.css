@@ -29,15 +29,29 @@
   border-radius: 0 var(--radio-md) var(--radio-md) 0;
 }
 
-/* Encabezado */
+/* Encabezado: lleva .solo-lectores (global) y solo se muestra a partir de 641px */
+@media (min-width: 641px) {
+  .tabla-pistas thead.solo-lectores {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip-path: none;
+    white-space: normal;
+  }
+}
 .tabla-pistas th {
   padding-top: 0;
+  /* Figma: 1px, sin variable */
   border-bottom: 1px solid var(--borde-sutil);
   color: var(--texto-terciario);
   font-weight: 600;
 }
 .tabla-pistas th.tabla-pistas-duracion svg {
   display: inline-block;
+  /* Figma: el ícono queda 18px de hueco + 16px a la izquierda de los tiempos, sin variable */
+  margin-right: calc(var(--espacio-4) + 18px);
   vertical-align: middle;
 }
 
@@ -80,13 +94,6 @@
 @media (max-width: 640px) {
   .tabla-pistas {
     border-spacing: 0 14px; /* Figma: 14px, sin variable */
-  }
-  .tabla-pistas thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
   }
   .tabla-pistas .tabla-pistas-numero,
   .tabla-pistas .tabla-pistas-reproducciones,

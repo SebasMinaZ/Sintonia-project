@@ -24,6 +24,7 @@
 /* Escritorio: 5 tarjetas de 200px repartidas a lo ancho */
 @media (min-width: 1001px) {
   .mas-del-artista-lista {
+    /* Figma: tarjetas de 200px, sin variable */
     grid-template-columns: repeat(5, minmax(0, 200px));
     justify-content: space-between;
   }
