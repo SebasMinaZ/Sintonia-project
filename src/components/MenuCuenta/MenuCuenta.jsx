@@ -13,8 +13,8 @@ export default function MenuCuenta() {
   const boton = useRef(null);
   const id = useId();
 
-  // Al cerrar, el foco vuelve al botón; si el clic fue en otro control, ese
-  // control conserva el foco. Complejidad: O(1) por evento.
+  // Al cerrar, el foco vuelve al botón sin desplazar la página; si el clic fue
+  // en otro control, ese control conserva el foco. Complejidad: O(1) por evento.
   useEffect(() => {
     if (!abierto) return;
     const alPulsarTecla = (evento) => {
@@ -26,8 +26,9 @@ export default function MenuCuenta() {
       if (contenedor.current.contains(evento.target)) return;
       setAbierto(false);
       const foco = document.activeElement;
-      if (foco === document.body || contenedor.current.contains(foco)) {
-        boton.current.focus();
+      // tabIndex negativo: body o <main>, es decir, ningún control tomó el foco
+      if (foco.tabIndex < 0 || contenedor.current.contains(foco)) {
+        boton.current.focus({ preventScroll: true });
       }
     };
     document.addEventListener("keydown", alPulsarTecla);

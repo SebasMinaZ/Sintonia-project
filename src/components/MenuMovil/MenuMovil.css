@@ -103,6 +103,7 @@ html:has(.panel-menu[open]) {
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  /* Figma: 40px, sin variable */
   width: 40px;
   height: 40px;
   border-radius: var(--radio-completo);
