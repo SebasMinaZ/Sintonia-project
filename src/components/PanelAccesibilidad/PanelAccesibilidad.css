@@ -4,9 +4,10 @@
 .panel-accesibilidad {
   width: 100%;
   max-width: none;
-  max-height: 90dvh;
+  /* En %, no en dvh: así el tope se respeta con el zoom del tamaño de texto */
+  max-height: 90%;
   margin: auto 0 0;
-  padding: var(--espacio-8) var(--espacio-6) var(--espacio-6);
+  padding: 0 var(--espacio-6) var(--espacio-6);
   overflow-y: auto;
   border: 0;
   border-radius: var(--radio-xl) var(--radio-xl) 0 0;
@@ -18,11 +19,17 @@
   background: rgb(0 0 0 / 0.6);
 }
 
+/* La cabecera queda fija arriba mientras el contenido se desplaza */
 .panel-accesibilidad-cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--espacio-6);
+  padding-top: var(--espacio-8);
+  background: var(--fondo-elevada);
 }
 .cerrar-accesibilidad {
   display: grid;
@@ -167,15 +174,18 @@
       )
       auto auto;
     width: var(--panel-ancho);
-    max-height: calc(100dvh - var(--panel-arriba, 80px) - var(--espacio-4));
+    max-height: calc(100% - var(--panel-arriba, 80px) - var(--espacio-4));
     margin: 0;
-    padding: var(--espacio-6);
+    padding: 0 var(--espacio-6) var(--espacio-6);
     border: 1px solid var(--borde-sutil);
     border-radius: var(--radio-lg);
     box-shadow: var(--sombra-tarjeta);
   }
   .panel-accesibilidad::backdrop {
     background: transparent;
+  }
+  .panel-accesibilidad-cabecera {
+    padding-top: var(--espacio-6);
   }
   /* Figma escritorio: interlíneas de 20px (ayuda y pie) y 16px (nota) */
   .lista-interruptores .cuerpo-m {
@@ -198,4 +208,9 @@
   .pie-accesibilidad {
     flex-wrap: wrap;
   }
+}
+
+/* Con el tamaño de texto cambiado (zoom en <html>) tampoco cabe en una fila */
+html[style*="zoom"] .pie-accesibilidad {
+  flex-wrap: wrap;
 }
