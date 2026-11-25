@@ -20,3 +20,10 @@
     background: none;
   }
 }
+
+/* Carga: tarjetas de 200px que ocupan el lugar de «Más de {artista}» */
+.detalle-album-esqueletos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
+  gap: var(--espacio-4);
+}
