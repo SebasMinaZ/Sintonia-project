@@ -1,1 +1,61 @@
-/* Esqueletos de carga: los estilos llegan en la etapa 2 */
+/* Esqueletos con la forma y el tamaño de TarjetaGenero y TarjetaAlbum */
+.estado-carga-esqueleto {
+  display: block;
+  min-width: 0;
+  background: var(--fondo-sutil);
+  animation: estado-carga-pulso 1.4s ease-in-out infinite;
+}
+@keyframes estado-carga-pulso {
+  50% {
+    opacity: 0.5;
+  }
+}
+/* Sin animación cuando la persona activa «reducir movimiento» */
+html.a11y-movimiento .estado-carga-esqueleto {
+  animation: none;
+}
+
+/* Género: 263 × 132 en escritorio y 173 × 96 en móvil (la cuadrícula da el ancho) */
+.estado-carga-genero {
+  /* Figma: 132px, sin variable */
+  min-height: 132px;
+  /* Figma: 14px, sin variable */
+  border-radius: 14px;
+}
+
+/* Álbum: tarjeta de 200 × 258; la portada es cuadrada y debajo van dos líneas */
+.estado-carga-album {
+  padding: var(--espacio-3);
+  border-radius: var(--radio-lg);
+  background: var(--fondo-superficie);
+}
+.estado-carga-portada,
+.estado-carga-linea {
+  display: block;
+  background: var(--fondo-sutil);
+}
+.estado-carga-portada {
+  aspect-ratio: 1;
+  margin-bottom: var(--espacio-3);
+  /* Figma: 12px, sin variable */
+  border-radius: 12px;
+}
+/* Cada línea ocupa el alto de su texto: 24px el título y 20px el artista */
+.estado-carga-linea {
+  height: 1rem;
+  margin-block: var(--espacio-1);
+  border-radius: var(--radio-sm);
+}
+.estado-carga-linea-corta {
+  width: 60%;
+  height: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .estado-carga-genero {
+    /* Figma: 96px, sin variable */
+    min-height: 96px;
+    /* Figma: 12px, sin variable */
+    border-radius: 12px;
+  }
+}

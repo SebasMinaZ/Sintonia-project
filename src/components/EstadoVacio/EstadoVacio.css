@@ -1,1 +1,4 @@
-/* Estado vacío: los estilos llegan en la etapa 2 */
+/* Mismo estilo del bloque vacío del Catálogo: título y texto con clases tipográficas */
+.estado-vacio {
+  overflow-wrap: anywhere;
+}
