@@ -1,1 +1,108 @@
-/* Estilos en la etapa 2 */
+/* Tabla de pistas: <table> semántica con columnas fijas a la derecha y título flexible */
+.tabla-pistas {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 2px; /* Figma: 2px entre filas, sin variable */
+}
+.tabla-pistas th,
+.tabla-pistas td {
+  padding: var(--espacio-2) 0 var(--espacio-2) var(--espacio-4);
+  text-align: left;
+  vertical-align: middle;
+}
+.tabla-pistas th:first-child,
+.tabla-pistas td:first-child {
+  padding-left: var(--espacio-4);
+}
+.tabla-pistas th:last-child,
+.tabla-pistas td:last-child {
+  padding-right: var(--espacio-4);
+}
+.tabla-pistas td {
+  color: var(--texto-secundario);
+}
+.tabla-pistas td:first-child {
+  border-radius: var(--radio-md) 0 0 var(--radio-md);
+}
+.tabla-pistas td:last-child {
+  border-radius: 0 var(--radio-md) var(--radio-md) 0;
+}
+
+/* Encabezado */
+.tabla-pistas th {
+  padding-top: 0;
+  border-bottom: 1px solid var(--borde-sutil);
+  color: var(--texto-terciario);
+  font-weight: 600;
+}
+.tabla-pistas th.tabla-pistas-duracion svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Columnas: el ancho incluye el relleno (16px del hueco + contenido) */
+.tabla-pistas .tabla-pistas-numero {
+  width: 40px; /* Figma: 24px de contenido + 16px de relleno */
+  text-align: center;
+}
+.tabla-pistas .tabla-pistas-reproducciones {
+  width: 236px; /* Figma: 220px de contenido + 16px de relleno */
+}
+.tabla-pistas .tabla-pistas-duracion {
+  width: 76px; /* Figma: 44px de contenido + 32px de relleno */
+  text-align: right;
+}
+
+/* Celda del título: portada de 40px + título y artista */
+.tabla-pistas-celda-titulo {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr); /* Figma: 40px, sin variable */
+  align-items: center;
+  gap: var(--espacio-4);
+}
+.tabla-pistas-portada {
+  width: 40px; /* Figma: 40px, sin variable */
+  height: 40px; /* Figma: 40px, sin variable */
+  border-radius: var(--radio-sm);
+}
+.tabla-pistas-datos {
+  display: grid;
+  gap: 2px; /* Figma: 2px, sin variable */
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.tabla-pistas-datos > :first-child {
+  color: var(--texto-principal);
+}
+
+/* Móvil: solo portada, título y artista; el encabezado queda para lectores de pantalla */
+@media (max-width: 640px) {
+  .tabla-pistas {
+    border-spacing: 0 14px; /* Figma: 14px, sin variable */
+  }
+  .tabla-pistas thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .tabla-pistas .tabla-pistas-numero,
+  .tabla-pistas .tabla-pistas-reproducciones,
+  .tabla-pistas .tabla-pistas-duracion {
+    display: none;
+  }
+  .tabla-pistas td {
+    padding: 0;
+  }
+  .tabla-pistas-celda-titulo {
+    grid-template-columns: 48px minmax(0, 1fr); /* Figma: 48px, sin variable */
+    gap: var(--espacio-3);
+  }
+  .tabla-pistas-portada {
+    width: 48px; /* Figma: 48px, sin variable */
+    height: 48px; /* Figma: 48px, sin variable */
+    border-radius: 8px; /* Figma: 8px, sin variable */
+  }
+}

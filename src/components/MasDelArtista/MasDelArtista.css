@@ -1,1 +1,30 @@
-/* Estilos en la etapa 2 */
+.mas-del-artista .titulo-seccion {
+  margin-bottom: 14px; /* Figma: 14px, sin variable */
+}
+.mas-del-artista-enlace {
+  color: var(--texto-secundario);
+}
+.mas-del-artista-enlace:hover {
+  color: var(--texto-principal);
+}
+
+/* Móvil: 2 columnas (el diseño móvil no muestra esta sección) */
+.mas-del-artista-lista {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espacio-3);
+}
+/* Entre 641 y 1000px no hay diseño en Figma */
+@media (min-width: 641px) {
+  .mas-del-artista-lista {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--espacio-4);
+  }
+}
+/* Escritorio: 5 tarjetas de 200px repartidas a lo ancho */
+@media (min-width: 1001px) {
+  .mas-del-artista-lista {
+    grid-template-columns: repeat(5, minmax(0, 200px));
+    justify-content: space-between;
+  }
+}
