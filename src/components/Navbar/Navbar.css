@@ -35,7 +35,8 @@
   padding-block: 0;
   padding-inline: 20px;
 }
-.ingreso-movil {
+.ingreso-movil,
+.buscar-movil {
   display: none;
 }
 
@@ -72,6 +73,17 @@
     margin-left: auto;
     margin-right: var(--espacio-1);
     padding: 10px 20px; /* Figma: 96 × 40 con texto de 56 × 20 */
+    color: var(--texto-principal);
+  }
+  /* Con sesión, Figma cambia "Ingresar" por la lupa: zona táctil de 44 × 44 */
+  .buscar-movil {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    margin-right: var(--espacio-1);
     color: var(--texto-principal);
   }
 }

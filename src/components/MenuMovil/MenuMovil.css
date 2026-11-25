@@ -52,6 +52,9 @@ html:has(.panel-menu[open]) {
   padding: var(--espacio-4);
 }
 .panel-menu-enlaces a {
+  display: flex;
+  align-items: center;
+  gap: 14px; /* Figma: 14px, sin variable */
   padding: var(--espacio-4) var(--espacio-3);
   color: var(--texto-secundario);
 }
@@ -85,6 +88,42 @@ html:has(.panel-menu[open]) {
 .panel-menu-acciones .boton {
   justify-content: center;
   min-height: 54px;
+}
+
+/* Figma: bloque de cuenta al fondo del menú con sesión */
+.panel-menu-cuenta {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-3);
+  padding: var(--espacio-4) var(--espacio-4) var(--espacio-6);
+  border-top: 1px solid var(--borde-sutil);
+  background: var(--fondo-superficie);
+}
+.panel-menu-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radio-completo);
+  background: var(--marca-secundario);
+  color: var(--fijo-blanco);
+}
+.panel-menu-persona {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.panel-menu-estado {
+  color: var(--texto-secundario);
+}
+.panel-menu-cuenta .boton {
+  flex-shrink: 0;
+  min-height: 42px; /* Figma: 42px, sin variable */
+  padding-block: 0;
+  padding-inline: 20px; /* Figma: 20px, sin variable */
 }
 
 @media (max-width: 640px) {

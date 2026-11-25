@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { useSesion } from "../../hooks/useSesion.js";
 import { useTextos } from "../../hooks/useTextos.js";
+import "./MenuCuenta.css";
 
 // Avatar con las iniciales que abre el menú de la cuenta (solo con sesión).
 // Se cierra con Escape o con un clic fuera. Complejidad: O(1).

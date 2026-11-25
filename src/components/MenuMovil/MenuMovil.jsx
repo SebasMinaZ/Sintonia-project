@@ -166,7 +166,7 @@ export default function MenuMovil({
         {usuario ? (
           <div className="panel-menu-cuenta">
             <span
-              className="panel-menu-avatar cuerpo-p-fuerte"
+              className="panel-menu-avatar detalle-nota-fuerte"
               aria-hidden="true"
             >
               {usuario.iniciales}
