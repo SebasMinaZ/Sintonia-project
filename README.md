@@ -7,7 +7,7 @@ Aplicación web para explorar géneros musicales, artistas, álbumes y canciones
 
 ## Requisitos
 
-- Node.js 20.19 o posterior (rama 20), o Node.js 22.12 o posterior.
+- Node.js 22.22.0 o posterior (lo exige `react-router`).
 - npm.
 
 ## Instalación y ejecución
@@ -105,10 +105,10 @@ src/
 
 ### Sprint 2
 
-- Estados de carga (esqueletos), vacío y error con «Reintentar» en el Catálogo y en el detalle de álbum.
+- Estados de carga (esqueletos) y error con «Reintentar» en el Catálogo y en el detalle de álbum; el Catálogo tiene además estado vacío.
 - Detalle de álbum con título y descripción propios; un álbum inexistente muestra «No encontrado» con el botón para volver al catálogo.
 - Ingreso con validación de campos obligatorios, botón «Ingresando…» y mensajes para credenciales incorrectas, demasiados intentos (con cuenta regresiva) y falta de conexión.
-- Sesión conservada al recargar, menú de cuenta, cierre de sesión y aviso de sesión vencida (vuelve a `/ingresar`). El token no se guarda en `localStorage` ni en el estado.
+- Sesión conservada al recargar, menú de cuenta, y cierre de sesión. Si la sesión vence, al volver a la pestaña la aplicación lleva a `/ingresar`. El token no se guarda en `localStorage` ni en el estado.
 
 ## Equivalencias Next.js → React
 
@@ -149,7 +149,7 @@ La nota forma parte del dibujo, no es texto de la interfaz: no informa de nada n
 - **React + Vite y no Next.js:** los requisitos de Next.js se resuelven con las equivalencias de React de la tabla anterior.
 - **Peticiones:** cada `GET` se pide una sola vez por ruta y se reutiliza (excepto `/sesion` y cuando hay simulación activa). `GET /generos` se pide al arrancar y `GET /sesion` no bloquea el pintado.
 - **Álbumes destacados:** Figma muestra álbumes que no existen en la API. Se toman los 6 primeros elementos con `tipo: "album"` recorriendo los géneros de `GET /generos` con `GET /generos/:id`, como pide el criterio del Inicio.
-- **Destinos sin página:** `/artistas/:id`, `/albumes`, `/buscar`, `/recuperar-clave`, `/terminos`, `/accesibilidad` y las opciones de cuenta muestran «No encontrado».
+- **Destinos sin página:** `/artistas/:id`, `/albumes`, `/buscar`, `/recuperar-clave`, `/terminos` y `/accesibilidad` muestran «No encontrado».
 - **Género o álbum inexistente:** si la API responde 404 `no_encontrado`, se muestra la página «No encontrado».
 - **Casilla «Mantener la sesión iniciada»:** es solo visual; la API solo admite `correo` y `clave`.
 - **Título del Catálogo:** en escritorio «Catálogo musical» y en móvil «Catálogo», como en Figma; ambos textos vienen de la API.
