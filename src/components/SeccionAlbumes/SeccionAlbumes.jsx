@@ -3,7 +3,7 @@ import Flecha from "../Flecha/Flecha.jsx";
 import TarjetaAlbum from "../TarjetaAlbum/TarjetaAlbum.jsx";
 import { useTextos } from "../../hooks/useTextos.js";
 import "./SeccionAlbumes.css";
-export default function SeccionAlbumes({ albumes, onSeleccionar }) {
+export default function SeccionAlbumes({ albumes }) {
   const { destacados } = useTextos().paginas.inicioPublico;
   return (
     <section
@@ -24,7 +24,7 @@ export default function SeccionAlbumes({ albumes, onSeleccionar }) {
           <TarjetaAlbum
             key={album.id}
             album={album}
-            onSeleccionar={onSeleccionar}
+            to={`/albumes/${album.id}`}
           />
         ))}
       </div>
