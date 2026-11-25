@@ -50,6 +50,9 @@
   gap: 40px; /* Figma: 40px, sin variable */
   margin: var(--espacio-6) 0 0;
 }
+.cifras-sintonia dt {
+  white-space: nowrap;
+}
 .cifras-sintonia dd {
   margin: var(--espacio-1) 0 0;
   color: var(--texto-secundario);
