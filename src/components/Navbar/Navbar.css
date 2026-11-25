@@ -54,6 +54,15 @@
   }
 }
 
+/* Entre 641 y 700px las separaciones de 16px aún desbordan la cabecera */
+@media (max-width: 700px) {
+  .fila-cabecera,
+  .menu-home,
+  .acciones-home {
+    gap: var(--espacio-2);
+  }
+}
+
 @media (max-width: 640px) {
   .cabecera-home {
     min-height: 0;
