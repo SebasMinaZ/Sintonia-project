@@ -1,6 +1,6 @@
 # Uso de inteligencia artificial
 
-Durante el Sprint 1 se usó Claude (Anthropic) como tutor y apoyo de desarrollo. Cada respuesta se revisó contra las fuentes del proyecto (PDF de requisitos, contrato de la API, respuestas reales de la API y Figma) antes de incorporarla al código.
+Durante los Sprints 1 y 2 se usó Claude (Anthropic) como tutor y apoyo de desarrollo. Cada respuesta se revisó contra las fuentes del proyecto (PDF de requisitos, contrato de la API, respuestas reales de la API y Figma) antes de incorporarla al código.
 
 ## Entrada 1. Ubicación de los textos de estados y accesibilidad (respuesta incorrecta corregida)
 
@@ -47,3 +47,22 @@ Durante el Sprint 1 se usó Claude (Anthropic) como tutor y apoyo de desarrollo.
 - **Qué pasó:** tras mergear el PR del panel con «Squash and merge», se siguió trabajando en la misma rama y el PR siguiente mostraba conflictos _add/add_ en los mismos archivos.
 - **Explicación obtenida con la IA:** el squash crea en `main` un commit nuevo con el mismo contenido, pero Git no lo reconoce como el mismo cambio.
 - **Solución:** crear una rama nueva desde `main` actualizado (`fix/panel-accesibilidad`), traer solo los archivos del arreglo con `git checkout <rama> -- <archivos>` y abrir un PR limpio (#16). Lección: después de un squash, empezar una rama nueva.
+
+## Entrada 8. Inicio sin estilos a 1900 px (respuesta incorrecta corregida)
+
+- **Qué pasó:** en la ficha 01, tras aplicar `clamp()`, Inicio perdió estilos a 1900 px: el collage, la píldora de la etiqueta y las tarjetas de género.
+- **Qué respondió la IA:** la IA que supervisaba, sin ver el código, diagnosticó un error de sintaxis CSS (un comentario sin cerrar).
+- **Cómo se detectó el error:** el agente validó con postcss los 30 archivos CSS, comparó cada declaración con el commit anterior y comprobó en el navegador que Vite servía vacías `HeroSintonia.css` y `TarjetaGenero.css`, porque las leyó a mitad de escritura.
+- **Corrección:** se volvieron a cargar los archivos y, desde entonces, se guardan de forma atómica. Lección: comprobar con evidencia antes de aceptar un diagnóstico.
+
+## Entrada 9. Caché que rompía la sesión
+
+- **Qué pasó:** en la ficha 01 se añadió una caché en memoria para las peticiones GET de `api.js`, para acelerar la carga.
+- **Cómo se detectó el problema:** al empezar la ficha 06, el agente detectó que esa caché guardaría la respuesta de `GET /sesion`: nunca se detectaría la sesión vencida y, tras cerrar sesión, podría mostrarse el usuario anterior.
+- **Corrección:** se excluyeron de la caché las rutas `/sesion`. Lección: una optimización general puede romper requisitos posteriores.
+
+## Entrada 10. Scroll horizontal del Sprint 1 encontrado por el revisor
+
+- **Qué pasó:** en la ficha 01, el subagente revisor detectó scroll horizontal en `/catalogo` entre 1001 y unos 1300 px.
+- **Causa:** `repeat(6, 200px)` fijo en los álbumes destacados, presente desde el Sprint 1 sin que nadie lo hubiera visto.
+- **Corrección:** se cambió por `repeat(6, minmax(0, 200px))` y se midió a 1024, 1100 y 1440 px.

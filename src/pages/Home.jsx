@@ -12,7 +12,8 @@ const GENEROS_EN_INICIO = 8;
 
 export default function Home() {
   const { paginas } = useTextos();
-  useTituloPagina(paginas.inicioPublico.seo.titulo);
+  const { seo } = paginas.inicioPublico;
+  useTituloPagina(seo.titulo, seo.descripcion);
   const { datos } = useRecurso("/generos");
   const generos = datos?.datos ?? [];
   const { albumes } = useAlbumesDestacados(generos);

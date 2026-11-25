@@ -4,24 +4,35 @@
 .panel-accesibilidad {
   width: 100%;
   max-width: none;
-  max-height: 90dvh;
+  /* En %, no en dvh: así el tope se respeta con el zoom del tamaño de texto */
+  max-height: 90%;
   margin: auto 0 0;
-  padding: var(--espacio-8) var(--espacio-6) var(--espacio-6);
+  padding: 0 var(--espacio-6) var(--espacio-6);
   overflow-y: auto;
+  /* Al tabular, el foco no queda bajo la cabecera fija (botón de 40px) */
+  /* Figma: 40px, sin variable */
+  scroll-padding-top: calc(var(--espacio-8) + 40px + var(--espacio-6));
   border: 0;
   border-radius: var(--radio-xl) var(--radio-xl) 0 0;
   background: var(--fondo-elevada);
   color: var(--texto-principal);
 }
 .panel-accesibilidad::backdrop {
+  /* Figma (estimado): negro al 60 %, sin variable */
   background: rgb(0 0 0 / 0.6);
 }
 
+/* La cabecera queda fija arriba mientras el contenido se desplaza */
 .panel-accesibilidad-cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--espacio-6);
+  padding-top: var(--espacio-8);
+  background: var(--fondo-elevada);
 }
 .cerrar-accesibilidad {
   display: grid;
@@ -56,6 +67,7 @@
   border-radius: 8px;
   background: var(--fondo-sutil);
   color: var(--texto-principal);
+  /* Figma (estimado): 20px, sin variable */
   font-size: 20px;
 }
 .control-tamano button:disabled {
@@ -139,15 +151,37 @@
   background: var(--fondo-sutil);
 }
 
+/* Textos que son más pequeños en escritorio que en móvil */
+.lista-interruptores .cuerpo-m,
+.pie-accesibilidad .cuerpo-m-fuerte {
+  /* Figma: 16px móvil · 14px escritorio */
+  font-size: clamp(0.875rem, 1.0464rem - 0.1905vw, 1rem);
+}
+.panel-accesibilidad .nota-accesibilidad {
+  /* Figma: 14px móvil · 12px escritorio */
+  font-size: clamp(0.75rem, 0.9214rem - 0.1905vw, 0.875rem);
+}
+
 /* Escritorio (Figma): panel de 360px bajo el botón, sin oscurecer el fondo */
 @media (min-width: 641px) {
   .panel-accesibilidad {
-    /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón */
-    inset: var(--panel-arriba, 80px) var(--panel-derecha, 40px) auto auto;
-    width: 360px;
-    max-height: calc(100dvh - var(--panel-arriba, 80px) - var(--espacio-4));
+    /* El ancho nunca supera la pantalla menos un margen a cada lado */
+    /* Figma: 360px, sin variable */
+    --panel-ancho: min(360px, calc(100% - 2 * var(--espacio-4)));
+    /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón;
+       el tope de la derecha impide que el panel pase del borde izquierdo */
+    inset: var(--panel-arriba, 80px)
+      min(
+        var(--panel-derecha, 40px),
+        calc(100% - var(--panel-ancho) - var(--espacio-4))
+      )
+      auto auto;
+    width: var(--panel-ancho);
+    max-height: calc(100% - var(--panel-arriba, 80px) - var(--espacio-4));
     margin: 0;
-    padding: var(--espacio-6);
+    padding: 0 var(--espacio-6) var(--espacio-6);
+    /* Figma: 40px, sin variable */
+    scroll-padding-top: calc(2 * var(--espacio-6) + 40px);
     border: 1px solid var(--borde-sutil);
     border-radius: var(--radio-lg);
     box-shadow: var(--sombra-tarjeta);
@@ -155,21 +189,33 @@
   .panel-accesibilidad::backdrop {
     background: transparent;
   }
-  /* Figma: en escritorio la ayuda va a 14px, la nota a 12px y el pie a 14px */
-  .lista-interruptores .cuerpo-m {
-    font-size: 14px;
-    line-height: 20px;
+  .panel-accesibilidad-cabecera {
+    padding-top: var(--espacio-6);
   }
-  .nota-accesibilidad {
-    font-size: 12px;
-    line-height: 16px;
+  /* Figma escritorio: interlíneas de 20px (ayuda y pie) y 16px (nota) */
+  .lista-interruptores .cuerpo-m {
+    line-height: 1.4286;
+  }
+  .panel-accesibilidad .nota-accesibilidad {
+    line-height: 1.3333;
   }
   .pie-accesibilidad {
     gap: var(--espacio-1);
   }
   .pie-accesibilidad .cuerpo-m-fuerte {
-    font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4286;
     white-space: nowrap;
   }
+}
+
+/* Hasta 1000px el texto fluido no cabe en una fila: el botón pasa a la siguiente */
+@media (min-width: 641px) and (max-width: 1000px) {
+  .pie-accesibilidad {
+    flex-wrap: wrap;
+  }
+}
+
+/* Con el tamaño de texto cambiado (zoom en <html>) tampoco cabe en una fila */
+html[style*="zoom"] .pie-accesibilidad {
+  flex-wrap: wrap;
 }

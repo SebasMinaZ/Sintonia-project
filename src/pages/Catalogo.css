@@ -44,6 +44,13 @@
   }
 }
 
+/* Hasta 750px, 4 columnas no dan para «Instrumental»: se pasa a 3 */
+@media (max-width: 750px) {
+  .catalogo-generos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Móvil: sin panel y 8 géneros en 2 columnas */
 @media (max-width: 640px) {
   .catalogo {
