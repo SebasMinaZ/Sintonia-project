@@ -7,7 +7,7 @@ import "./MenuCuenta.css";
 // Se cierra con Escape o con un clic fuera. Complejidad: O(1).
 export default function MenuCuenta() {
   const { navbar } = useTextos();
-  const { usuario } = useSesion();
+  const { usuario, cerrarSesion } = useSesion();
   const [abierto, setAbierto] = useState(false);
   const contenedor = useRef(null);
   const boton = useRef(null);
@@ -70,6 +70,7 @@ export default function MenuCuenta() {
           onClick={() => {
             setAbierto(false);
             boton.current.focus();
+            cerrarSesion();
           }}
         >
           <svg

@@ -17,7 +17,7 @@ export default function MenuMovil({
   onAbrirAccesibilidad,
 }) {
   const { navbar, menuMovil } = useTextos();
-  const { usuario } = useSesion();
+  const { usuario, cerrarSesion } = useSesion();
   const [abierto, setAbierto] = useState(false);
   const dialogo = useRef(null);
   const id = useId();
@@ -180,7 +180,13 @@ export default function MenuMovil({
                 {menuMovil.secciones.cuenta}
               </span>
             </div>
-            <Button variante="secundario" onClick={() => setAbierto(false)}>
+            <Button
+              variante="secundario"
+              onClick={() => {
+                setAbierto(false);
+                cerrarSesion();
+              }}
+            >
               {menuMovil.botones.conSesion.cerrarSesion}
             </Button>
           </div>
