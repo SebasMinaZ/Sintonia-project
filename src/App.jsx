@@ -10,11 +10,12 @@ import NoEncontrado from "./pages/NoEncontrado.jsx";
 export default function App() {
   return (
     <Routes>
+      {/* Figma: el ingreso es una página completa, sin navbar ni footer */}
+      <Route path="ingresar" element={<Ingresar />} />
       <Route element={<LayoutPublico />}>
         <Route index element={<Home />} />
         <Route path="catalogo" element={<Catalogo />} />
         <Route path="albumes/:id" element={<DetalleAlbum />} />
-        <Route path="ingresar" element={<Ingresar />} />
         <Route
           path="registro"
           element={<PaginaProvisional pagina="registro" />}
