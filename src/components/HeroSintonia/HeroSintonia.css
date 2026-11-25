@@ -22,7 +22,7 @@
   margin: var(--espacio-6) 0;
   /* Figma: 40px móvil · 120px escritorio */
   /* Tope para que «música» quepa con holgura: 16.5cqi; el segundo término solo
-     actúa al llegar a la columna de 692px, para alcanzar los 120px */
+     actúa cerca de la columna de 692px (desde unos 685px), para llegar a 120px */
   /* Figma: columna de 692px − texto de 120px = 572px, sin variable */
   font-size: clamp(
     2.5rem,
