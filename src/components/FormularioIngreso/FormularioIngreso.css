@@ -81,6 +81,7 @@
   visibility: visible;
 }
 .formulario-ingreso-casilla input:focus-visible + .formulario-ingreso-marca {
+  /* Figma (estimado): 3px y 2px, sin variable */
   outline: 3px solid var(--marca-primario);
   outline-offset: 2px;
 }
