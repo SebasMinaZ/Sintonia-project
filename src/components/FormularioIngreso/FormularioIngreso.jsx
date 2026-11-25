@@ -74,7 +74,9 @@ function atributosError(mensaje, idMensaje) {
 // Ícono oficial public/iconos/check.svg y rueda de carga (vector del Figma
 // «Ingreso · cargando»), dentro del JSX para heredar currentColor.
 // Formulario de ingreso: valida en el cliente, envía POST /sesion y, si entra,
-// guarda el usuario y vuelve al inicio. Complejidad: O(1).
+// guarda el usuario y vuelve al inicio. El mensaje de cada campo lleva
+// role="alert": con un 422 no hay aviso general y así también se anuncia.
+// Complejidad: O(1).
 export default function FormularioIngreso() {
   const id = useId();
   const navegar = useNavigate();
@@ -179,6 +181,7 @@ export default function FormularioIngreso() {
           {errorCorreo && (
             <p
               id={idErrorCorreo}
+              role="alert"
               className="formulario-ingreso-error detalle-nota"
             >
               {errorCorreo}
@@ -198,6 +201,7 @@ export default function FormularioIngreso() {
           {errorClave && (
             <p
               id={idErrorClave}
+              role="alert"
               className="formulario-ingreso-error detalle-nota"
             >
               {errorClave}
