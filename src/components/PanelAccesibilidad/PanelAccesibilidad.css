@@ -156,6 +156,7 @@
 @media (min-width: 641px) {
   .panel-accesibilidad {
     /* El ancho nunca supera la pantalla menos un margen a cada lado */
+    /* Figma: 360px, sin variable */
     --panel-ancho: min(360px, calc(100% - 2 * var(--espacio-4)));
     /* El componente calcula --panel-arriba y --panel-derecha con la posición del botón;
        el tope de la derecha impide que el panel pase del borde izquierdo */
